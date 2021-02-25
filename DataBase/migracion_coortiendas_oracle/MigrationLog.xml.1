@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<log>
+<record>
+  <date>2021-02-25T12:05:45</date>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>SEVERE</level>
+  <class>oracle.dbtools.migration.workbench.core.logging.MigrationLogUtil</class>
+  <message>Create Repository
+java.sql.SQLRecoverableException: ORA-01033: inicialización o cierre de ORACLE en curso
+</message>
+  <param>oracle.jdevimpl.db.adapter.CAConnectionCreator.createConnectionImpl(CAConnectionCreator.java:58)</param>
+  <param>oracle.javatools.db.DatabaseFactory.createConnection(DatabaseFactory.java:838)</param>
+  <param>oracle.javatools.db.DatabaseFactory.createDatabase(DatabaseFactory.java:282)</param>
+  <param>oracle.jdeveloper.db.DatabaseConnections.getDatabase(DatabaseConnections.java:656)</param>
+  <param>oracle.dbtools.raptor.utils.Connections$ConnectionInfo.getDatabase(Connections.java:284)</param>
+  <param>oracle.dbtools.raptor.utils.Connections.getConnection(Connections.java:1180)</param>
+  <param>oracle.dbtools.raptor.utils.Connections.getConnection(Connections.java:1166)</param>
+  <param>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask.doCreateRepository(FullMigrateTask.java:484)</param>
+  <param>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask.doMaskBasedActions(FullMigrateTask.java:399)</param>
+  <param>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask.doWork(FullMigrateTask.java:321)</param>
+  <param>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask.doWork(FullMigrateTask.java:154)</param>
+  <param>oracle.dbtools.raptor.backgroundTask.RaptorTask.call(RaptorTask.java:199)</param>
+  <param>java.util.concurrent.FutureTask.run(FutureTask.java:266)</param>
+  <param>oracle.dbtools.raptor.backgroundTask.RaptorTaskManager$RaptorFutureTask.run(RaptorTaskManager.java:702)</param>
+  <param>java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)</param>
+  <param>java.util.concurrent.FutureTask.run(FutureTask.java:266)</param>
+  <param>java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)</param>
+  <param>java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)</param>
+  <param>java.lang.Thread.run(Thread.java:748)</param>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@40e246ec</param>
+  <exception>
+    <message>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask$FullMigrateTaskException: Create Repository
+java.sql.SQLRecoverableException: ORA-01033: inicialización o cierre de ORACLE en curso
+</message>
+    <frame>
+      <class>oracle.jdevimpl.db.adapter.CAConnectionCreator</class>
+      <line>58</line>
+    </frame>
+    <frame>
+      <class>oracle.javatools.db.DatabaseFactory</class>
+      <line>838</line>
+    </frame>
+    <frame>
+      <class>oracle.javatools.db.DatabaseFactory</class>
+      <line>282</line>
+    </frame>
+    <frame>
+      <class>oracle.jdeveloper.db.DatabaseConnections</class>
+      <line>656</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.raptor.utils.Connections$ConnectionInfo</class>
+      <line>284</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.raptor.utils.Connections</class>
+      <line>1180</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.raptor.utils.Connections</class>
+      <line>1166</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask</class>
+      <line>484</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask</class>
+      <line>399</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask</class>
+      <line>321</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask</class>
+      <line>154</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.raptor.backgroundTask.RaptorTask</class>
+      <line>199</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>oracle.dbtools.raptor.backgroundTask.RaptorTaskManager$RaptorFutureTask</class>
+      <line>702</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.Executors$RunnableAdapter</class>
+      <line>511</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.FutureTask</class>
+      <line>266</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor</class>
+      <line>1149</line>
+    </frame>
+    <frame>
+      <class>java.util.concurrent.ThreadPoolExecutor$Worker</class>
+      <line>624</line>
+    </frame>
+    <frame>
+      <class>java.lang.Thread</class>
+      <line>748</line>
+    </frame>
+  </exception>
+
+</record>
+<record>
+  <date>2021-02-25T12:05:45</date>
+  <logger>oracle.dbtools.migration.workbench.core.MigrationLogResourceBundle</logger>
+  <level>WARNING</level>
+  <class>oracle.dbtools.migration.workbench.core.ui.FullMigrateTask</class>
+  <message>Ejecutando: Migración de Base de Datos: FAILED : Migración de Base de Datos : FAILED</message>
+  <param>oracle.dbtools.migration.workbench.core.logging.LogInfo@526d193c</param>
+
+</record>
