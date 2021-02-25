@@ -1,3 +1,19 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +31,7 @@
      <link rel="icon" href="../Imagenes/Faviconn.png">
 
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/style.css">
 
     <!-- Responsive CSS -->
     <link href="../css/responsive-color.css" rel="stylesheet">
@@ -39,11 +55,64 @@
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
           <!-- Search Form Area Start -->
-              <div class="login-register-btn" >
+             <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
+                    
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+              <div class="login-register-btn">
                                    <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="profile-ava">
-                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 2% ">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
                             </span>
                             <span class="username"></span>
                             <b class="caret"></b>
@@ -57,12 +126,27 @@
                 <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
               </li>
               <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
             </ul>
           </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                </div>
-                                                                   
+                                ';
+                              }
+                      ?>                                             
         </div>
       </div>
     </nav>
@@ -81,7 +165,7 @@
                             </div>
                             <p style="color: white;">Coortiendas es una mini empresa en crecimiento, que tiene lugar en el ambiente comercial, que tiene como función principal la distribución de productos de primera necesidad</p>
                             <div class="ceo-meta-data d-flex align-items-center mt-50">
-                                <div class="ceo-thumb bg-img" style="background-image: url(../Imagenes/F.jpg);"></div>
+                                <div class="ceo-thumb bg-img" style="background-image: url(../Imagenes/F.png);"></div>
                                 <div class="ceo-name">
                                     <h6 style="color: white;">Empresa</h6>
                                     <p style="color: white;">Coortiendas</p>

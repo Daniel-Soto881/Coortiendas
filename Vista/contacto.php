@@ -11,51 +11,146 @@
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/style.css">
 
   </head>
   <body>
     
      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 30%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img style="width: 100%;" src="../Imagenes/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
-        <div class="collapse navbar-collapse" id="ftco-nav">
+        <div class="collapse navbar-collapse" id="ftco-nav" style="margin-left: 40%; margin-top: 2%">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item" ><a href="contacto.php" class="nav-link"><strong style="color: green;">Contáctenos</strong></a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"> Productos </a></li>
-            <li class="nav-item" ><a href="contacto.php" class="nav-link">Promociones</a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link"><strong style="color: green;">Contáctenos</strong></a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link">Productos</a></li>
+            <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
           <!-- Search Form Area Start -->
-                               <div class="login-register-btn">
-                  <li class="dropdown">
-                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="profile-ava">
-                          <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="">
-                        </span>
-                        <span class="username"></span>
-                            <b class="caret"></b>
-                      </a>
-              <ul class="dropdown-menu extended logout">
-                <div class="log-arrow-up"></div>
-                  <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
-                  </li>
-                  <li>
-                    <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
-                  </li>
-                  <li>
-                    <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
-                  </li>
-              </ul>
-                    </li>
-              </div>    
+          <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
                     
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+              <div class="login-register-btn">
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {//almacenista
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {//administrador
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>                                             
         </div>
       </div>
     </nav>
+         <!--                    <div class="login-register-btn" >
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 50%; margin-top: 1%; margin-right: 2% ">
+                            </span>
+                            <span class="username"></span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="index.php"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
+            </ul>
+          </li>
+                               </div>
+                    
+        </div>
+      </div>
+    </nav>-->
     <!-- END nav -->
     <section class="ftco-cover" style="background-image: url(../Imagenes/Comida.jpeg);" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
       <div class="container">
@@ -102,7 +197,7 @@
                                         <span class="bar"></span>
                                         <label>Situacion o Problema</label>
                                     </div>
-                                </div><br>
+                                </div>
                                 <div class="col-12">
                                     <div class="group">
                                         <textarea name="message" id="message" required></textarea>
@@ -110,9 +205,9 @@
                                         <span class="bar"></span>
                                         <label>Mensaje</label>
                                     </div>
-                                </div><br>
+                                </div>
                                 <div class="col-12">
-                                    <button type="submit" class="mosh-btn original-btn">Enviar Mensaje</button>
+                                   <a href="Promociones.php" class="nav-link"><button type="submit" class="mosh-btn original-btn">Enviar Mensaje</button></a>
                                 </div>
                             </div>
                         </form></div></div>

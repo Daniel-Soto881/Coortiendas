@@ -61,7 +61,7 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/sstyle.css">
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/sstylo.css">
 
   </head>
   <body>

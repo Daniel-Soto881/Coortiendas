@@ -1,3 +1,19 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,14 +35,14 @@
     <link rel="stylesheet" href="../css/ionicons.min.css">
     
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/sttyle.css">
 
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container" style=" margin-left: 7%">
-        <a class="navbar-brand" href="index.php"><img style="width: 4 0%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
       </div>
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,41 +110,44 @@
             
             echo '
               <div class="login-register-btn">
-                  <li class="dropdown">
-                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="profile-ava">
-                          <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="">
-                        </span>
-                        <span class="username"></span>
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
                             <b class="caret"></b>
-                      </a>
-              <ul class="dropdown-menu extended logout">
-                <div class="log-arrow-up"></div>
-                  <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
-                  </li>
-                  <li>
-                    <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
-                  </li>
-                  <li>
-                    <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
-                  </li>
-              </ul>
-                    </li>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
               ';
                   if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
                     echo '
                   <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
                   <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
-                  } echo'
-                  </ul>
-                </li>
-                                     </div>';}?>
-    <!-- ##### Header Area Start ##### -->
-     
-      </div>
-                    
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>                                             
         </div>
       </div>
     </nav><br><br><br><br><br>

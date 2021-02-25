@@ -1,4 +1,5 @@
 <?php
+
 class Producto{
   /* Atributos */
  Public $Id_prod ; 

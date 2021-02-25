@@ -30,7 +30,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
 <body>
  <header class="header">
     <div class="wrapper">
-      <div class="logo"><a href="principal.php"><img src="../Imagenes/LOGO_COORTIENDAS.png" width="200" height="100"></a></div>
+      <div class="logo"><a href="index.php"><img src="../Imagenes/LOGO_COORTIENDAS.png" width="200" height="100"></a></div>
       <nav>
         <a href="index.php">Inicio</a>
         <a href="frmlogin.php">Iniciar sesión</a>

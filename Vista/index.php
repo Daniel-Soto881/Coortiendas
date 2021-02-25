@@ -28,7 +28,7 @@ session_start();
     <link rel="stylesheet" href="../css/animate.css">
 
     <script src="js/Estilojs.js"></script>
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/stylee.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/owl.theme.default.min.css">
@@ -56,8 +56,9 @@ session_start();
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="contactos.php" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
             <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
         <!-- ALMACENISTA-3 -->  
           
@@ -180,7 +181,7 @@ session_start();
                     </div>
                 </div>
             </div>
-              <div class="row">
+              <div class="row ">
                 <div class="col-12">
                     <div class="mosh-team-slides owl-carousel">
                         <!-- Single Team Slide -->
@@ -225,7 +226,7 @@ session_start();
                     </div>
                 <!-- Search btn -->
                   <br>
-<div class="row">
+<div class="row lista-prrona fracaso">
 <?php
 while ($prod_todo=$res_Prod->fetch_object()) {
 echo '
@@ -247,7 +248,7 @@ echo '
         </div>
 ';
 }
-?><a href=""></a>
+?>
       </div>
 
 
@@ -281,8 +282,8 @@ echo '
               <div class="ftco-footer-widget mb-4">
                 <h2 class="ftco-heading-2">Acerca de CHANGING WORLD</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobree.php" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="contactos.php" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
+                  <li><a href="contactodgsgs.php" class="py-2 d-block">Contactenos</a></li>
                 </ul>
               </div>
             </div>

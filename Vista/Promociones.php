@@ -1,3 +1,19 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -22,7 +38,7 @@
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sttlee.css">
+    <link rel="stylesheet" href="../css/sttyle.css">
     <link rel="stylesheet" href="../css/animateda.css">
 
 
@@ -40,12 +56,12 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"> Productos</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"> Productos </a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link"><strong style="color: green;">Promociones</strong></a></li>
           </ul>
         <!-- ALMACENISTA-3 -->  
           
-          <?php
+         <?php
           /* if (isset($_SESSION['Empleado']) ) {
               echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
               <label for="abrir-cerrar">&#9776;
@@ -99,39 +115,45 @@
             
             echo '
               <div class="login-register-btn">
-                  <li class="dropdown">
-                      <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        <span class="profile-ava">
-                          <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="">
-                        </span>
-                        <span class="username"></span>
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
                             <b class="caret"></b>
-                      </a>
-              <ul class="dropdown-menu extended logout">
-                <div class="log-arrow-up"></div>
-                  <li class="eborder-top">
-                    <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
-                  </li>
-                  <li>
-                    <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
-                  </li>
-                  <li>
-                    <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
-                  </li>
-              </ul>
-                    </li>
-              </div>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
               ';
                   if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
                     echo '
                   <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
                   <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
-                  } echo'
-                  </ul>
-                </li>
-                                     </div>';}
-                  ?>
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>                                             
+        </div>
       </div>
     </nav>
     
@@ -141,20 +163,11 @@
     <section class="contenido wrapper">
    <div class="slider">
       <ul>
-        <li>
-          <a href="#"><img class="sli" src="../Imagenes/slider.jpg" alt=""></a>
-        </li> 
-        <li>
-          <a href="#"><img class="sli" src="../Imagenes/slider1.jpg" alt=""></a>
-        </li>
-        <li>
-          <a href="#"><img class="sli" src="../Imagenes/slider2.jpg" alt=""></a>
-        </li>
-        <li>
-          <a href="#"><img class="sli" src="../Imagenes/slider3.jpg" alt=""></a>
-        </li>
-        <li>
-          <a href="#"><img class="sli" src="../Imagenes/slider.jpg" alt=""></a></li>
+        <li><a href="#"><img class="sli" src="../Imagenes/slider.jpg" alt=""></a></li>
+        <li><a href="#"><img class="sli" src="../Imagenes/slider1.jpg" alt=""></a></li>
+        <li><a href="#"><img class="sli" src="../Imagenes/slider2.jpg" alt=""></a></li>
+        <li><a href="#"><img class="sli" src="../Imagenes/slider3.jpg" alt=""></a></li><li>
+        <li><a href="#"><img class="sli" src="../Imagenes/slider.jpg" alt=""></a></li>
       </ul>
     </div>
   </section>
@@ -187,75 +200,30 @@
                     </div>
                 <!-- Search btn -->
                   <br>
-<div class="row">
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.php" class="block-5" style="background-image: url('../Imagenes/Pan_Bimbo.jpg');">
+<div class="row lista-prrona fracaso">
+<?php
+while ($prod_todo=$res_Prod->fetch_object()) {
+echo '
+<div class="col-md-6 col-lg-4" data-aos="fade-up">
+          <a href="frmActualizarProducto.php?idProd=' . $prod_todo->Id_prod . '" class="block-5" style="background-image: url(\'data:image/jpg||png;base64,' . base64_encode($prod_todo->img_prod) . '\'); ">
             <div class="text">
               <div class="subheading"></div>
-              <h3 class="heading">Pan Bimbo blanco 600g $2.100</h3>
+              <h3 class="heading">' . $prod_todo->Nam_prod . ' - ' . $prod_todo->Tam_prod . '- $ ' . $prod_todo->Val_prod . ' </h3>
+              ';
+              /* if (isset($_SESSION['Cargo']) && $_SESSION['Cargo']=='1') {//supervisor
+               echo '<h3 class="" > <a href="frmActualizarProducto.php ?Id_prod=' . $prod_todo->Id_prod .'" >Actualizar </a></h3>';
+              } */
+              echo '
               <div class="post-meta">
                 <span>Buscamos darte lo mejor</span>
               </div>
             </div>
           </a>
         </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
-          <a href="PaProducto.php" class="block-5" style="background-image: url('../Imagenes/MegalitroA.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Leche alqueria Entera (Megalitro) $2.500</h3>
-              <div class="post-meta">
-                <span>La mejor calidad al mejor precio</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
-          <a hrefProducto.php" class="block-5" style="background-image: url('../Imagenes/Pan_BimboIntegral.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Pan bimbo integral 650g $3.100</h3>
-              <div class="post-meta">
-                <span>Todo lo que buscas en un solo lugar</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.php" class="block-5" style="background-image: url('../Imagenes/Aseo.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Salvo Limon triple poder 1,2 Litros</h3>
-              <div class="post-meta">
-                <span>Super barato</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.php" class="block-5" style="background-image: url('../Imagenes/aguar.PNG');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Aguardiente Amarillo de Manzana :D</h3>
-              <div class="post-meta">
-                <span>Compra ya!!!</span>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-md-6 col-lg-4" data-aos="fade-up">
-          <a href="Producto.php" class="block-5" style="background-image: url('../Imagenes/papass.jpg');">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">Papas Super ricas Pollo(Snakcs)</h3>
-              <div class="post-meta">
-                <span>Todo lo que buscas aqui</span>
-              </div>
-            </div>
-          </a>
-        </div>
+';
+}
+?>
       </div>
-
 
     </div>
   </div>
