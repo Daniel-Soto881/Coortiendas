@@ -26,6 +26,7 @@ session_start();
     <link rel="icon" href="../Imagenes/Faviconn.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
@@ -35,14 +36,14 @@ session_start();
     <link rel="stylesheet" href="../css/ionicons.min.css">
     
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sttyle.css">
+    <link rel="stylesheet" href="../css/stylee.css">
 
 </head>
 
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container" style=" margin-left: 7%">
-        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
       </div>
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,7 +52,7 @@ session_start();
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong> </a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
         <!-- ALMACENISTA-3 -->  
@@ -150,7 +151,7 @@ session_start();
                       ?>                                             
         </div>
       </div>
-    </nav><br><br><br><br><br>
+    </nav>
     <!-- ##### Header Area End ##### -->
 
 
@@ -173,12 +174,6 @@ session_start();
             <p class="product-price"><span class="old-price">$</span> $</p>
             <p class="product-desc"></p>
                 <!-- Cart & Favourite Box -->
-                <div class="cart-fav-box d-flex align-items-center">
-                    <!-- Cart -->
-                    <button type="submit" name="addtocart" value="5" class="mosh-btn">Añadir a la lista</button>
-                    <!-- Favourite -->
-                    <div class="product-favourite ml-4">
-                        <a href="#" class="favme fa fa-heart"></a>
                     </div>
                 </div>
             </form>

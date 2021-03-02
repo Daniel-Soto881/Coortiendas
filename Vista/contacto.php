@@ -12,23 +12,27 @@
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 
   </head>
   <body>
     
-     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container" style=" margin-left: 7%">
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+      </div>
       <div class="container">
-        <a class="navbar-brand" href="index.php"><img style="width: 100%;" src="../Imagenes/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
-        <div class="collapse navbar-collapse" id="ftco-nav" style="margin-left: 40%; margin-top: 2%">
+        <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="contacto.php" class="nav-link"><strong style="color: green;">Contáctenos</strong></a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link">Productos</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"> Productos </a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
-          <!-- Search Form Area Start -->
+        <!-- ALMACENISTA-3 -->  
+          
           <?php
           /* if (isset($_SESSION['Empleado']) ) {
               echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
@@ -103,9 +107,9 @@
                 <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
               ';
-                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {//almacenista
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
                     echo '
-                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {//administrador
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
                   <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
                   }
@@ -152,14 +156,17 @@
       </div>
     </nav>-->
     <!-- END nav -->
-    <section class="ftco-cover" style="background-image: url(../Imagenes/Comida.jpeg);" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center ftco-vh-75">
-          <div class="col-md-7">
-            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500">Contactenos</h1>
-          </div>
+    <section class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Comida.jpeg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                        <div class="section-heading">
+                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500">Contactenos</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
     <!-- END section -->
     
@@ -227,8 +234,8 @@
               <div class="ftco-footer-widget mb-4">
                 <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="contacto.php" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block"> ¿Quiénes somos? </a></li>
+                  <li><a href="contacto.php" class="py-2 d-block"><strong style="color: red;"> Contactenos </strong></a></li>
                 </ul>
               </div>
             </div>

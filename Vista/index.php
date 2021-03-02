@@ -19,8 +19,12 @@ session_start();
   <head>
     <title>Productos</title>
     <meta charset="utf-8">
+    <link rel="icon" href="../Imagenes/Faviconn.png">
+
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="icon" href="../Imagenes/F.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
@@ -38,17 +42,17 @@ session_start();
     <link href="../css/responsive-color.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/ionicons.min.css">
-    <link rel="stylesheet" href="../css/sstlee.css">
+    <link rel="stylesheet" href="../css/animateda.css">
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/animateda.css">
+
   </head>
   
   <body>
     
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container" style=" margin-left: 7%">
-        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
       </div>
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +61,7 @@ session_start();
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong> </a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
         <!-- ALMACENISTA-3 -->  
@@ -230,7 +234,7 @@ session_start();
 <?php
 while ($prod_todo=$res_Prod->fetch_object()) {
 echo '
-<div class="col-md-6 col-lg-4" data-aos="fade-up">
+<div class="coll-md-6 col-lgg-4" data-aos="fade-up">
           <a href="frmActualizarProducto.php?idProd=' . $prod_todo->Id_prod . '" class="block-5" style="background-image: url(\'data:image/jpg||png;base64,' . base64_encode($prod_todo->img_prod) . '\'); ">
             <div class="text">
               <div class="subheading"></div>
@@ -250,7 +254,6 @@ echo '
 }
 ?>
       </div>
-
 
     </div>
   </div>
@@ -280,7 +283,7 @@ echo '
           <div class="row">
             <div class="col-md">
               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Acerca de CHANGING WORLD</h2>
+                <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
                 <ul class="list-unstyled">
                   <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
                   <li><a href="contactodgsgs.php" class="py-2 d-block">Contactenos</a></li>

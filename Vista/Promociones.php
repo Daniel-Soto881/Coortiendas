@@ -25,6 +25,7 @@ session_start();
     
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
@@ -38,7 +39,7 @@ session_start();
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sttyle.css">
+    <link rel="stylesheet" href="../css/stylee.css">
     <link rel="stylesheet" href="../css/animateda.css">
 
 
@@ -238,7 +239,7 @@ echo '
           <div class="row">
             <div class="col-md">
               <div class="ftco-footer-widget mb-4">
-                <h2 class="ftco-heading-2">Acerca de DAMALÚ</h2>
+                <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
                 <ul class="list-unstyled">
                   <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
                   <li><a href="contacto.php" class="py-2 d-block">Contactenos</a></li>

@@ -22,6 +22,7 @@ session_start();
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
       <!-- Title -->
@@ -42,7 +43,7 @@ session_start();
     <!-- ***** Preloader Start ***** -->
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container" style=" margin-left: 7%">
-        <a class="navbar-brand" href="Inicio.html"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
       </div>
       <div class="container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
