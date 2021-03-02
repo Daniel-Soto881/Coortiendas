@@ -16,8 +16,8 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>COORTIENDAS</title>
-    <link rel="stylesheet" href="../css/Estil.css">
+    <title>Registrarse </title>
+    <link rel="stylesheet" href="../css/sil.css">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 
@@ -174,7 +174,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
                       <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario">
-                        <h1>Registro</h1>
+                        <h2>Registro</h2>
                         <div class="contenedoorr">
                            <section class="segundo">
                             <div id="opcioon">
@@ -196,40 +196,41 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                      /*  document.querySelector(".segundo").style.height= "200px"; */
                                        document.getElementById("Empledo").innerHTML=`
                                        <div class="input-contenedor">
-                                      <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                      <td><select name="Cargo" id="Cargo" required>
-                                    <option value="">Cargo</option>
-                                    <?php
-                                      while ($cargo =$res_TipUsu->fetch_object()) {
-                                        echo '<option value="' . $cargo->Id_tip_usu . '">' . $cargo->nam_tip_usu .  '</option>';
-                                      }
-                                      ?>
-                                   </select></td></div>
-                                <div class="input-contenedor">
-                                   <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                      <td><select name="Tip_doc" id="Tip_doc" required>
-                                    <option value="">Tipo de documento de ID</option>
-                                    <?php
-                                      while ($Tip_doc =$res_TipoDoc->fetch_object()) {
-                                        echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
-                                      }
-                                      ?>
-                                   </select></td></div>
-                                   <div class="input-contenedor">
-                                      <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                      <td><input type="number" name="cc" id="cc" required placeholder="Número de identificación"></td>
-                                  </div> 
-                                  <div class="input-contenedor">
-                                      <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                      <td><input type="text" name="Solic" id="Solic" required size="60" placeholder="Descripción de empleo"></td>
-                                  </div>
-                                  <div class="input-contenedor">
-                                      <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                      <td><input type="date" name="FechNac" id="FechNac" required size="60" placeholder="Fecha de nacimiento"></td>
-                                     
-                                  </div> 
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><select name="Cargo" id="Cargo" required>
+                                            <option value="">Cargo</option>
+                                            <?php
+                                              while ($cargo =$res_TipUsu->fetch_object()) {
+                                                echo '<option value="' . $cargo->Id_tip_usu . '">' . $cargo->nam_tip_usu .  '</option>';
+                                              }
+                                              ?></select>
+                                          </td>
+                                       </div>
+
+                                       <div class="input-contenedor">
+                                            <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                            <td><select class="Tip_doc" name="Tip_doc " id="Tip_doc" required>
+                                              <option value="">Tipo de documento de ID</option>
+                                                <?php
+                                                while ($Tip_doc =$res_TipoDoc->fetch_object()) {
+                                                  echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
+                                                }
+                                                ?>
+                                              </select>
+                                       </div>
+
+                                      <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><input type="text" name="Solic" id="Solic" required size="60" placeholder="Descripción de empleado"></td>
+                                      </div>
+
+                                      <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required size="60" placeholder="Fecha de nacimiento"></td>
+                                      </div> 
                                           
                                        `;
+
                                      }else{
                                       document.getElementById("Empledo").innerHTML=``;
                                      } 
@@ -254,11 +255,9 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                             <td><input type="password" name="Pass" id="Pass" required size="30" placeholder="Contraseña"></td>
                           </div>
 
-
-                          </div>
                          <div id="Empledo">
 
-                          </div>
+                          </div><br>
                           <input type="submit" name="Registrarse" id="Registrarse"value="Registrarse" class="button">
 
                         </div>

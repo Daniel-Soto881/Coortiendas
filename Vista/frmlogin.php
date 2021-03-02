@@ -10,7 +10,7 @@ $resultado=$objTipUsu->Consultar_TipUsu();
 <head>
   <meta charset="UTF-8">
   <title>Iniciar Sesion</title>
-  <link rel="stylesheet" href="../css/Estil.css">
+  <link rel="stylesheet" href="../css/sil.css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
   <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -192,20 +192,20 @@ $resultado=$objTipUsu->Consultar_TipUsu();
                                         document.querySelector(".segundo").style.height= "100px";
                                          document.getElementById("Empleado").innerHTML=`
                                          <div class="input-contenedor"><br>
-                                        <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                        <td><input type="number" name="cc_empl" id="cc_empl" placeholder="Número de identificación" required></td> 
-                                        </div>
-                                        <div class="input-contenedor">
-                                        <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                        <td><select name="Cargo" id="Cargo" >
-                                      <option value="">Cargo</option>
-                                      <?php
-                                        while ($cargo =$resultado->fetch_object()) {
-                                          echo '<option value="' . $cargo->Id_tip_usu . '">' . $cargo->nam_tip_usu .  '</option>';
-                                        }
-                                        ?>
-                                     </select></td>
-                                    </div>
+                                            <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                            <td><input type="number" name="cc_empl" id="cc_empl" placeholder="Número de identificación" required></td> 
+                                         </div>
+                                         <div class="input-contenedor">
+                                            <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                            <td><select name="Cargo" id="Cargo" >
+                                              <option value="">Cargo</option>
+                                                <?php
+                                                  while ($cargo =$resultado->fetch_object()) {
+                                                    echo '<option value="' . $cargo->Id_tip_usu . '">' . $cargo->nam_tip_usu .  '</option>';
+                                                  }
+                                                  ?>
+                                            </select></td>
+                                         </div>
                                          `;
                                        }else{
                                         document.getElementById("Empleado").innerHTML=``;
@@ -227,9 +227,7 @@ $resultado=$objTipUsu->Consultar_TipUsu();
                       			    	<td><i class="fa fa-key" aria-hidden="true icon"></i></td>
                       				    <input type="password" name="pass" id="pass" placeholder="Contraseña" size="30"required>
                       				    </div>
-                              </div>
-                          
-                      		
+                              </div><br>
                       				<button type="submit" class="button" id="ini_sesion" name="ini_sesion">Iniciar sesión</button>	   
                       			</form>
 			                       <br><br><br>

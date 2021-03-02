@@ -38,23 +38,23 @@ session_start();
   <head>
     <title>COORTIENDAS</title>
     <meta charset="utf-8">
-    <link rel="icon" href="../images\Faviconn.png">
-    
+    <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css"> -->
+    <link rel="stylesheet" href="../css/sil.css">
+    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
-    <!-- <link rel="stylesheet" href="../css/flaticon.css"> -->
+    <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/style.css">
 
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
-      <div class="container">
-        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>  
+    <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
+      <div class="container" >
+        <a class="navbar-brand" href="index.php"><img class="log" src="../Imagenes/Logo.png"></a>
+      </div>                                           
         </div>
       </div>
     </nav>
@@ -73,49 +73,112 @@ session_start();
         </label>
 
         <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled ">
-        <div class="login-register-btn" style="  margin-top: 0%;" >
-                        <li class="dropdown">
+                       <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
+                    
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+                                   <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
-                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
                             </span>
                             <span class="username"></span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-          <ul class="menu">
-            <li><a href="index.php">Lista Productos</a></li>
-            <?php
-            if (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3') {
-              echo '<li><a href="frmNewProducto.php">Ingresar producto</a></li>
-              <li>';
-            }
-            ?>
-            
-                <strong><a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a></strong>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i><strong> Actualizar Datos </strong></a>
               </li>
               <li>
                 <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
-            
-        </div>
-          
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
             </ul>
-        </div> <br><br>
-    
-     
-
-    <section class="ftco-cover" style="background-image: url(../Imagenes/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center ftco-vh-75" >
-          <div class="col-md-7">
-            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Actualizar Cuenta</h1>
-           
-          </div>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>    
         </div>
-      </div>
+    
+     <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                        <div class="section-heading">
+                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Actualizar Cuenta</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+     <br><br><br><br><br><br><br><br><br><br>
     
     
  <div class="ftco-section contact-section" style="background: #E1EAEA;;">
@@ -125,7 +188,7 @@ session_start();
           <!--formulario-->
           <div class="col-md-9 col-md-9" >
                     <div class="contact-form">
-                        <h5 style="text-align: center;">Actualizar Cuenta</h5>
+                        <h5 style="text-align: center;">Actualizar Cuenta</h5><br>
         <form action="../Modelo/validacion/ActualizarUsu.php"    method="post" >
         <div class="" style="text-align: center;">
         <?php
@@ -251,7 +314,7 @@ session_start();
         </div>
         </div>
     </div>
-  </div>
+  </div></form></div></div></div></div>
             
   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
