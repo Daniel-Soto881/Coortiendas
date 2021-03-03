@@ -166,29 +166,71 @@ session_start();
                     </div>
                 <!-- Search btn -->
                   <br>
-<div class="row lista-prrona fracaso">
-<?php
-while ($prod_todo=$res_Prod->fetch_object()) {
-echo '
-<div class="coll-md-6 col-lgg-4" data-aos="fade-up">
-          <a href="frmActualizarProducto.php?idProd=' . $prod_todo->Id_prod . '" class="block-5" style="background-image: url(\'data:image/jpg||png;base64,' . base64_encode($prod_todo->img_prod) . '\'); ">
-            <div class="text">
-              <div class="subheading"></div>
-              <h3 class="heading">' . $prod_todo->Nam_prod . ' - ' . $prod_todo->Tam_prod . '- $ ' . $prod_todo->Val_prod . ' </h3>
-              ';
-              /* if (isset($_SESSION['Cargo']) && $_SESSION['Cargo']=='1') {//supervisor
-               echo '<h3 class="" > <a href="frmActualizarProducto.php ?Id_prod=' . $prod_todo->Id_prod .'" >Actualizar </a></h3>';
-              } */
-              echo '
-              <div class="post-meta">
-                <span>Buscamos darte lo mejor</span>
-              </div>
+<div class="container" style="width: 800px; margin-top: 100px;">       
+            <div class="row">
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id_prod</th> 
+                            <th>Est_prod</th> 
+                            <th>Tip_prod</th> 
+                            <th>Prov</th> 
+                            <th>Nam_prod</th> 
+                            <th>Carac_prod</th> 
+                            <th>Puntua_prod</th> 
+                            <th>Val_prod</th>
+                            <th>Iva_prod</th> 
+                            <th>Presen_prod</th> 
+                            <th>Tam_prod</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        include './Conexion.php';
+                        $query = "SELECT l.Id_prod,l.Est_prod,l.Tip_prod,l.Prov,l.Nam_prod, cl.Carac_prod,cl.Puntua_prod";
+                        $query .= " FROM producto";
+                        $query .= " JOIN producto cl ON l.categoriaLibro_catLibId=cl. ";
+                        $query .= " ORDER BY l.Id_prod ASC ";
+                        $sql = mysqli_query($connect, $query);
+                        while ($row = mysqli_fetch_array($sql)) {
+                            ?>                       
+                            <tr>
+img_prod
+
+                                <td><?php echo $row["Id_prod"]; ?></td>
+                                <td><?php echo $row["Est_prod"]; ?></td>  
+                                <td><?php echo $row["Tip_prod"]; ?></td>  
+                                <td><?php echo $row["Prov"]; ?></td>  
+                                <td><?php echo $row["Nam_prod"]; ?></td>  
+                                <td><?php echo $row["Carac_prod"]; ?></td>
+                                <td><?php echo $row["Puntua_prod"]; ?></td>   
+                                <td><?php echo $row["Val_prod"]; ?></td> 
+                                <td><?php echo $row["Iva_prod"]; ?></td>
+                                <td><?php echo $row["Presen_prod"]; ?></td> 
+                                <td><?php echo $row["Tam_prod"]; ?></td>  
+                                <td><?php echo $row["catLibNombre"]; ?></td>  
+                                <td><a href="frmActualizarProducto.php?id=<?php echo $row["Id_prod"]; ?>">Actualizar</a></td>  
+                                <td><a href=".php?id=<?php echo $row["Id_prod"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+                            </tr>             
+                        <?php } ?>
+                    </tbody>
+                    <div class="section-heading">
+                      <?php
+
+                        if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+                        echo '
+                               ';
+                        if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                        
+                        echo '
+                          <li><button type="submit" class="mosh-btn original-btn"><a href="frmNewProducto.php>Agregar producto</a></button></li>';}}
+                      ?>
+                            
+                        </div>
+                </table>
             </div>
-          </a>
         </div>
-';
-}
-?>  
     </div>
   </div></div></div></div></div>
 
