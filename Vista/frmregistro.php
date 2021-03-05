@@ -173,7 +173,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
           <!--formulario-->
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
-                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario">
+                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario" entype="multiplataform/form-data">
                         <h2>Registro</h2>
                         <div class="contenedoorr">
                            <section class="segundo">
@@ -192,11 +192,11 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                     <script type="text/javascript">
                                     
                                     function Datos(){ 
-                                   if (document.FrmRegistro.usu[1].checked==true) {
+                                   if (document.FrmRegistro.usu[1].checked==true) {//empleado
                                      /*  document.querySelector(".segundo").style.height= "200px"; */
                                        document.getElementById("Empledo").innerHTML=`
                                        <div class="input-contenedor">
-                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
                                           <td><select name="Cargo" id="Cargo" required>
                                             <option value="">Cargo</option>
                                             <?php

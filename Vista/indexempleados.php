@@ -1,4 +1,4 @@
-<?php
+ <?php
 require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
 require "../Modelo/TipProd.php";
@@ -124,7 +124,7 @@ session_start();
                 <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
               </li>
               ';
-                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                  if ( isset($_SESSION['Emple ado']) && $_SESSION['Cargo']=='3' ) {
                     echo '
                   <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
@@ -185,34 +185,56 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        include './Conexion.php';
-                        $query = "SELECT l.Id_prod,l.Est_prod,l.Tip_prod,l.Prov,l.Nam_prod, cl.Carac_prod,cl.Puntua_prod";
-                        $query .= " FROM producto";
-                        $query .= " JOIN producto cl ON l.categoriaLibro_catLibId=cl. ";
-                        $query .= " ORDER BY l.Id_prod ASC ";
-                        $sql = mysqli_query($connect, $query);
-                        while ($row = mysqli_fetch_array($sql)) {
-                            ?>                       
-                            <tr>
-img_prod
 
-                                <td><?php echo $row["Id_prod"]; ?></td>
-                                <td><?php echo $row["Est_prod"]; ?></td>  
-                                <td><?php echo $row["Tip_prod"]; ?></td>  
-                                <td><?php echo $row["Prov"]; ?></td>  
-                                <td><?php echo $row["Nam_prod"]; ?></td>  
-                                <td><?php echo $row["Carac_prod"]; ?></td>
-                                <td><?php echo $row["Puntua_prod"]; ?></td>   
-                                <td><?php echo $row["Val_prod"]; ?></td> 
-                                <td><?php echo $row["Iva_prod"]; ?></td>
-                                <td><?php echo $row["Presen_prod"]; ?></td> 
-                                <td><?php echo $row["Tam_prod"]; ?></td>  
-                                <td><?php echo $row["catLibNombre"]; ?></td>  
-                                <td><a href="frmActualizarProducto.php?id=<?php echo $row["Id_prod"]; ?>">Actualizar</a></td>  
-                                <td><a href=".php?id=<?php echo $row["Id_prod"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
-                            </tr>             
-                        <?php } ?>
+
+
+
+                    <?php
+  $obj_solic= new Producto();
+  $res=$obj_solic->Consultar_Producto();
+  while ($solic =$res->fetch_object()) {
+    /*echo ' <tr align="center" bgcolor="#FFFF99">
+ 
+  <td width="11%">' . $solic->Id_sol_emp . '</td>
+  <td width="16%">' . $solic->nam_est_sol . '</td>
+  <td width="16%">' . $solic->nam_tip_usu . '</td>
+  <td width="16%">' . $solic->doc_usu . '</td>
+  <td width="12%">' . $solic->Sol_emp . '</td>
+  <td width="19%">' . $solic->Nombre . '</td>
+  <td width="19%">' . $solic->Email_sol . '</td>
+  <td width="19%">' . $solic->Fecha_sol . '</td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
+
+</tr> ';
+
+while ($row = mysqli_fetch_array($sql)) {*/
+  ?>                       
+  <tr>
+
+
+      <td><?php echo $solic->Id_prod; ?></td>
+      <td><?php echo $solic->Est_prod; ?></td>  
+      <td><?php echo $solic->Tip_prod; ?></td>  
+      <td><?php echo $solic->Prov; ?></td>
+      <td><?php echo $solic->Nam_prod; ?></td>  
+      <td><?php echo $solic->Carac_prod; ?></td>
+      <td><?php echo $solic->Puntua_prod; ?></td>   
+      <td><?php echo $solic->Val_prod; ?></td> 
+      <td><?php echo $solic->Iva_prod; ?></td>
+      <td><?php echo $solic->Presen_prod; ?></td> 
+      <td><?php echo $solic->Tam_prod; ?></td>  
+      <td><?php /* echo $row["catLibNombre"]; */ ?></td>  
+      <td><a href="frmActualizarProducto.php?id=<?php echo $row["Id_prod"]; ?>">Actualizar</a></td>  
+      <td><a href=".php?id=<?php echo $row["Id_prod"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+  </tr>             
+<?php }
+
+  ?>
+
+
+
+
                     </tbody>
                     <div class="section-heading">
                       <?php
