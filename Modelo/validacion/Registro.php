@@ -52,12 +52,16 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
         $res_1=$conectarse->query($sql);
 
         $si_o_no_1= $res_1->num_rows;
-        if ($si_o_no_1==0) {
+        if ($si_o_no_1==0) {//si existe el usuario por email o id
           $sql_2="select * from empleados where Email_empl='$_REQUEST[email]' or ID_empl='$_REQUEST[cc]' ";
           $res_2=$conectarse->query($sql_2);
 
          $si_o_no_2= $res_2->num_rows;
          if ($si_o_no_2==0) {
+
+          if (condition) {
+            # code...
+          }
           date_default_timezone_set("America/Bogota");
           $Fech_Sol= date("Y-m-d H:i:s ");
           $objEmpleado=new Solicitud_empleado();
@@ -77,7 +81,7 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           </script>
           ";
         }else {
-          echo "<script type='text/javascript'>alert('Este usuario ya se encuentra registradó, intente nuevamente.');
+          echo "<script type='text/javascript'>alert('Este usuario(Empleado) ya se encuentra registradó, intente nuevamente.');
           window.location='../../Vista/frmregistro.php';
           </script>
           ";

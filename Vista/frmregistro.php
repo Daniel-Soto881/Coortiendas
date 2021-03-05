@@ -175,7 +175,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                     <div class="contact-form">
                       <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario" entype="multiplataform/form-data">
                         <h2>Registro</h2>
-                        <div class="contenedoorr">
+                        <div class="contenedoorr">  
                            <section class="segundo">
                             <div id="opcioon">
                               <ul class="op">
@@ -186,13 +186,13 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                     
                                     <input type="radio" required name="usu" value="Empleado"id="usu"onclick="Datos();" > Empleado de la empresa
                      
-
+                                  
                                       
                                     </select> 
                                     <script type="text/javascript">
                                     
                                     function Datos(){ 
-                                   if (document.FrmRegistro.usu[1].checked==true) {//empleado
+                                   if ( document.FrmRegistro.usu[1].checked==true) {//empleado
                                      /*  document.querySelector(".segundo").style.height= "200px"; */
                                        document.getElementById("Empledo").innerHTML=`
                                        <div class="input-contenedor">
@@ -228,7 +228,10 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
                                           <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required size="60" placeholder="Fecha de nacimiento"></td>
                                       </div> 
-                                          
+                                      <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td>Foto empleado: <input type="file" name="IMG" id="IMG" required size="60" placeholder="Fecha de nacimiento" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg"></td>
+                                      </div>   
                                        `;
 
                                      }else{
@@ -237,6 +240,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                       }
                                       </script>
                                   </li>
+                                  
                               </ul>
                           </section> 
                     <br>
