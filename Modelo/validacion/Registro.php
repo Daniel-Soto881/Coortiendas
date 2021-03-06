@@ -77,7 +77,7 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           </script>
           ";
         }else {
-          echo "<script type='text/javascript'>alert('Este usuario ya se encuentra registradó, intente nuevamente.');
+          echo "<script type='text/javascript'>alert('Este usuario(Empleado) ya se encuentra registradó, intente nuevamente.');
           window.location='../../Vista/frmregistro.php';
           </script>
           ";

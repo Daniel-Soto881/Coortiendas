@@ -1,3 +1,19 @@
+ <?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,8 +21,9 @@
     <meta charset="utf-8">
     <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-
+    <link rel="stylesheet" href="../css/sil.css">
+    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
     <link rel="stylesheet" href="../css/flaticon.css">
@@ -14,12 +31,12 @@
   </head>
   
 <body>
-  <nav class="bg-dark navbar " id="ftco-navbar" data-aos="fade-down" >
-      <ul style="text-align:center;">
-        <li>
-        <img style="width: 50%; align-content: left;" src="../Imagenes/Logo.png">
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
+      <div class="container" >
+        <a class="navbar-brand" href="index.php"><img class="log" src="../Imagenes/Logo.png"></a>
+      </div>                                           
+        </div>
+      </div>
     </nav>
 
        <!--   --><input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
@@ -33,104 +50,240 @@
           
         </label>
 
-        <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
-        <div class="login-register-btn" style="  margin-top: 0%;" >
-                        <li class="dropdown">
+        <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled ">
+                       <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
+                    
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+                                   <li class="dropdown">
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
-                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
                             </span>
                             <span class="username"></span>
                             <b class="caret"></b>
                         </a>
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
-          <ul class="menu">
-            <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
-            <li><a href="frmNewProducto.php">Ingresar producto</a></li>
-              <li>
-                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
               </li>
               <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
               </li>
-            
+              <li>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>    
         </div>
           
             </ul>
-        </div> <br><br>
- <!--  -->
-    <div class="containerr">
-      <div class="rower">
-        <div class="">
-            <br><br><br>
-            <div class="search-form-area animated" style="margin-left: 10%">
+        </div><br><br><br><br><br><br><br><br><br><br><br>
+ <!-- Lista productos -->
+ <div class="ftco-section contact-section" style="background: #E1EAEA;">
+    <div class="container"><!--style.css:8330,460,453,10266,34-->
+      <div class="">
+        <div class=" ">
+          <!--formulario-->
+                    <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center"  data-aos="fade-up">
+          <h2>Productos</h2>
+        </div>
+      </div>
+
+                    <div class="search-form-area animated">
                         <form action="#" method="post">
                             <input type="search" name="search" id="search" placeholder="¿Que Buscas?">
-                            <button type="submit" class="d-none btn mosh-btn" value="buscar">Buscar</button>
+                            <button type="submit" class="d-none"><img src="img/core-img/search-icon.png" alt="Buscar"></button>
                         </form>
                     </div>
-            <div class="form-group">
-            <div class="product">
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
+                <!-- Search btn -->
+                  <br>
+<div class="container" style="width: 800px; margin-top: 100px;">       
+            <div class="row">
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Id_prod</th> 
+                            <th>Est_prod</th> 
+                            <th>Tip_prod</th> 
+                            <th>Prov</th> 
+                            <th>Nam_prod</th> 
+                            <th>Carac_prod</th> 
+                            <th>Puntua_prod</th> 
+                            <th>Val_prod</th>
+                            <th>Iva_prod</th> 
+                            <th>Presen_prod</th> 
+                            <th>Tam_prod</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+
+                    <?php
+  $obj_solic= new Producto();
+  $res=$obj_solic->Consultar_Producto();
+  while ($solic =$res->fetch_object()) {
+    /*echo ' <tr align="center" bgcolor="#FFFF99">
+ 
+  <td width="11%">' . $solic->Id_sol_emp . '</td>
+  <td width="16%">' . $solic->nam_est_sol . '</td>
+  <td width="16%">' . $solic->nam_tip_usu . '</td>
+  <td width="16%">' . $solic->doc_usu . '</td>
+  <td width="12%">' . $solic->Sol_emp . '</td>
+  <td width="19%">' . $solic->Nombre . '</td>
+  <td width="19%">' . $solic->Email_sol . '</td>
+  <td width="19%">' . $solic->Fecha_sol . '</td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
+
+</tr> ';
+
+while ($row = mysqli_fetch_array($sql)) {*/
+  ?>                       
+  <tr>
+
+
+      <td><?php echo $solic->Id_prod; ?></td>
+      <td><?php echo $solic->Est_prod; ?></td>  
+      <td><?php echo $solic->Tip_prod; ?></td>  
+      <td><?php echo $solic->Prov; ?></td>
+      <td><?php echo $solic->Nam_prod; ?></td>  
+      <td><?php echo $solic->Carac_prod; ?></td>
+      <td><?php echo $solic->Puntua_prod; ?></td>   
+      <td><?php echo $solic->Val_prod; ?></td> 
+      <td><?php echo $solic->Iva_prod; ?></td>
+      <td><?php echo $solic->Presen_prod; ?></td> 
+      <td><?php echo $solic->Tam_prod; ?></td>  
+      <td><?php /* echo $row["catLibNombre"]; */ ?></td>  
+      <td><a href="frmActualizarProducto.php?id=<?php echo $row["Id_prod"]; ?>">Actualizar</a></td>  
+      <td><a href=".php?id=<?php echo $row["Id_prod"]; ?>" onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+  </tr>             
+<?php }
+
+  ?>
+
+
+
+
+                    </tbody>
+                    <div class="section-heading">
+                      <?php
+
+                        if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+                        echo '
+                               ';
+                        if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                        
+                        echo '
+                          <li><button type="submit" class="mosh-btn original-btn"><a href="frmNewProducto.php>Agregar producto</a></button></li>';}}
+                      ?>
+                            
+                        </div>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div></div></div></div></div>
+
+ <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md">
+              <div class="ftco-footer-widget mb-4">
+                <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
+                <ul class="list-unstyled">
+                  <li><a href="Sobre.php" class="py-2 d-block">¿Quiénes somos?</a></li>
+                  <li><a href="contactodgsgs.php" class="py-2 d-block">Contactenos</a></li>
+                </ul>
               </div>
             </div>
-            <div class="product">
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-              <div class="product">
-                <a href="">
-                  <img src="../Imagenes/papass.jpg">
-                  <div class="product-2">
-                  <span>Papas</span><br><p>Super ricas de pollo familiar</p>
-                <button class="mosh-btn btn">Ver mas..</button><button class="mosh-btn btn">Editar Info</button>
-                </div>
-              </a>
-              </div>
-            </div>
+          
+            
+        <div class="col-md-4">
+          <div class="ftco-footer-widget mb-4">
+            <ul class="ftco-footer-social list-unstyled float-md-right float-lft">
+              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
           </div>
-        </div>  
+        </div>
+      </div>
+    </div>
+  </footer>
 
 
     <script src="../js/jquery.min.js"></script>

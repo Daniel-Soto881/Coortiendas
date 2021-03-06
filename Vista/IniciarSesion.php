@@ -1,51 +1,10 @@
 <?php
-  
-  $alert = '';
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/TipUsu.php";
+$objTipUsu= new TipUsu();
+$resultado=$objTipUsu->Consultar_TipUsu();
+?>
 
-  session_start();
-  if(!empty($_SESSION['active']))
-  {
-     header('location: Chaning World/');
-  }else{
-
-  if(!empty($_POST))
-  {
-      if (empty($_POST['usuario']) || empty($_POST['clave']))
-      {
-         $alert = 'Ingrese usuario y su clave';
-      }
-      else{
-
-          require_once "Conexion.php";
-
-          $user = $_POST['usuario'];
-          $pass = $_POST['clave'];
-
-          $query = mysqli_query($conection, "SELECT * FROM cliente WHERE email_clie = '$user' AND Pass_clie = '$pass'");
-          $result = mysqli_num_rows($query); 
-
-          if ($result > 0) 
-          {
-            $data = mysqli_fetch_array($query);
-            
-            $_SESSION['active'] = true;
-            $_SESSION['IdUser'] = $data['Id_clie'];
-            $_SESSION['Nombre'] = $data['Nam_clie'];
-            $_SESSION['Email'] = $data['email_clie'];
-            $_SESSION['Estado'] = $data['Est_clie'];
-
-            header('location: Chaning World/');
-          }else{
-      
-            $alert = 'El usuario o la clave son incorrectos';
-            session_destroy();
-          } 
-
-    }
-  }
-}
-
-  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,83 +19,222 @@
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/sstyle.css">
-    <link rel="stylesheet" href="../css/sstylo.css">
+    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/Estilo.css">
 
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="../js/Estilojs.js"></script>
   </head>
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+   <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
+      <div class="container" style=" margin-left: 7%">
+        <a class="navbar-brand" href="index.php"><img style="width: 50%;" src="../Imagenes/Logo.png"></a>
+      </div>
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img style="width: 50%;" src="../images/Logo.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="oi oi-menu"></span> Menú
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a href="contacto.html" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.html" class="nav-link">Productos</a></li>
+            <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"> Productos </a></li>
+            <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
-          <!-- Search Form Area Start -->
-                                <div class="login-register-btn" >
-                                    <a href="IniciarSesion.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;"><strong style="color: green;"> Iniciar sesión </strong></font></font></a><br>
-                                    <a href="Registro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
-                                </div>
+        <!-- ALMACENISTA-3 -->  
+          
+          <?php
+          /* if (isset($_SESSION['Empleado']) ) {
+              echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+              <label for="abrir-cerrar">&#9776;
+                <span class="abrir">Menu</span>
+                <span class="cerrar">Cerrar</span> 
+                
                     
+                  </ul>
+                </li></div>
+                
+              </label>
+      
+              <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled "
+              <div class="login-register-btn" style="  margin-top: 0%;" >
+                              <li class="dropdown">
+                                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                  <span class="profile-ava"><i class="icon_profile"></i> Mi Perfil
+                                      <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width:18%; margin-top: 1%; margin-right: 2% ">
+                                  </span>
+                                  <span class="username"></span>
+                                  <b class="caret"></b>
+                              </a>
+                  <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                <ul class="menu">
+                  <li><strong><a href="indexempleados.php">Lista Productos</a></strong></li>
+                  ';
+                  if ( $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif ($_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+                    <li>
+                      <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos Personales</a>
+                    </li>
+                    <li>
+                      <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+                    </li>
+                  
+              </div>
+                
+                  </ul>
+              </div> <br><br>';
+
+
+          }
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+            
+            echo '
+              <div class="login-register-btn">
+                                   <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="profile-ava">
+                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
+                            </span>
+                            <span class="username"></span>
+                            <b class="caret"></b>
+                        </a>
+            <ul class="dropdown-menu extended logout">
+              <div class="log-arrow-up"></div>
+              <li class="eborder-top">
+                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+              </li>
+              <li>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
+              </li>
+              <li>
+                <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
+              </li>
+              ';
+                  if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
+                    echo '
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                    echo '
+                  <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;"><strong style="color: green;">Iniciar Sesion</font></strong></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>                                             
         </div>
       </div>
     </nav>
     
-     
-
-    <section class="ftco-cover" style="background-image: url(../Imagenes/Foto.jpg);" style="width: 10%; height: 10%;" id="section-home" data-aos="fade"  data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center ftco-vh-75" >
-          <div class="col-md-7">
-            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Iniciar Sesion</h1>
-          </div>
+  <section class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                        <div class="section-heading">
+                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Iniciar Sesion</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-    
-    
- <div class="ftco-section contact-section" style="background: #E1EAEA;;">
+
+     <br><br><br><br><br><br><br><br><br><br>
+<section>
+    <div class="ftco-section contact-section" style="background: #E1EAEA;">
     <div class="container"><!--style.css:8330,460,453,10266,34-->
       <div class="">
         <div class="">
           <!--formulario-->
-          <div class="col-md-9 col-md-9" >
+          <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
-                        <h5 style="text-align: center;">Iniciar Sesion</h5>
-        <form action="" method="post" >
+                        <h5>Iniciar Sesion</h5>
+                        <form action="#" method="post">
                             <div class="" style="text-align: center;">
                                 <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="text" name="usuario" id="email_clie" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Email</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="password" name="clave" id="Pass_clie" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Contraseña</label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <input  type="submit" class="mosh-btn original-btn" value="Ingresar">
-                                </div>
-                                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-                            </div>
-                        </form></div></div>
+             <div class="heead">
+        <section class="segundo">
+        <div id="opcioon">
+          <ul class="op">
+                <li>Tipo de usuario</li>
+                <li>
+                
+                <input type="radio" required name="usu" value="Cliente"id="usu"onclick="Datos();" > Cliente<br>
+                
+                <input type="radio" required name="usu" value="Empleado"id="usu"onclick="Datos();" > Empleado de la empresa<br>
+
+
+                  
+                </select> 
+                <script type="text/javascript">
+                
+                function Datos(){ 
+               if (document.Inicio_sesion.usu[1].checked==true) {
+                  document.querySelector(".segundo").style.height= "100px";
+                   document.getElementById("Empleado").innerHTML=`
+                   <div class="input-contenedor">
+                  <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                  <td><input type="number" name="cc_empl" id="cc_empl" placeholder="Número de identificación" required></td> 
+                  </div>
+                  <div class="input-contenedor">
+                  <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                  <td><select name="Cargo" id="Cargo" >
+                <option value="">Cargo</option>
+                <?php
+                  while ($cargo =$resultado->fetch_object()) {
+                    echo '<option value="' . $cargo->Id_tip_usu . '">' . $cargo->nam_tip_usu .  '</option>';
+                  }
+                  ?>
+               </select></td>
+              </div>
+                   `;
+                 }else{
+                  document.getElementById("Empleado").innerHTML=``;
+                 } 
+                  }
+                  </script>
+              </li>
+          </ul>
+      </section>
+      <div ID ="Empleado">
+          <!-- form empleado -->
         </div>
+        <div ID ="Cliene">
+            <div class="input-contenedor">
+            <td><i class="fa fa-envelope" aria-hidden="true icon"></i></td>
+            <td><input type="email" name="correo" id="correo" placeholder="Correo electronico" required></td>
+            </div>
+            <div class="input-contenedor">
+            <td><i class="fa fa-key" aria-hidden="true icon"></i></td>
+            <input type="password" name="pass" id="pass" placeholder="Contraseña" size="30"required>
+            </div>
+        </div>
+    
+    
+        <button type="submit" class="button" id="ini_sesion" name="ini_sesion">Iniciar sesión</button>     
+      </form>
+      <br><br><br>
+             <p>¿No tienes cuenta?, <a class="link" href="frmregistro.php" id="registro" name="registro">Registrate</a></p>
+    </div>
         </div>
     </div>
   </div>
-            
+</div>
+ </section>
+
   <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">
       <div class="row mb-5">
@@ -146,8 +244,8 @@
               <div class="ftco-footer-widget mb-4">
                 <h2 class="ftco-heading-2">Acerca de Coortiendas</h2>
                 <ul class="list-unstyled">
-                  <li><a href="Sobre.html" class="py-2 d-block">¿Quiénes somos?</a></li>
-                  <li><a href="#" class="py-2 d-block">Contactenos</a></li>
+                  <li><a href="Sobre.php" class="py-2 d-block"> ¿Quiénes somos? </a></li>
+                  <li><a href="contacto.php" class="py-2 d-block"> Contactenos </a></li>
                 </ul>
               </div>
             </div>

@@ -1,3 +1,19 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +26,7 @@
     <link rel="icon" href="../Imagenes/Faviconn.png">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
@@ -19,7 +36,8 @@
     <link rel="stylesheet" href="../css/ionicons.min.css">
     
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style.css"> 
+    <link rel="stylesheet" href="../css/stylee.css">
 
 </head>
 
@@ -119,17 +137,22 @@
                   <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
                   <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
-                  } echo'
-                  </ul>
-                </li>
-                                     </div>';}?>
-    <!-- ##### Header Area Start ##### -->
-     
-      </div>
-                    
+                  }
+                  echo'
+            </ul>
+          </li>
+                               </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '
+                                <div class="login-register-btn" >
+                                   <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
+                                   <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
+                               </div>
+                                ';
+                              }
+                      ?>                                             
         </div>
       </div>
-    </nav><br><br><br><br><br>
+    </nav>
     <!-- ##### Header Area End ##### -->
 
 
