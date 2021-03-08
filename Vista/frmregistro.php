@@ -219,17 +219,17 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                </select></td></div>
                                        <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td><input type="number" name="cc" id="cc" required size="10" placeholder="Número de identificación"></td>
+                                          <td><input type="number" name="cc" id="cc" required  maxlength="10" placeholder="Número de identificación"></td>
                                       </div> 
 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td><input type="text" name="Solic" id="Solic" required size="60" placeholder="Descripción de empleado"></td>
+                                          <td><input type="text" name="Solic" id="Solic" required maxlength="60" placeholder="Descripción de empleado"></td>
                                       </div>
 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required size="60" placeholder="Fecha de nacimiento"></td>
+                                          <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required placeholder="Fecha de nacimiento"></td>
                                       </div> 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
@@ -254,15 +254,15 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                             
                           <div class="input-contenedor">
                             <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                            <td><input type="text" name="Name" id="Name" required placeholder="Nombre Completo"></td>
+                            <td><input type="text" name="Name" id="Name" maxlength="25" required placeholder="Nombre Completo"></td>
                           </div>  
                           <div class="input-contenedor">
                             <td><i class="fa fa-envelope" aria-hidden="true icon"></i></td>
-                            <td><input type="email" name="email" id="email" required placeholder="Correo Electronico"></td>
+                            <td><input type="email" maxlength="25" name="email" id="email" required placeholder="Correo Electronico"></td>
                           </div>
                           <div class="input-contenedor">
                             <td><i class="fa fa-key" aria-hidden="true icon"></i></td>
-                            <td><input type="password" name="Pass" id="Pass" required size="30" placeholder="Contraseña"></td>
+                            <td><input type="password" name="Pass" id="Pass" required maxlength="30" placeholder="Contraseña"></td>
                           </div>
 
                          <div id="Empledo">

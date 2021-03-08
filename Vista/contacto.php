@@ -1,3 +1,6 @@
+<?php
+require "../Modelo/validacion/enviar_correo.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -179,24 +182,29 @@
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
                         <h5>Contactanos</h5>
-        <form action="#" method="post">
+        <form action="../Modelo/validacion/enviar_correo.php" method="post">
                             <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="text" name="name" id="name" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Nombre</label>
-                                    </div>
+                              <?php
+                               if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '<div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="text" name="name" id="name" maxlength="45"  required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Nombre</label>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="email" name="email" id="email" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Email</label>
-                                    </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="email" name="email" id="email" maxlength="45" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
                                 </div>
+                            </div>';
+                              }
+                              ?>
+                                
                                 <div class="col-12">
                                     <div class="group">
                                         <input type="text" name="subject" id="subject" required>
@@ -214,7 +222,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                   <a href="Promociones.php" class="nav-link"><button type="submit" class="mosh-btn original-btn">Enviar Mensaje</button></a>
+                                   <input type="submit"
+                                   name="enviar" 
+                                   id="enviar" value="enviar" class="mosh-btn original-btn">
                                 </div>
                             </div>
                         </form></div></div>
