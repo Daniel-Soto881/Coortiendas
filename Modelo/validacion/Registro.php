@@ -6,7 +6,7 @@ require "../EstadoUsu.php";
 require "../Solicitud_empleado.php";
 require "../TipUsu.php";
 require "../TipoDoc.php";
-/* require "../TipUsu.php"; */
+
 extract ($_REQUEST);
 if (isset($_REQUEST['Registrarse'])) {
   session_start();
@@ -57,35 +57,57 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
           $res_2=$conectarse->query($sql_2);
 
          $si_o_no_2= $res_2->num_rows;
-         if ($si_o_no_2==0) {
+         if ($si_o_no_2==0) { 
           date_default_timezone_set("America/Bogota");
           $Fech_Sol= date("Y-m-d H:i:s ");
           $objEmpleado=new Solicitud_empleado();
           $Est_sol_emp='3'; 
-          /* $edadNac=$_REQUEST['FechNac'].getYear();
-          echo"<script type='text/javascript'>alert(" . $edadNac . ");
+
+         /*  
+          $tipo = $_FILES['IMG']['type'];
+          
+          
+          $tamano_img = $_FILES['IMG']['size']; */
+          
+         
+          /* if ((( strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png"))) &&($tamano_img <= 2000000)) {
+            $valor_sql=$_FILES['IMG']['name'];
+            echo $valor_sql;
+            $tipo_img=end(explode(".", $_FILES['IMG']['name']));echo $tipo_img;
+$ruta_img="../../Imagenes/img_empl/" . $_REQUEST["cc"] . "." . $tipo_img;
+          $rut_antes=$_FILES["IMG"]['tmp_name'];
+          copy($rut_antes,$ruta_img); */
+            /* $edadNac=$_REQUEST['FechNac'].getYear();
+          echo"<script type='text/jaascript'>alert(" . $edadNac . ");
           
           </script>"; */
 
           /* var Xmas95 = new Date('December 25, 1995 23:15:30');
           var day = Xmas95.getDate(); */
-          $objEmpleado->Crear_Sol_eml($Est_sol_emp,$_REQUEST["Cargo"] ,$_REQUEST["Tip_doc"] ,$_REQUEST["cc"] ,$_REQUEST["Solic"]  ,$_REQUEST["email"]  ,$_REQUEST["Name"] ,$pass  ,$_REQUEST["FechNac"]  ,$Fech_Sol );
+          $objEmpleado->Crear_Sol_eml($Est_sol_emp,$_REQUEST["Cargo"] , $_REQUEST["Tip_doc"] ,$_REQUEST["cc"] ,$_REQUEST["Solic"]  ,$_REQUEST["email"]  ,$_REQUEST["Name"] ,$pass,$_REQUEST["FechNac"]  ,$Fech_Sol/* ,$tipo_img  */);   
           
-          $objEmpleado->Agregar_Sol_emp();
+          echo $objEmpleado->Agregar_Sol_emp();
+               
           echo "<script type='text/javascript'>alert('Se ha enviado la solicitud de registro, se le notificará la respuesta por medio de su correo, gracias.');
-          window.location='../../Vista/index.php';
+          /* window.location='../../Vista/index.php'; */
           </script>
           ";
+          //}else {
+          //  echo "<script type='text/javascript'>alert('La imagen excede el número maximo de 200 kb o el tipo de imagen(png,jpeg,jpg)');
+          /* window.location='../../Vista/index.php'; */
+         // </script>
+         // ";
+         // }
         }else {
-          echo "<script type='text/javascript'>alert('Este usuario(Empleado) ya se encuentra registradó, intente nuevamente.');
-          window.location='../../Vista/frmregistro.php';
+          echo "<script type='text/javascript'>alert('Ya se encuentra registradó un usuario con el mismo correo o identificación, intente nuevamente.');
+          /* window.location='../../Vista/frmregistro.php'; */
           </script>
           ";
         }
 
         }else {
-          echo "<script type='text/javascript'>alert('Este usuario ya realizó solicitud de registro, intente nuevamente.');
-          window.location='../../Vista/frmregistro.php';
+          echo "<script type='text/javascript'>alert('Ya se realizó una solicitud de registro con ese email o identificación, intente nuevamente.');
+          /* window.location='../../Vista/frmregistro.php'; */
           </script>
           ";
         }

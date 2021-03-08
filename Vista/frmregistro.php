@@ -173,7 +173,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
           <!--formulario-->
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
-                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario" entype="multiplataform/form-data">
+                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario" enctype="multipart/form-data">
                         <h2>Registro</h2>
                         <div class="contenedoorr">  
                            <section class="segundo">
@@ -182,19 +182,19 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                               <li>Tipo de usuario</li>
                                     <li>
                                     
-                                    <input type="radio" required name="usu" value="Cliente"id="usu"onclick="Datos();" > Cliente
-                                    
-                                    <input type="radio" required name="usu" value="Empleado"id="usu"onclick="Datos();" > Empleado de la empresa
-                     
+                                    <input type="radio" required name="usu" value="Cliente" id="usu" onclick="Datos();"> Cliente
+                                   
+                                    <input type="radio" required name="usu" value="Empleado" id="usu" onclick="Datos();"> Empleado de la empresa
+                                    <br>
                                   
                                       
                                     </select> 
                                     <script type="text/javascript">
                                     
                                     function Datos(){ 
-                                   if ( document.FrmRegistro.usu[1].checked==true) {//empleado
+                                   if ( document.FrmRegistro.usu[1].checked==true) {//empleado 
                                      /*  document.querySelector(".segundo").style.height= "200px"; */
-                                       document.getElementById("Empledo").innerHTML=`
+                                       document.getElementById("Empledo").innerHTML=` 
                                        <div class="input-contenedor">
                                           <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
                                           <td><select name="Cargo" id="Cargo" required>
@@ -208,16 +208,19 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                        </div>
 
                                        <div class="input-contenedor">
-                                            <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                            <td><select class="Tip_doc" name="Tip_doc " id="Tip_doc" required>
-                                              <option value="">Tipo de documento de ID</option>
-                                                <?php
-                                                while ($Tip_doc =$res_TipoDoc->fetch_object()) {
-                                                  echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
-                                                }
-                                                ?>
-                                              </select>
-                                       </div>
+                                            <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
+                                            <td><select name="Tip_doc" id="Tip_doc" required>
+                <option value="">Tipo de documento de ID</option>
+                <?php
+                  while ($Tip_doc =$res_TipoDoc->fetch_object()) {
+                    echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
+                  }
+                  ?>
+               </select></td></div>
+                                       <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><input type="number" name="cc" id="cc" required size="10" placeholder="Número de identificación"></td>
+                                      </div> 
 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
@@ -230,15 +233,24 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                       </div> 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td>Foto empleado: <input type="file" name="IMG" id="IMG" required size="60" placeholder="Fecha de nacimiento" multiple accept="image/x-png, image/gif, image/jpeg, image/jpg"></td>
+                                          
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+                                          <td>Foto empleado:(png,jpeg,jpg)máximo de 200 kb<input type="file" name="IMG" id="IMG" required placeholder="Imagen para reconocimiento de empleado" multiple accept="image/x-png, image/jpeg, image/jpg"></td>
+=======
+                                          
+>>>>>>> Stashed changes
+=======
+                                          
+>>>>>>> Stashed changes
                                       </div>   
                                        `;
-
+                                       
                                      }else{
                                       document.getElementById("Empledo").innerHTML=``;
                                      } 
                                       }
-                                      </script>
+                                      </script> 
                                   </li>
                                   
                               </ul>

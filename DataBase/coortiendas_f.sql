@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-03-2021 a las 22:43:42
+-- Tiempo de generación: 07-03-2021 a las 16:21:39
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -428,25 +428,27 @@ CREATE TABLE `solic_emp` (
   `Nombre` varchar(45) NOT NULL,
   `Pass_sol` varchar(100) DEFAULT NULL,
   `Fecha_nac` datetime NOT NULL,
-  `Fecha_sol` datetime DEFAULT NULL
+  `Fecha_sol` datetime DEFAULT NULL,
+  `IMG` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `solic_emp`
 --
 
-INSERT INTO `solic_emp` (`Id_sol_emp`, `Est_sol_emp`, `Tip_usu`, `Tip_doc_usu`, `doc_usu`, `Sol_emp`, `Email_sol`, `Nombre`, `Pass_sol`, `Fecha_nac`, `Fecha_sol`) VALUES
-(71, 1, 3, 1, NULL, 'Deseo ser un buen empleado y cumplir con todas mir responzabilidades.', NULL, '', NULL, '0000-00-00 00:00:00', NULL),
-(72, 1, 2, 1, NULL, 'Quiero ganarme el corazon de los clientes.', NULL, '', NULL, '0000-00-00 00:00:00', NULL),
-(73, 1, 2, 1, 1111111111, 'honestidad', 'zzz@gmail.com', 'zzz zzz', '$2y$10$M3c6BP8KDWqlGcLq0GeQVe5WNXtY1l6K0wtr47S47AmBz7tzMtvEi', '2000-01-20 00:00:00', '2020-10-10 13:38:46'),
-(74, 1, 4, 1, 1110001110, 'Gran emprendedor', 'Andres@gmail.com', 'Andres Diaz', '$2y$10$cAFlUawnfYVhBWC8eCGXzO74.h1x0J1UAOi2Xkbm.75QHl6Xj1Fb.', '1987-06-17 00:00:00', '2020-10-11 20:52:34'),
-(80, 1, 3, 1, 222000, 'Integridad y confianza', 'sss@gmail.com', 'sss sss', '$2y$10$P63nSNT5Kt9S.Ds4X2bKbellP14V9m4X75WTxhW/J5pjrFoxNckmm', '1996-02-07 00:00:00', '2020-10-13 15:47:02'),
-(81, 2, 3, 1, 55555, 'integridad y compromiso', 'laumen@gmail.com', 'laura Mendoza', '$2y$10$43W.djEFhOeAQUERpZSyCO7he49j.qiPJ.DYsPo3J18l3/erfHnt.', '1995-06-14 00:00:00', '2020-10-13 16:48:18'),
-(82, 1, 3, 1, 5, 'Honestidad e integridad', 'ccccc@gmail.com', 'ccc ccc cccc ccc', '$2y$10$agZCBWyDuvoNp98iCEnuxeI6t.5PQilxCV/fRRk1FRkw34Gh8V7RC', '1997-02-05 00:00:00', '2020-10-13 18:19:08'),
-(83, 1, 3, 1, 5656, 'honestidad', 'vvv@gmail.com', 'vv', '$2y$10$.BDeGZSJLwwIGIrB6SirrOU4qlduwjOo7q9M3B9S.8hjUHCICz..2', '1977-01-04 00:00:00', '2020-10-19 12:07:47'),
-(84, 1, 3, 1, 566, 'integridad', 'cd@gmail.com', 'c', '$2y$10$58DcJhT3.StoAAOiA6hrmO0fftT4cMUAWceR1GDcWrNYpQslqgCUq', '1989-05-10 00:00:00', '2020-10-19 18:28:38'),
-(85, 1, 3, 1, 5669, 'honestidad', 'jj@gmail.com', 'jj', '$2y$10$ojMN3bKrtN/yWejc./wsO.5TSFt45/N9yLkyaWGeWYSzDyHQkts/C', '1985-01-15 00:00:00', '2020-10-20 15:33:38'),
-(86, 1, 2, 1, 159159, 'lindo', 'bbb@gmail.com', 'bbb', '$2y$10$6a9IlHdFcyx55hxgLjcZH.UiSr6m/Ub1ci9tOoK0vb71i2uXl2Ioq', '2021-03-18 00:00:00', '2021-03-01 14:25:27');
+INSERT INTO `solic_emp` (`Id_sol_emp`, `Est_sol_emp`, `Tip_usu`, `Tip_doc_usu`, `doc_usu`, `Sol_emp`, `Email_sol`, `Nombre`, `Pass_sol`, `Fecha_nac`, `Fecha_sol`, `IMG`) VALUES
+(71, 1, 3, 1, NULL, 'Deseo ser un buen empleado y cumplir con todas mir responzabilidades.', NULL, '', NULL, '0000-00-00 00:00:00', NULL, ''),
+(72, 1, 2, 1, NULL, 'Quiero ganarme el corazon de los clientes.', NULL, '', NULL, '0000-00-00 00:00:00', NULL, ''),
+(73, 1, 2, 1, 1111111111, 'honestidad', 'zzz@gmail.com', 'zzz zzz', '$2y$10$M3c6BP8KDWqlGcLq0GeQVe5WNXtY1l6K0wtr47S47AmBz7tzMtvEi', '2000-01-20 00:00:00', '2020-10-10 13:38:46', ''),
+(74, 1, 4, 1, 1110001110, 'Gran emprendedor', 'Andres@gmail.com', 'Andres Diaz', '$2y$10$cAFlUawnfYVhBWC8eCGXzO74.h1x0J1UAOi2Xkbm.75QHl6Xj1Fb.', '1987-06-17 00:00:00', '2020-10-11 20:52:34', ''),
+(80, 1, 3, 1, 222000, 'Integridad y confianza', 'sss@gmail.com', 'sss sss', '$2y$10$P63nSNT5Kt9S.Ds4X2bKbellP14V9m4X75WTxhW/J5pjrFoxNckmm', '1996-02-07 00:00:00', '2020-10-13 15:47:02', ''),
+(81, 2, 3, 1, 55555, 'integridad y compromiso', 'laumen@gmail.com', 'laura Mendoza', '$2y$10$43W.djEFhOeAQUERpZSyCO7he49j.qiPJ.DYsPo3J18l3/erfHnt.', '1995-06-14 00:00:00', '2020-10-13 16:48:18', ''),
+(82, 1, 3, 1, 5, 'Honestidad e integridad', 'ccccc@gmail.com', 'ccc ccc cccc ccc', '$2y$10$agZCBWyDuvoNp98iCEnuxeI6t.5PQilxCV/fRRk1FRkw34Gh8V7RC', '1997-02-05 00:00:00', '2020-10-13 18:19:08', ''),
+(83, 1, 3, 1, 5656, 'honestidad', 'vvv@gmail.com', 'vv', '$2y$10$.BDeGZSJLwwIGIrB6SirrOU4qlduwjOo7q9M3B9S.8hjUHCICz..2', '1977-01-04 00:00:00', '2020-10-19 12:07:47', ''),
+(84, 1, 3, 1, 566, 'integridad', 'cd@gmail.com', 'c', '$2y$10$58DcJhT3.StoAAOiA6hrmO0fftT4cMUAWceR1GDcWrNYpQslqgCUq', '1989-05-10 00:00:00', '2020-10-19 18:28:38', ''),
+(85, 1, 3, 1, 5669, 'honestidad', 'jj@gmail.com', 'jj', '$2y$10$ojMN3bKrtN/yWejc./wsO.5TSFt45/N9yLkyaWGeWYSzDyHQkts/C', '1985-01-15 00:00:00', '2020-10-20 15:33:38', ''),
+(86, 1, 2, 1, 159159, 'lindo', 'bbb@gmail.com', 'bbb', '$2y$10$6a9IlHdFcyx55hxgLjcZH.UiSr6m/Ub1ci9tOoK0vb71i2uXl2Ioq', '2021-03-18 00:00:00', '2021-03-01 14:25:27', ''),
+(103, 3, 1, 2, 56565656, 'ghfh', 'wwwwer@gmail.com', 'wwwwer', '$2y$10$XG4nHeR8nEPB4w/oXQRIheGIKqzPUxonfvF8kBRAd9DcnlnFVP9Ty', '2021-03-18 00:00:00', '2021-03-07 09:26:54', '');
 
 -- --------------------------------------------------------
 
@@ -464,8 +466,9 @@ CREATE TABLE `tip_doc` (
 --
 
 INSERT INTO `tip_doc` (`Id_tip_doc`, `Nam_tip_doc`) VALUES
-(1, 'Cedula de ciuda'),
-(2, 'Cedula de extra');
+(1, 'Cédula de ciuda'),
+(2, 'Cédula de extra'),
+(3, 'Tarjeta de iden');
 
 -- --------------------------------------------------------
 
@@ -804,13 +807,13 @@ ALTER TABLE `proveedor`
 -- AUTO_INCREMENT de la tabla `solic_emp`
 --
 ALTER TABLE `solic_emp`
-  MODIFY `Id_sol_emp` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `Id_sol_emp` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT de la tabla `tip_doc`
 --
 ALTER TABLE `tip_doc`
-  MODIFY `Id_tip_doc` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id_tip_doc` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tip_mov`
