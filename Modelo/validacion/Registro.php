@@ -10,7 +10,7 @@ require "../TipoDoc.php";
 extract ($_REQUEST);
 if (isset($_REQUEST['Registrarse'])) {
   session_start();
-  
+
 $conectarse=Conectarse();
 $objTipUsu= new TipUsu();
 $res_TipUsu=$objTipUsu->Consultar_TipUsu();
