@@ -83,7 +83,7 @@ public function Get_IMG(){
 public function Asignar_Fecha_Sol(){
   $this->Fecha_Sol= '<script type="text/javascript">$Fech_Sol=new date(); </script>';
 }
-public function Crear_Sol_eml($Est_sol_emp,$Tip_usu  ,$Tip_doc_usu  ,$doc_usu  ,$Sol_emp  ,$Email_sol  ,$Name_usu ,$Pass_sol  ,$Edad_ini,$Fecha_sol /* ,$IMG  */){
+public function Crear_Sol_eml($Est_sol_emp,$Tip_usu  ,$Tip_doc_usu  ,$doc_usu  ,$Sol_emp  ,$Email_sol  ,$Name_usu ,$Pass_sol  ,$Edad_ini,$Fecha_sol  ,$IMG  ){
 $this->Est_sol_emp=$Est_sol_emp;
 $this->Tip_usu=$Tip_usu;
 $this->Tip_doc_usu=$Tip_doc_usu;
@@ -94,12 +94,16 @@ $this->Pass_sol=$Pass_sol;
 $this->Edad_ini=$Edad_ini;
 $this->Name_usu=$Name_usu;
 $this->Fecha_sol=$Fecha_sol;
-/* $this->IMG=$IMG; */
+$this->IMG=$IMG; 
 
 }
 public function Agregar_Sol_emp(){
   $this->Conexion=Conectarse();
-  $sql="insert into solic_emp (Est_sol_emp,Tip_usu,Tip_doc_usu,doc_usu,Sol_emp,Email_sol,Nombre,Pass_sol,Fecha_nac,Fecha_sol/* ,IMG */) values ('$this->Est_sol_emp','$this->Tip_usu','$this->Tip_doc_usu','$this->doc_usu','$this->Sol_emp','$this->Email_sol','$this->Name_usu','$this->Pass_sol','$this->Edad_ini','$this->Fecha_sol/* ',$this->IMG */') ";
+  $sql="INSERT INTO `solic_emp` (`Est_sol_emp`, `Tip_usu`, `Tip_doc_usu`, `doc_usu`, `Sol_emp`, `Email_sol`, `Nombre`, `Pass_sol`, `Fecha_nac`, `Fecha_sol`, `IMG`) VALUES
+  ('$this->Est_sol_emp','$this->Tip_usu','$this->Tip_doc_usu','$this->doc_usu','$this->Sol_emp','$this->Email_sol','$this->Name_usu','$this->Pass_sol','$this->Edad_ini','$this->Fecha_sol','$this->IMG ');";
+
+
+
   $resultado=$this->Conexion->query($sql);
     $this->Conexion->close();  
     return $resultado;

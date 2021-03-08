@@ -234,15 +234,9 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
                                           
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
                                           <td>Foto empleado:(png,jpeg,jpg)máximo de 200 kb<input type="file" name="IMG" id="IMG" required placeholder="Imagen para reconocimiento de empleado" multiple accept="image/x-png, image/jpeg, image/jpg"></td>
-=======
-                                          
->>>>>>> Stashed changes
-=======
-                                          
->>>>>>> Stashed changes
+
                                       </div>   
                                        `;
                                        
