@@ -23,7 +23,6 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/stil.css">
     <link rel="stylesheet" href="../css/stylee.css">
-    <link rel="stylesheet" href="../css/sid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
@@ -143,140 +142,81 @@ session_start();
                                 ';
                               }
                       ?>
+             
+        </div>
           
             </ul>
-        </div>
-        <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
-        <div class="container">
-            <div class="tabla">
-                <div class="col-12">
-                        <div class="section-heading">
-                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Coortiendas</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-     <br><br><br><br><br><br><br><br><br>
-    
+        </div><br><br><br><br><br><br><br><br><br><br><br>
  <!-- Lista productos -->
  <div class="ftco-section contact-section" style="background: #E1EAEA;">
     <div class="container"><!--style.css:8330,460,453,10266,34-->
       <div class="">
         <div class=" ">
-          
-          <!--formulario-->
-                <div class="ftco-section" style="background:#E8F1F3; margin: 5% ; width: 88% ;" >
-                  <div class="container" >
+          <div class="container" >
                     <div class="block-2 d-md-flex" data-aos="fade-left">
-
-                            <div class="text" >
-                        <h4 class="subheading">Coortiendas</h4>
-                        <h2 class="heading">Listo para un gran dia de trabajo!!</h2>
-                        <p>Comienza tu dia con toda la actitud</p>
-                      </div><div class="col-12 col-md-4">
-
-                    <img class="Inemple" src="../Imagenes/F.png" alt="Ver info" title="User" style="  width: 170px; ">
-                </div>
+                      
+                        <div class="infoVenta" >
+                          <h5 class="subheading">Id Venta:</h5>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Id cliente:<input type="" name="name" id="name"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Nombre empleado<input type="" name="name" id="name"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Caja:<input type="" name="name" id="name"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            <select name="Tip_pag" id="Provee" required>
+                              <option value="">Tipo de pago</option> 
+                              <option value="">Efectivo</option>
+                              <option value="">Tarjeta Credito</option>
+                              <option value="">Tarjeta Debito</option>
+                            </select>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </div>
 
-                 
-              </div>
-            </div>
-        </div>
-    </div>
-  </div>
-</div></div></div></div>
-
-<div class="ftco-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center mb-5 pb-5">
-        <div class="col-md-7 text-center">
-          <h2>Los Clientes Dicen....</h2>
+          <!--formulario-->
+                    <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center"  data-aos="fade-up">
+          <h2>Productos</h2>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 ">
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_4.jpg);">
-                <div class="box">
-                  <h2>Dudas</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-        </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container hover">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_5.jpg);">
-                <div class="box">
-                  <h2>Acerca de nosotros</h2>
-                  <p>DAMALÚ</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;Somos una agencia que te ayudara a conocer mas de tu pais.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_2.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> DAMALÚ <span class="position">Trabajador</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
+
+                    
+                <!-- Search btn -->
+                  <br>
 
         </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/GTPE.jpg);">
-                <div class="box">
-                  <h2>Comentarios</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-             <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-
-        </div>
-      </div>
     </div>
-  </div>
+  </div></div></div></div></div>
 
  <footer class="ftco-footer ftco-bg-dark ftco-section">
     <div class="container">

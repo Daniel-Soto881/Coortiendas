@@ -1,3 +1,19 @@
+<?php
+require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Producto.php";
+require "../Modelo/TipProd.php";
+$objProd= new Producto(); 
+$ret_Tot=$objProd->Consultar_Producto();
+$res_Prod=$objProd->Consultar_Productos();
+
+/* $sql_t="select * from tip_prod"; */
+$objTipProd= new TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+/* $conectarse=Conectarse();
+$Tip_prod_res=$conectarse->query($sql_t); */
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -128,33 +144,7 @@
         </div>
       </div>
     </nav>
-         <!--                    <div class="login-register-btn" >
-                                   <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 50%; margin-top: 1%; margin-right: 2% ">
-                            </span>
-                            <span class="username"></span>
-                            <b class="caret"></b>
-                        </a>
-            <ul class="dropdown-menu extended logout">
-              <div class="log-arrow-up"></div>
-              <li class="eborder-top">
-                <a href="index.php"><i class="icon_profile"></i> Mi Perfil</a>
-              </li>
-              <li>
-                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
-              </li>
-              <li>
-                <a href="CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
-              </li>
-            </ul>
-          </li>
-                               </div>
-                    
-        </div>
-      </div>
-    </nav>-->
+
     <!-- END nav -->
     <section class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Comida.jpeg);">
         <div class="container">
@@ -179,24 +169,29 @@
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
                         <h5>Contactanos</h5>
-        <form action="#" method="post">
+        <form action="../Modelo/validacion/enviar_correo.php" method="post">
                             <div class="row">
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="text" name="name" id="name" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Nombre</label>
-                                    </div>
+                              <?php
+                               if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                echo '<div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="text" name="name" id="name" maxlength="45"  required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Nombre</label>
                                 </div>
-                                <div class="col-12 col-md-6">
-                                    <div class="group">
-                                        <input type="email" name="email" id="email" required>
-                                        <span class="highlight"></span>
-                                        <span class="bar"></span>
-                                        <label>Email</label>
-                                    </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="group">
+                                    <input type="email" name="email" id="email" maxlength="45" required>
+                                    <span class="highlight"></span>
+                                    <span class="bar"></span>
+                                    <label>Email</label>
                                 </div>
+                            </div>';
+                              }
+                              ?>
+                                
                                 <div class="col-12">
                                     <div class="group">
                                         <input type="text" name="subject" id="subject" required>
@@ -214,7 +209,9 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                   <a href="Promociones.php" class="nav-link"><button type="submit" class="mosh-btn original-btn">Enviar Mensaje</button></a>
+                                   <input type="submit"
+                                   name="enviar" 
+                                   id="enviar" value="enviar" class="mosh-btn original-btn">
                                 </div>
                             </div>
                         </form></div></div>

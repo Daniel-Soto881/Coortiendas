@@ -40,7 +40,7 @@ session_start();
     <meta charset="utf-8">
     <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
-    <link rel="stylesheet" href="../css/sil.css">
+    <link rel="stylesheet" href="../css/stil.css">
     <link rel="stylesheet" href="../css/stylee.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
@@ -122,25 +122,22 @@ session_start();
 
 
           }
- */
-          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+ */if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
             
             echo '
-                                   <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
-                                <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% ">
-                            </span>
-                            <span class="username"></span>
-                            <b class="caret"></b>
-                        </a>
+          <li class="dropdown">
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile"></i> Mi Perfil</a>
+                <a href="#"><i class="icon_profile">
+                  <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> Mi Perfil
+                </a>
+              </li>
+              <li class="eborder-top">
+                <a href="indexempleados.php"><i class="icon_profile"></i>Inicio</a>
               </li>
               <li>
-                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i><strong> Actualizar Datos </strong></a>
+                <a href="frmActualizarUsu.php"><i class="icon_key_alt"></i> Actualizar Datos</a>
               </li>
               <li>
                 <a href="../Modelo/CerrarSesion.php"><i class="icon_key_alt"></i> Cerrar Sesion</a>
@@ -148,7 +145,9 @@ session_start();
               ';
                   if ( isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='3' ) {
                     echo '
-                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
+                  <li><a href="crudproductos.php">Listado Productos</a></li>
+                  <li><a href="frmNewProducto.php">Ingresar producto</a></li>';}
+                  elseif (isset($_SESSION['Empleado']) && $_SESSION['Cargo']=='4') {
                     echo '
                   <li><a href="ListaSolicitud.php">Solicitudes ade empleados</a></li>';
                   }
@@ -163,7 +162,8 @@ session_start();
                                </div>
                                 ';
                               }
-                      ?>    
+                      ?>
+          
         </div>
     
      <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">

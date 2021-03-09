@@ -23,7 +23,6 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/stil.css">
     <link rel="stylesheet" href="../css/stylee.css">
-    <link rel="stylesheet" href="../css/sid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
@@ -34,7 +33,7 @@ session_start();
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
-        <a class="navbar-brand" href="indexempleados.php"><img class="log" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img class="log" src="../Imagenes/Logo.png"></a>
       </div>                                           
         </div>
       </div>
@@ -108,9 +107,8 @@ session_start();
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <i class="icon_profile">
-                  <a href=" ../Vista/Perfil.php"><img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> 
-                  Mi Perfil
+                <a href=" ../Vista/Perfil.php"><i class="icon_profile">
+                  <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> Mi Perfil
                 </a>
               </li>
               <li class="eborder-top">
@@ -151,7 +149,7 @@ session_start();
             <div class="tabla">
                 <div class="col-12">
                         <div class="section-heading">
-                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Coortiendas</h1>
+                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Mi Perfil</h1>
                         </div>
                     </div>
                 </div>
@@ -167,111 +165,24 @@ session_start();
         <div class=" ">
           
           <!--formulario-->
-                <div class="ftco-section" style="background:#E8F1F3; margin: 5% ; width: 88% ;" >
-                  <div class="container" >
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
+               <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "><br><br>
+               <div class="block-2 d-md-flex" data-aos="fade-left">
 
-                            <div class="text" >
-                        <h4 class="subheading">Coortiendas</h4>
-                        <h2 class="heading">Listo para un gran dia de trabajo!!</h2>
-                        <p>Comienza tu dia con toda la actitud</p>
-                      </div><div class="col-12 col-md-4">
+                      <div class="text" >
 
-                    <img class="Inemple" src="../Imagenes/F.png" alt="Ver info" title="User" style="  width: 170px; ">
-                </div>
-                    </div>
-                  </div>
+                        <h5 class="subheading">Nombre: </h5>
+                        <h5 class="subheading">Correo: </h5>
+                        <h5 class="subheading">Cargo: </h5>
 
-                 
-              </div>
+                      </div>
+
             </div>
         </div>
     </div>
   </div>
 </div></div></div></div>
 
-<div class="ftco-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center mb-5 pb-5">
-        <div class="col-md-7 text-center">
-          <h2>Los Clientes Dicen....</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 ">
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_4.jpg);">
-                <div class="box">
-                  <h2>Dudas</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-        </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container hover">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_5.jpg);">
-                <div class="box">
-                  <h2>Acerca de nosotros</h2>
-                  <p>DAMALÚ</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;Somos una agencia que te ayudara a conocer mas de tu pais.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_2.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> DAMALÚ <span class="position">Trabajador</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
 
-        </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/GTPE.jpg);">
-                <div class="box">
-                  <h2>Comentarios</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-             <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
 
         </div>
       </div>

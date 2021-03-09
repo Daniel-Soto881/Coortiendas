@@ -17,7 +17,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
 <head>
     <meta charset="UTF-8">
     <title>Registrarse </title>
-    <link rel="stylesheet" href="../css/sil.css">
+    <link rel="stylesheet" href="../css/stil.css">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
 
@@ -173,30 +173,30 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
           <!--formulario-->
           <div class="col-12 col-md-10 col-lg-9" >
                     <div class="contact-form">
-                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario">
+                      <form method="POST" name="FrmRegistro"action="../Modelo/validacion/Registro.php" class="formulario" enctype="multipart/form-data">
                         <h2>Registro</h2>
-                        <div class="contenedoorr">
+                        <div class="contenedoorr">  
                            <section class="segundo">
                             <div id="opcioon">
                               <ul class="op">
                               <li>Tipo de usuario</li>
                                     <li>
                                     
-                                    <input type="radio" required name="usu" value="Cliente"id="usu"onclick="Datos();" > Cliente
-                                    
-                                    <input type="radio" required name="usu" value="Empleado"id="usu"onclick="Datos();" > Empleado de la empresa
-                     
-
+                                    <input type="radio" required name="usu" value="Cliente" id="usu" onclick="Datos();"> Cliente
+                                   
+                                    <input type="radio" required name="usu" value="Empleado" id="usu" onclick="Datos();"> Empleado de la empresa
+                                    <br>
+                                  
                                       
                                     </select> 
                                     <script type="text/javascript">
                                     
                                     function Datos(){ 
-                                   if (document.FrmRegistro.usu[1].checked==true) {
+                                   if ( document.FrmRegistro.usu[1].checked==true) {//empleado 
                                      /*  document.querySelector(".segundo").style.height= "200px"; */
-                                       document.getElementById("Empledo").innerHTML=`
+                                       document.getElementById("Empledo").innerHTML=` 
                                        <div class="input-contenedor">
-                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
                                           <td><select name="Cargo" id="Cargo" required>
                                             <option value="">Cargo</option>
                                             <?php
@@ -208,35 +208,45 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                        </div>
 
                                        <div class="input-contenedor">
-                                            <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                            <td><select class="Tip_doc" name="Tip_doc " id="Tip_doc" required>
-                                              <option value="">Tipo de documento de ID</option>
-                                                <?php
-                                                while ($Tip_doc =$res_TipoDoc->fetch_object()) {
-                                                  echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
-                                                }
-                                                ?>
-                                              </select>
-                                       </div>
+                                            <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
+                                            <td><select name="Tip_doc" id="Tip_doc" required>
+                <option value="">Tipo de documento de ID</option>
+                <?php
+                  while ($Tip_doc =$res_TipoDoc->fetch_object()) {
+                    echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
+                  }
+                  ?>
+               </select></td></div>
+                                       <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+                                          <td><input type="number" name="cc" id="cc" required  maxlength="10" placeholder="Número de identificación"></td>
+                                      </div> 
 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td><input type="text" name="Solic" id="Solic" required size="60" placeholder="Descripción de empleado"></td>
+                                          <td><input type="text" name="Solic" id="Solic" required maxlength="60" placeholder="Descripción de empleado"></td>
                                       </div>
 
                                       <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                                          <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required size="60" placeholder="Fecha de nacimiento"></td>
+                                          <td>Fecha de nacimiento: <input type="date" name="FechNac" id="FechNac" required placeholder="Fecha de nacimiento"></td>
                                       </div> 
+                                      <div class="input-contenedor">
+                                          <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
                                           
-                                       `;
 
+                                          <td>Foto empleado:(png,jpeg,jpg)máximo de 200 kb<input type="file" name="IMG" id="IMG" required placeholder="Imagen para reconocimiento de empleado" multiple accept="image/x-png, image/jpeg, image/jpg"></td>
+
+                                      </div>   
+                                       `;
+                                       
                                      }else{
                                       document.getElementById("Empledo").innerHTML=``;
                                      } 
                                       }
-                                      </script>
+                                      </script> 
                                   </li>
+                                  
                               </ul>
                           </section> 
                     <br>
@@ -244,15 +254,15 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                             
                           <div class="input-contenedor">
                             <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
-                            <td><input type="text" name="Name" id="Name" required placeholder="Nombre Completo"></td>
+                            <td><input type="text" name="Name" id="Name" maxlength="25" required placeholder="Nombre Completo"></td>
                           </div>  
                           <div class="input-contenedor">
                             <td><i class="fa fa-envelope" aria-hidden="true icon"></i></td>
-                            <td><input type="email" name="email" id="email" required placeholder="Correo Electronico"></td>
+                            <td><input type="email" maxlength="25" name="email" id="email" required placeholder="Correo Electronico"></td>
                           </div>
                           <div class="input-contenedor">
                             <td><i class="fa fa-key" aria-hidden="true icon"></i></td>
-                            <td><input type="password" name="Pass" id="Pass" required size="30" placeholder="Contraseña"></td>
+                            <td><input type="password" name="Pass" id="Pass" required maxlength="30" placeholder="Contraseña"></td>
                           </div>
 
                          <div id="Empledo">

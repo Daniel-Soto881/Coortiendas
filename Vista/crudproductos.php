@@ -23,18 +23,19 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/stil.css">
     <link rel="stylesheet" href="../css/stylee.css">
-    <link rel="stylesheet" href="../css/sid.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
+          
+
   </head>
   
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
-        <a class="navbar-brand" href="indexempleados.php"><img class="log" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="index.php"><img class="log" src="../Imagenes/Logo.png"></a>
       </div>                                           
         </div>
       </div>
@@ -101,16 +102,16 @@ session_start();
 
 
           }
- */       if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+ */
+          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
             
             echo '
           <li class="dropdown">
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <i class="icon_profile">
-                  <a href=" ../Vista/Perfil.php"><img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> 
-                  Mi Perfil
+                <a href="#"><i class="icon_profile">
+                  <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> Mi Perfil
                 </a>
               </li>
               <li class="eborder-top">
@@ -143,138 +144,96 @@ session_start();
                                 ';
                               }
                       ?>
+        </div>
           
             </ul>
-        </div>
-        <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
-        <div class="container">
-            <div class="tabla">
-                <div class="col-12">
-                        <div class="section-heading">
-                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Coortiendas</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-     <br><br><br><br><br><br><br><br><br>
-    
+        </div><br><br><br><br><br><br><br><br><br><br><br>
  <!-- Lista productos -->
  <div class="ftco-section contact-section" style="background: #E1EAEA;">
     <div class="container"><!--style.css:8330,460,453,10266,34-->
-      <div class="">
-        <div class=" ">
-          
+      <div class="tabla">
+        <div class="">
           <!--formulario-->
-                <div class="ftco-section" style="background:#E8F1F3; margin: 5% ; width: 88% ;" >
-                  <div class="container" >
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                <div class="col-md-7 text-center"  data-aos="fade-up">
+                  <h2>Productos</h2>
+                </div><br>
 
-                            <div class="text" >
-                        <h4 class="subheading">Coortiendas</h4>
-                        <h2 class="heading">Listo para un gran dia de trabajo!!</h2>
-                        <p>Comienza tu dia con toda la actitud</p>
-                      </div><div class="col-12 col-md-4">
+                    <div class="search-form-area animated dataTables_filter ">
+                        <form action="#" method="post">
+                            <input type="search" name="search" id="search" placeholder="¿Que Buscas?">
+                            <button type="submit" class="d-none"><img src="img/core-img/search-icon.png" alt="Buscar"></button>
+                        </form>
+                    </div><br>
+                <!-- Search btn -->
+              
+              <div class="tabla">
+                <table>
+                    <thead >
+                        <tr >
+                            <th >Id prod  </th> 
+                            <th >Estado prod  </th> 
+                            <th >Tipo prod  </th> 
+                            <th >Proveedor  </th> 
+                            <th >Nombre prod  </th> 
+                            <th >Caracteristicas prod  </th> 
+                            <th >Puntuacion prod  </th> 
+                            <th >Valor prod  </th>
+                            <th >Iva prod  </th> 
+                            <th >Presentacion prod  <br></th>
+                            <th >Tamaño prod  </th>  
+                        </tr>
+                    </thead><br>
+                    <tbody >
 
-                    <img class="Inemple" src="../Imagenes/F.png" alt="Ver info" title="User" style="  width: 170px; ">
-                </div>
-                    </div>
-                  </div>
+                    <?php
+                      $obj_solic= new Producto();
+                      $res=$obj_solic->Consultar_Producto();
+                      while ($solic =$res->fetch_object()) {
+                        /*echo ' <tr align="center" bgcolor="#FFFF99">
+                     
+                      <td width="11%">' . $solic->Id_sol_emp . '</td>
+                      <td width="16%">' . $solic->nam_est_sol . '</td>
+                      <td width="16%">' . $solic->nam_tip_usu . '</td>
+                      <td width="16%">' . $solic->doc_usu . '</td>
+                      <td width="12%">' . $solic->Sol_emp . '</td>
+                      <td width="19%">' . $solic->Nombre . '</td>
+                      <td width="19%">' . $solic->Email_sol . '</td>
+                      <td width="19%">' . $solic->Fecha_sol . '</td>
+                      <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+                      <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
 
-                 
-              </div>
+                    </tr> ';
+
+                    while ($row = mysqli_fetch_array($sql)) {*/
+                      ?>                       
+                  <tr >
+
+
+                      <td ><?php echo $solic->Id_prod; ?></td>
+                      <td ><?php echo $solic->Est_prod; ?></td>  
+                      <td><?php echo $solic->Tip_prod; ?></td>  
+                      <td><?php echo $solic->Prov; ?></td>
+                      <td><?php echo $solic->Nam_prod; ?></td>  
+                      <td><?php echo $solic->Carac_prod; ?></td>
+                      <td><?php echo $solic->Puntua_prod; ?></td>   
+                      <td><?php echo $solic->Val_prod; ?></td> 
+                      <td><?php echo $solic->Iva_prod; ?></td>
+                      <td><?php echo $solic->Presen_prod; ?></td> 
+                      <td><?php echo $solic->Tam_prod; ?></td>  
+                      <td><?php /* echo $row["catLibNombre"]; */ ?></td>  
+                      <td><a href="frmActualizarProducto.php?id=<?php echo $row["Id_prod"]; ?>">Actualizar</a></td>  
+                      <td><a href=".php?id=<?php echo $row["Id_prod"]; ?>" onclick="return confirm('EstÃ¡ seguro de eliminar el registro?')">Eliminar</a></td>  
+                  </tr> 
+           
+                <?php }
+
+                  ?>
+
+                    </tbody>
+                </table>
             </div>
+          </div>
         </div>
-    </div>
-  </div>
-</div></div></div></div>
-
-<div class="ftco-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center mb-5 pb-5">
-        <div class="col-md-7 text-center">
-          <h2>Los Clientes Dicen....</h2>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 ">
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_4.jpg);">
-                <div class="box">
-                  <h2>Dudas</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-        </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container hover">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/image_5.jpg);">
-                <div class="box">
-                  <h2>Acerca de nosotros</h2>
-                  <p>DAMALÚ</p>
-                </div>
-              </div>
-              <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;Somos una agencia que te ayudara a conocer mas de tu pais.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_2.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> DAMALÚ <span class="position">Trabajador</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-
-        </div>
-        <div class="col-md-6 col-lg-4">
-          
-          <div class="flip-container">
-            <div class="flipper">
-              <div class="front" style="background-image: url(images/GTPE.jpg);">
-                <div class="box">
-                  <h2>Comentarios</h2>
-                  <p>Usuario</p>
-                </div>
-              </div>
-             <div class="back">
-                <!-- back content -->
-                <blockquote>
-                  <p>&ldquo;¿Que puedo hacer para conocer mas acerca de ustedes?.&rdquo;</p>
-                </blockquote>
-                <div class="author d-flex">
-                  <div class="image mr-3 align-self-center">
-                    <img src="images/person_1.jpg" alt="">
-                  </div>
-                  <div class="name align-self-center"> Laura Mendez <span class="position">Usuario</span></div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- .flip-container -->
-
-        </div>
-      </div>
     </div>
   </div>
 
@@ -308,10 +267,11 @@ session_start();
   </footer>
 
 
+
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-migrate-3.0.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap2.min.js"></script>
+    
     <script src="../js/jquery.waypoints.min.js"></script>
     <script src="../js/jquery.stellar.min.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
