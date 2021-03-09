@@ -52,7 +52,7 @@ $conectarse=Conectarse();
             if (password_verify($_REQUEST['pass'],$Empl['Pass_emp'])) {
               $_SESSION['Empleado']=$Empl['ID_empl'];
               $_SESSION['Cargo']=$Empl['Tip_usu'];
-              echo "<script type='text/javascript'>window.location='../../Vista/index.php';</script>
+              echo "<script type='text/javascript'>window.location='../../Vista/indexempleados.php';</script>
               ";
             }else {
               echo "<script type='text/javascript'>alert('No se encontró un usuario con esas caracteristicas, intente nuevamente.');
