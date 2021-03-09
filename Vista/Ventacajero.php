@@ -22,7 +22,7 @@ session_start();
     <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/stil.css">
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     

@@ -32,7 +32,7 @@ session_start();
     <link rel="stylesheet" href="../css/animate.css">
 
     <script src="js/Estilojs.js"></script>
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/owl.theme.default.min.css">

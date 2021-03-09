@@ -52,7 +52,7 @@
     <link rel="stylesheet" href="../css/animate.css">
 
 
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
     
     <link rel="stylesheet" href="../css/owl.carousel.min.css">
     <link rel="stylesheet" href="../css/owl.theme.default.min.css">
@@ -62,7 +62,6 @@
     <link href="../css/responsive-color.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../css/ionicons.min.css">
-    <link rel="stylesheet" href="../css/sstyle.css">
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/animateda.css">

@@ -29,7 +29,7 @@ $resultado=$objTipUsu->Consultar_TipUsu();
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/ionicons.min">
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
 </head>
 
 <body>

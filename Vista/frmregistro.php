@@ -33,7 +33,7 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
 </head>
 
 <body>
@@ -210,13 +210,13 @@ $res_TipoDoc=$objTipoDoc->Consultar_TipoDoc();
                                        <div class="input-contenedor">
                                             <td><i class="fa fa -user" aria-hidden="true icon"></i></td>
                                             <td><select name="Tip_doc" id="Tip_doc" required>
-                <option value="">Tipo de documento de ID</option>
-                <?php
-                  while ($Tip_doc =$res_TipoDoc->fetch_object()) {
-                    echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
-                  }
-                  ?>
-               </select></td></div>
+                                                  <option value="">Tipo de documento de ID</option>
+                                                  <?php
+                                                    while ($Tip_doc =$res_TipoDoc->fetch_object()) {
+                                                      echo '<option value="' . $Tip_doc->Id_tip_doc . '">' . $Tip_doc->Nam_tip_doc .  '</option>';
+                                                    }
+                                                    ?>
+                                                </select></td></div>
                                        <div class="input-contenedor">
                                           <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
                                           <td><input type="number" name="cc" id="cc" required  maxlength="10" placeholder="Número de identificación"></td>

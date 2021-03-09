@@ -22,7 +22,7 @@ session_start();
     <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
     <link rel="stylesheet" href="../css/stil.css">
-    <link rel="stylesheet" href="../css/stylee.css">
+    <link rel="stylesheet" href="../css/styleeee.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
@@ -159,7 +159,7 @@ session_start();
                 </div><br>
 
                     <div class="search-form-area animated dataTables_filter ">
-                        <form action="#" method="post">
+                        <form action="buscarproducto.php" method="get">
                             <input type="search" name="search" id="search" placeholder="¿Que Buscas?">
                             <button type="submit" class="d-none"><img src="img/core-img/search-icon.png" alt="Buscar"></button>
                         </form>
