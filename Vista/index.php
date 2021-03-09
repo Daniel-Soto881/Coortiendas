@@ -47,6 +47,7 @@ session_start();
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/animateda.css">
+ |   
   </head>
   
   <body>
@@ -213,7 +214,9 @@ session_start();
             </div>
         </div>
     </section>
-
+<?php
+$busqueda= $_REQUEST 
+?>
 
   <div class="ftco-section bg-light">
     <div class="container">
@@ -227,6 +230,26 @@ session_start();
                         <form action="#" method="post">
                             <input type="search" name="search" id="search" placeholder="¿Que Buscas?">
                             <button type="submit" class="d-none"><img src="img/core-img/search-icon.png" alt="Buscar"></button>
+
+                      <div class="content-search">
+                        <div class="content-table">
+                          <table id="tablita">
+                            <thead>
+                                <tr>
+                                 <td> </td>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr>
+                            <td>
+                            <a href="#">Inicio</a>
+                            </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        </div>
                         </form>
                     </div>
                 <!-- Search btn -->
