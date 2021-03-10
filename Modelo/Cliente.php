@@ -8,7 +8,7 @@ public $Nam_clie ;
 public $email_clie ;
 private $Pass_clie ;
 
-
+  
 /* ---------------Metodos set-------------------*/
 public function Cliente(){
 

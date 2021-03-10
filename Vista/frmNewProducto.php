@@ -20,7 +20,7 @@
     $conexion=Conectarse();
     $res_sol=$conexion->query($sql);
     
-  }
+  } 
 
   ?>
 
@@ -175,7 +175,7 @@
      <br><br><br><br><br><br><br><br><br><br>
     
     
- <div class="ftco-section contact-section" style="background: #E1EAEA;;">
+ <div class="ftco-section contact-section" style="background: #E1EAEA;;"> 
     <div class="container"><!--style.css:8330,460,453,10266,34-->
       <div class="">
         <div class="">

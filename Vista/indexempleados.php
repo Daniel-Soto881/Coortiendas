@@ -2,9 +2,14 @@
 require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
 require "../Modelo/TipProd.php";
+require "../Modelo/Solicitud_empleado.php";
+require "../Modelo/Empleados.php";
 $objProd= new Producto(); 
 $ret_Tot=$objProd->Consultar_Producto();
 $res_Prod=$objProd->Consultar_Productos();
+
+$objSolEmp= new Solicitud_empleado(); 
+
 
 /* $sql_t="select * from tip_prod"; */
 $objTipProd= new TipProd();
@@ -134,6 +139,7 @@ session_start();
             </ul>
           </li>
                                </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                header('location: index.php');
                                 echo '
                                 <div class="login-register-btn" >
                                    <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
@@ -154,7 +160,14 @@ session_start();
           <!--formulario-->
                     <div class="row justify-content-center mb-5 pb-5">
         <div class="col-md-7 text-center"  data-aos="fade-up">
-          <h2>Productos</h2>
+        <?php
+                        if ($_SESSION['Cargo']=='3') {
+                          echo '<h2>Productos</h2>';
+                        }elseif ($_SESSION['Cargo']=='4') {
+                          echo '<h2>Solicitudes de Registro</h2>';
+                        }
+                        ?>
+          
         </div>
       </div>
 
@@ -171,25 +184,99 @@ session_start();
                 <table id="example" class="display" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Id_prod</th> 
-                            <th>Est_prod</th> 
-                            <th>Tip_prod</th> 
-                            <th>Prov</th> 
-                            <th>Nam_prod</th> 
-                            <th>Carac_prod</th> 
-                            <th>Puntua_prod</th> 
-                            <th>Val_prod</th>
-                            <th>Iva_prod</th> 
-                            <th>Presen_prod</th> 
-                            <th>Tam_prod</th>  
+                        <?php
+                        if ($_SESSION['Cargo']=='3') {
+                          echo '<th>Id_prod</th> 
+                          <th>Est_prod</th> 
+                          <th>Tip_prod</th> 
+                          <th>Prov</th> 
+                          <th>Nam_prod</th> 
+                          <th>Carac_prod</th> 
+                          <th>Puntua_prod</th> 
+                          <th>Val_prod</th>
+                          <th>Iva_prod</th> 
+                          <th>Presen_prod</th> 
+                          <th>Tam_prod</th>
+                          <th>Actualizar</th>
+                          <th>Eliminar</th> ';
+                        }elseif ($_SESSION['Cargo']=='4') {
+                          echo '<th>Id_sol_emp</th> 
+                          <th>Est_sol_emp</th> 
+                          <th>Tip_usu</th> 
+                          <th>Tip_doc_usu</th> 
+                          <th>doc_usu</th> 
+                          <th>Sol_emp</th> 
+                          <th>Email_sol</th> 
+                          <th>Fecha_nac</th>
+                          <th>Fecha_sol</th> 
+                          <th>IMG</th> 
+                          <th>ACEPTAR</th>
+                          <th>DENEGAR</th> ';
+                        }
+                        ?>
+                             
                         </tr>
                     </thead>
                     <tbody>
 
 
-
+                    
 
                     <?php
+                   /*  $objProd-> */
+ if ($_SESSION['Cargo']=='3') {
+      $obj_prod_con= new Producto();
+      $res=$obj_prod_con->Consultar_Producto();
+      while ($solic =$res->fetch_object()) {
+        echo '<tr>
+
+
+      <td> ' . $solic->Id_prod . '</td>
+      <td> ' . $solic->Est_prod . '</td>  
+      <td> ' . $solic->Tip_prod . '</td>  
+      <td>'  . $solic->Prov . '</td>
+      <td> ' . $solic->Nam_prod . '</td>  
+      <td> ' . $solic->Carac_prod . '</td>
+      <td> ' . $solic->Puntua_prod . '</td>   
+      <td> ' . $solic->Val_prod . '</td> 
+      <td> ' . $solic->Iva_prod . '</td>
+      <td> ' . $solic->Presen_prod . '</td> 
+      <td> ' . $solic->Tam_prod . '</td>  
+      
+      <td><a href="../Modelo/validacion/ValidacionProducto.php?idProd=' . $row["Id_prod"] . '&accion=si">Actualizar</a></td>  
+      <td><a href="../Modelo/validacion/ValidacionProducto.php?id=<?php echo ' . $row["Id_prod"] . ` &accion=eliminar onclick="return confirm('Está seguro de eliminar el registro?')">Eliminar</a></td>  
+      </tr>`;
+      }
+      /* ../Modelo/validacion/ValidacionProducto.php?idProd=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Actualizar</a> */
+}elseif ($_SESSION['Cargo']=='4') {
+  $obj_solic= new Solicitud_empleado();
+  $res=$obj_solic->Consultar_Soles_emp('3');
+  while ($solic =$res->fetch_object()) {
+
+    $ruta_img="../Imagenes/img_empl/" . $solic->doc_usu . "." . $solic->IMG;
+            $fotico='<img style="width: 50%;" src="' . $ruta_img . '">';
+            
+    echo '<tr>
+
+
+  <td> ' . $solic->Id_sol_emp . '</td>
+  <td> ' . $solic->nam_est_sol  . '</td>  
+  <td> ' . $solic->nam_tip_usu  . '</td>  
+  <td>'  . $solic->Tip_doc_usu . '</td>
+  <td> ' . $solic->doc_usu . '</td>  
+  <td> ' . $solic->Sol_emp . '</td>
+  <td> ' . $solic->Email_sol . '</td>   
+  <td> ' . $solic->Fecha_nac . '</td> 
+  <td> ' . $solic->Fecha_sol . '</td>
+  <td> ' . $fotico . '</td> 
+   
+  
+  <td><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . `&accion=no onclick="return confirm('Está seguro de eliminar el registro?')">Denegar</a></td>
+
+  </tr> `;
+  }
+}
   $obj_solic= new Producto();
   $res=$obj_solic->Consultar_Producto();
   while ($solic =$res->fetch_object()) {

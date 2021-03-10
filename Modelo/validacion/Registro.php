@@ -77,15 +77,15 @@ $pass=password_hash($_REQUEST['Pass'], PASSWORD_DEFAULT,['cost' => 10]);
          
           if ((( strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png"))) &&($tamano_img <= 2000000)) {
             $valor_sql=$_FILES['IMG']['name'];
-            echo $valor_sql;
+            /* echo $valor_sql; */
             /* $tipo_img=end(explode("." , $valor_sql)); */
             $info = new SplFileInfo($valor_sql);
            // $tipo_img=$info->getBasename('.'.$info->getExtension());
            $tipo_img=pathinfo($info->getExtension(), PATHINFO_FILENAME);
             echo $tipo_img;
 $ruta_img="../../Imagenes/img_empl/" . $_REQUEST["cc"] . "." . $tipo_img;
-echo "-------" . $ruta_img;
-          $rut_antes=$_FILES["IMG"]['tmp_name'];
+/* echo "-------" . $ruta_img;
+          $rut_antes=$_FILES["IMG"]['tmp_name']; */
           copy($rut_antes,$ruta_img); 
             /* $edadNac=$_REQUEST['FechNac'].getYear();
           echo"<script type='text/jaascript'>alert(" . $edadNac . ");
@@ -94,7 +94,7 @@ echo "-------" . $ruta_img;
 
           /* var Xmas95 = new Date('December 25, 1995 23:15:30');
           var day = Xmas95.getDate(); */
-         echo $Est_sol_emp . "---" . $_REQUEST["Cargo"]  . "---" .  $_REQUEST["Tip_doc"]  . "---" . $_REQUEST["cc"]  . "---" . $_REQUEST["Solic"]   . "---" . $_REQUEST["email"]   . "---" . $_REQUEST["Name"]  . "---" . $pass . "---" . $_REQUEST["FechNac"]   . "---" . $feh_fin . "---" .  $tipo_img ; 
+        /*  echo $Est_sol_emp . "---" . $_REQUEST["Cargo"]  . "---" .  $_REQUEST["Tip_doc"]  . "---" . $_REQUEST["cc"]  . "---" . $_REQUEST["Solic"]   . "---" . $_REQUEST["email"]   . "---" . $_REQUEST["Name"]  . "---" . $pass . "---" . $_REQUEST["FechNac"]   . "---" . $feh_fin . "---" .  $tipo_img ;  */
 
           $objEmpleado->Crear_Sol_eml($Est_sol_emp,$_REQUEST["Cargo"] , $_REQUEST["Tip_doc"] ,$_REQUEST["cc"] ,$_REQUEST["Solic"]  ,$_REQUEST["email"]  ,$_REQUEST["Name"] ,$pass,$_REQUEST["FechNac"]  ,$feh_fin, $tipo_img  );   
           

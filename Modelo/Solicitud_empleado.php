@@ -13,7 +13,7 @@ private $Pass_sol;
 private $Edad_ini;
 private $Fecha_sol ;
 private $Name_usu;
-private $IMG;
+private $IMG;   
 /* ---------------Metodos set-------------------*/
 
 public function Solicitud_empleado(){
@@ -127,6 +127,24 @@ Public function aceptar_o_negar_Sol_emp($Id_sol_emp,$Est_sol_emp){
 Public function Consultar_Soles_emp($Est_sol_emp){
   $this->Conexion=Conectarse();   
   $sql="select * from solic_emp,tip_doc,tip_usu,est_sol where Est_sol_emp='$Est_sol_emp' and (solic_emp.Est_sol_emp=est_sol.Id_est_sol) and (solic_emp.Tip_usu=tip_usu.Id_tip_usu) and (solic_emp.Tip_doc_usu=tip_doc.Id_tip_doc)";
+ /*  SELECT *
+FROM solic_emp AS SE INNER JOIN
+tip_doc AS TD
+ON SE.Tip_doc_usu = TD.Id_tip_doc INNER JOIN
+tip_usu AS TU ON SE.Tip_usu =
+TU.Id_tip_usu INNER JOIN
+est_sol AS ES ON SE.Est_sol_emp =
+ES.Id_est_sol INNER JOIN
+est_usu AS EU ON SE.Tip_usu =
+TU.Id_tip_usu */
+  $resultado=$this->Conexion->query($sql);
+ 
+  $this->Conexion->close();
+  return $resultado;	
+}
+Public function Consultar_Sol_emp_indi($Id_sol_emp){
+  $this->Conexion=Conectarse();   
+  $sql="select * from solic_emp,tip_doc,tip_usu,est_sol where Id_sol_emp='$Id_sol_emp' and (solic_emp.Est_sol_emp=est_sol.Id_est_sol) and (solic_emp.Tip_usu=tip_usu.Id_tip_usu) and (solic_emp.Tip_doc_usu=tip_doc.Id_tip_doc)";
  /*  SELECT *
 FROM solic_emp AS SE INNER JOIN
 tip_doc AS TD

@@ -249,6 +249,9 @@ session_start();
           }
         }else if (isset($_SESSION['Empleado'])) {
           while ($emp=$res_emp->fetch_object()) {
+            $ruta_img="../Imagenes/img_empl/" . $_SESSION['Empleado'] . "." . $emp->IMG;
+            $fotico='<img src=" ' . $ruta_img . ' " alt=""';
+
             echo ' <div class="col-12 col-md-6">
             <div class="group">
                 <input type="text" name="Name" id="Name" value="' . $emp->Nombre . '" required>
@@ -257,15 +260,52 @@ session_start();
                 <label>Nombre Completo</label>
             </div>
         </div>
+
+        <div class="input-contenedor">
+        <td><i class="fa fa-user" aria-hidden="true icon"></i></td>
+        <td><input type="text" name="Solic" id="Solic" value="' . $emp->Nombre . '"
+        required maxlength="25" placeholder="Descripción de empleado"></td>
+    </div>
+
           <div class="col-12 col-md-6">
             <div class="group">
-                <input type="email" name="email" id="email" value="' . $emp->Email_sol . '" required>
+                <input type="email" name="email" id="email" value="' . $emp->Sol_emp . '" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Email</label>
             </div>
-        </div>';
+        </div>
 
+        <div class="col-12 col-md-6">
+            <div class="group">
+                <input type="date" name="FechNac" id="FechNac" value="' . $emp->Sol_emp . '" required placeholder="Fecha de nacimiento">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Fecha de Nacimiento</label>
+            </div>
+        </div>
+        
+        <div class="col-12 col-md-6">
+            <div class="group">
+            <input type="file" name="IMG" id="IMG" required value="' . $fotico . '" placeholder="Imagen para reconocimiento de empleado" multiple accept="image/x-png, image/jpeg, image/jpg">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Foto empleado:(png,jpeg,jpg)máximo de 200 kb</label>
+
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="group">
+            <input type="file" name="IMG" id="IMG" required value="' . $fotico . '" placeholder="Imagen para reconocimiento de empleado" multiple accept="image/x-png, image/jpeg, image/jpg">
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label>Foto empleado:(png,jpeg,jpg)máximo de 200 kb</label>
+
+            </div>
+        </div>
+        ';
+
+        
         
         echo'
         

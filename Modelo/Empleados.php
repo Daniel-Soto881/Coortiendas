@@ -150,7 +150,7 @@ public function Crear_Empleado($Id_emp,$EstadoUsu_Id_est_usu  ,$Email_emp  ,$Pas
   }
   Public function Consultar_El_Empleado($Id_emp){
     $this->Conexion=Conectarse();   
-    $sql="select * from solic_emp where doc_usu='$Id_emp' ;";
+    $sql="SELECT * from solic_emp SE INNER JOIN empleados EM where doc_usu='$Id_emp' ;";
     $resultado=$this->Conexion->query($sql);
    
     $this->Conexion->close();
