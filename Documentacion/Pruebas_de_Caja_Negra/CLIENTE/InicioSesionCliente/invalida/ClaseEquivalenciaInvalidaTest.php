@@ -30,7 +30,7 @@ public function testCPI_4_CorreoYContrasena(){
 }
 public function testCPI_5_CorreoYContrasena(){
   $this->expectException(InvalidArgumentException::class);
-  $this->op->TestEquivalenciaInvalida('laura@gmail.com',"12345");
+  $this->op->TestEquivalenciaInvalida('laura@gmail.com',"12345"); 
 }
 public function testCPI_6_CorreoYContrasena(){
   $this->expectException(InvalidArgumentException::class);
