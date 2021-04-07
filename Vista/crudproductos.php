@@ -17,7 +17,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Inicio</title>
+    <title>Productos Existentes</title>
     <meta charset="utf-8">
     <link rel="icon" href="../Imagenes\F.png">    
     <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
@@ -35,7 +35,7 @@ session_start();
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
-        <a class="navbar-brand" href="index.php"><img class="log" src="../Imagenes/Logo.png"></a>
+        <a class="navbar-brand" href="indexempleados.php"><img class="log" src="../Imagenes/Logo.png"></a>
       </div>                                           
         </div>
       </div>
@@ -110,7 +110,7 @@ session_start();
             <ul class="dropdown-menu extended logout">
               <div class="log-arrow-up"></div>
               <li class="eborder-top">
-                <a href="#"><i class="icon_profile">
+                <a href="Perfil.php"><i class="icon_profile">
                   <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "> Mi Perfil
                 </a>
               </li>
