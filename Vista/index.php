@@ -47,10 +47,9 @@ session_start();
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
     <link rel="stylesheet" href="../css/animateda.css">
- |   
+ |   <link rel="stylesheet" href="https://stackpath.bootstapcdn.com/4.2.1/css/bootstrap.min.css" crosso>
   </head>
-  
-  <body>
+    <body>
     
      <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar" data-aos="fade-down" data-aos-delay="500">
       <div class="container" style=" margin-left: 7%">

@@ -58,6 +58,9 @@ $conectarse=Conectarse();
               }elseif ($_SESSION['Cargo']=='4') {
                 echo "<script type='text/javascript'>window.location='../../Vista/ListaSolicitud.php';</script>
                 ";
+              }elseif ($_SESSION['Cargo']=='2') {
+                echo "<script type='text/javascript'>window.location='../../Vista/index.php';</script>
+                ";
               }
               
             }else {
