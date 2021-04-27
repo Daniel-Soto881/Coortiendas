@@ -1,22 +1,47 @@
 <?php
 require "../Modelo/ConexionDataBase.php";
+require "../Modelo/Cliente.php";
+require "../Modelo/DetalleFactura.php";
+require "../Modelo/Empleados.php";
+require "../Modelo/Empre_Prov.php";
+require "../Modelo/EstadoFac.php";
+require "../Modelo/EstadoMovimiento.php";
+require "../Modelo/EstadoProd.php";
+require "../Modelo/EstadoProv.php";
+require "../Modelo/EstadoUsu.php";
+require "../Modelo/Factura.php";
+require "../Modelo/Inventario_has_DetalleFactura.php";
+require "../Modelo/Inventario.php";
+require "../Modelo/Movimiento_Inventario.php";
 require "../Modelo/Producto.php";
+require "../Modelo/Promociones.php";
+require "../Modelo/TipoPago.php";
+require "../Modelo/TipUsu.php";
 require "../Modelo/TipProd.php";
+$objCliente= new Cliente(); 
+$Clientes=$objCliente->ConsultarClientes();
+
+
 $objProd= new Producto(); 
 $ret_Tot=$objProd->Consultar_Producto();
 $res_Prod=$objProd->Consultar_Productos();
 
 /* $sql_t="select * from tip_prod"; */
 $objTipProd= new TipProd();
-$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd(); 
+
+ $objFactura= new Factura;
+ 
+ $obj_tip_pag=new TipoPago;
 /* $conectarse=Conectarse();
 $Tip_prod_res=$conectarse->query($sql_t); */
 session_start();
-
+$_SESSION['Empleado']="369369";
+$NIT="4158745847215";
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head> 
     <title>Inicio</title>
     <meta charset="utf-8">
     <link rel="icon" href="../Imagenes\F.png">    
@@ -28,9 +53,17 @@ session_start();
     
     <link rel="stylesheet" href="../css/flaticon.css">
     <link rel="stylesheet" href="../css/icomoon.css">
+    <!--START  Librerias de SELECT2 para el buscador en el select -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+
+
   </head>
   
 <body>
+ 
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
         <a class="navbar-brand" href="indexempleados.php"><img class="log" src="../Imagenes/Logo.png"></a>
@@ -52,7 +85,7 @@ session_start();
 
         <div id="sidebar" class="sidebar navbar-expand-lg navbar-dark ftco_navbar ftco-navbar-light.scrolled.awake ftco-navbar-light.scrolled ">
                        <?php
-          /* if (isset($_SESSION['Empleado']) ) {
+         if (isset($_SESSION['Empleado']) ) {
               echo '<input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
               <label for="abrir-cerrar">&#9776;
                 <span class="abrir">Menu</span>
@@ -99,8 +132,10 @@ session_start();
               </div> <br><br>';
 
 
-          }
- */       if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+          } 
+        
+      
+ /*  if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
             
             echo '
           <li class="dropdown">
@@ -140,69 +175,237 @@ session_start();
                                    <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                </div>
                                 ';
-                              }
+                              }  */
                       ?>
              
         </div>
           
             </ul>
         </div><br><br><br><br><br><br><br><br><br><br><br>
+       
+        <script>
+        function luz() {
+         
+            document.getElementById("btn_New_factura").innerHTML=`
+            
+          
+        
+        <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                      <div class="infoVenta" >
+                      <div class="col-12 col-md-6">
+            <div class="group">
+            <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
+            <option value="">Cliente</option>
+            <?php
+           
+            
+              
+                  while ($Clie=$Clientes->fetch_object()) {
+                    echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
+                  } 
+              ?>
+            </select>
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                
+            </div> 
+        </div> 
+        <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                      <div class="infoVenta" >
+                      <div class="col-12 col-md-6">
+            <div class="group"><!-- NO QUITE LAS CLASES 'js-example-placeholder-single' O 'factura'  -->
+            <select class='js-example-placeholder-single' name="Tip_pag" id="Tip_pag" required>
+            <option value="">Tipo Pago</option>
+            <?php
+                $TipoPago=$obj_tip_pag->Consultar_tip_pag();
+                  while ($tip_pag=$TipoPago->fetch_object()) {
+                    echo '<option value="' . $tip_pag->Id_tip_pag . '">' . $tip_pag->Nam_tip_pag .  '</option>';
+                  } 
+              ?>
+            </select>
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                
+            </div> 
+        </div> 
+        <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                      <div class="infoVenta" >
+                      <div class="col-12 col-md-6">
+            <div class="group">
+             <strong id="Caja_fact">Caja</strong>
+            <input type="number" name="Caja_fact" id="Caja_fact" placeholder="" required>
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                
+            </div> 
+        </div> 
+        <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                      <div class="infoVenta" >
+                      <div class="col-12 col-md-6">
+            <div class="group">
+             <strong id="Fech_entrega">Fecha de entrega</strong>
+            <input type="date" name="Fech_entrega" id="Fech_entrega" placeholder="" required>
+
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                 <b></b>
+            </div> 
+        </div>  
+          
+
+        ` + `<div  id="btn_Continuar_1"> 
+        
+        <input type="submit" value="Continuar"onclick="event.preventDefault(); Continue_factura();">
+        </div> 
+        
+        <div class="Cancelar" id="factura"> 
+        
+        <input type="submit" value="Cancelar"id="New_factura" onclick="event.preventDefault(); Continue_factura();"">
+        </div> 
+        `;
+
+        document.getElementById("Continuaraa").innerHTML=``;
+
+                
+ 
+      };
+
+      function Continue_factura() {
+      
+        document.form_fact.getElementById("btn_Continuar_1").innerHTML=`<div class="group">
+          Factura Nº: <strong><?
+        $objFactura->Crear_Factura_base("4",$_POST['Tip_pag'],$_POST['Cliente'],$_SESSION['Empleado'],$_POST['Fech_entrega'],$_POST['Caja_fact']);
+        $objFactura->Agregar_Factura_base();
+        $factura=$objFactura->Consultar_Factura_base();
+          ?></strong>
+                        </div>
+          <strong>Tipo de pago<? 
+                  while ($Fact=$factura->fetch_object()) {
+                    echo '<option value="' . $Fact->Id_tip_pag . '">' . $Fact->Nam_tip_pag .  '</option>';
+                  } ?></strong>
+          </strong>Cliente<strong>
+          </strong>Empleado<strong>
+          </strong>Fecha de entrega de lo solicitado<strong>
+          </strong>Caja<strong>`;
+      }
+      function Cancel_factura() {
+        document.form_fact.getElementById("New_factura").innerHTML=`<input type="submit" value="Nueva Factura" onclick='factura_ini();'>`;
+
+      }
+      function Det_factura() {
+        document.form_fact.getElementById("New_factura").innerHTML=`<div class="infoVenta" >
+                          
+                          <div class="group">
+                            Compra Nº<input type="text" name="N_comp" id="N_comp"  value="1" required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Código Producto:<input type="text" name="Produc" id="Produc"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Nombre Producto:<input type="text" name="Produc" id="Produc"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Cantidad:<input type="number" name="Cant_Prod" id="Cant_Prod"  required>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="block-2 d-md-flex" data-aos="fade-left">
+                      
+                        <div class="infoVenta" >
+                          
+                          <div class="group">
+                            Descuento %:<input type="number" name="Desc_Prod" id="Desc_Prod"  required>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    </div>
+                  </div>`;
+      }
+      function End_fact(params) {
+       document.form_fact.getElementById("New_factura").innerHTML= `</strong>Total antes de impuestos<strong>
+          </strong>Total retenido<strong>
+          </strong>Total<strong>`;
+      }
+
+        </script>
+        
  <!-- Lista productos -->
+ <form action="../Modelo/validacion/ValidacionFactura.php" method="post" enctype="multipart/form-data" id="form_fact">
  <div class="ftco-section contact-section" style="background: #E1EAEA;">
     <div class="container"><!--style.css:8330,460,453,10266,34-->
       <div class="">
         <div class=" ">
           <div class="container" >
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                        <div class="infoVenta" >
-                          <h5 class="subheading">Id Venta:</h5>
-                        </div>
-                    </div>
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                        <div class="infoVenta" >
-                          
-                          <div class="group">
-                            Id cliente:<input type="" name="name" id="name"  required>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                        <div class="infoVenta" >
-                          
-                          <div class="group">
-                            Nombre empleado<input type="" name="name" id="name"  required>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                        <div class="infoVenta" >
-                          
-                          <div class="group">
-                            Caja:<input type="" name="name" id="name"  required>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                        <div class="infoVenta" >
-                          
-                          <div class="group">
-                            <select name="Tip_pag" id="Provee" required>
-                              <option value="">Tipo de pago</option> 
-                              <option value="">Efectivo</option>
-                              <option value="">Tarjeta Credito</option>
-                              <option value="">Tarjeta Debito</option>
-                            </select>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                  </div>
+          aqui va una intro motivacional del mundo del amor hacia hacer facturas 
+           <!-- Boton  que solo muestra el form de inicio de factura-->
+          <div id="btn_New_factura">  <!-- Aqui se va a mostrar la funcion luz() -->
+        
+          <input type="submit" value="Nueva Factura" id="New_factura" onclick="event.preventDefault(); luz();">
+          </div>
+           
+                               
+           
+        
+<div class="Continuaraa" id="Continuaraa">
+        
+</div>
+<section class="Cancelar">
+        
+</section>
 
+        
+        
+        
+          <!-- END Datos Iniciales de la factura -->      
+                              
+                          
+                              
+          <!-- START  -->
+          
+          <!-- END Factura_inicio -->
+          <!-- START Detalle factura_ini -->
+          
+          <!-- END Detalle factura_ini -->        
+          <!-- START Factura fin -->
+          
+           <!--END Factura fin -->
+                      </div>
+
+                  </div>
+                        </div>
+
+
+
+                  <div class="col-12">
+                                    <input  type="submit" class="mosh-btn original-btn" value="Continuar" id="Continuar" name="Continuar">
+                                </div>
+                  </form>
           <!--formulario-->
                     <div class="row justify-content-center mb-5 pb-5">
         <div class="col-md-7 text-center"  data-aos="fade-up">

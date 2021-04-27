@@ -108,7 +108,7 @@ session_start();
 
           }
  */
-          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+         /*  if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
             
             echo '
               <div class="login-register-btn">
@@ -148,7 +148,7 @@ session_start();
                                    <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                </div>
                                 ';
-                              }
+                              } */
                       ?>                                             
         </div>
       </div>
@@ -179,6 +179,9 @@ session_start();
                     <!-- Cart -->
                     <button type="submit" name="addtocart" value="5" class="mosh-btn">Añadir a la lista</button>
                     <!-- Favourite -->
+
+                    <!-- Cart -->
+                    <button type="submit" name="addtocart" value="5" class="mosh-btn">Agregar</button>
                     <div class="product-favourite ml-4">
                         <a href="#" class="favme fa fa-heart"></a>
                     </div>

@@ -162,7 +162,7 @@
      
 <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
         <div class="container">
-            <div class="row">
+            <div class="row"> 
                 <div class="col-12">
                         <div class="section-heading">
                             <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Nuevo Producto</h1>
@@ -195,7 +195,7 @@
                 <label>Id Producto</label>
             </div>
         </div>
-        <div class="col-12 col-md-6">
+        <di  v class="col-12 col-md-6">
             <div class="group">
             <select name="tipo_prod" id="tipo_prod" required>
             <option value="">Tipo de Producto</option>

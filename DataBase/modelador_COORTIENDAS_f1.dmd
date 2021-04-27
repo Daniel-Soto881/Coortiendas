@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelador_COORTIENDAS_f1" id="C39EDFE7-72D9-92DD-C48F-0FAB79B7B5FA" version="3.5">
+<createdBy>lleri</createdBy>
+<createdTime>2021-04-13 19:38:56 UTC</createdTime>
+<ownerDesignName>modelador_COORTIENDAS_f1</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>C39EDFE7-72D9-92DD-C48F-0FAB79B7B5FA</designId>
+</OSDM_Design>
