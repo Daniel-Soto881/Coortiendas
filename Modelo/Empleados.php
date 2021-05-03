@@ -126,6 +126,7 @@ public function Crear_Empleado($Id_emp,$EstadoUsu_Id_est_usu  ,$Email_emp  ,$Pas
     ('$this->Id_emp','$this->EstadoUsu_Id_est_usu','$this->Solicitud_empleado_idSolicitud','$this->Email_emp','$this->Pass_emp', '$this->Obser_emp'); */
 
   }
+  
   Public function Actualizar_MismoEmpleado($Id_emp){
     $this->Conexion=Conectarse();
     $sql="update empleados set Email_empl='$this->Email_emp', Pass_emp='$this->Pass_emp' where (ID_empl='$Id_emp')"; 
@@ -140,14 +141,47 @@ public function Crear_Empleado($Id_emp,$EstadoUsu_Id_est_usu  ,$Email_emp  ,$Pas
     $this->Conexion->close();
     return $resultado;
   } 
+  /* CREATE TABLE `empleados` (
+  `ID_empl` int(3) NOT NULL,
+  `Est_usu` int(2) NOT NULL,
+  `Sol_empl` int(8) NOT NULL,
+  `Email_empl` varchar(40) NOT NULL,
+  `Pass_emp` varchar(100) NOT NULL,
+  `Obser_empl` varchar(225) NOT NULL,
+  `Edad_empl` int(3) NOT NULL,
+  `img_eml` longblob DEFAULT NULL
+)  */
+/* 
+CREATE TABLE `solic_emp` (
+  `Id_sol_emp` int(8) NOT NULL,
+  `Est_sol_emp` int(2) DEFAULT NULL,
+  `Tip_usu` int(2) DEFAULT NULL,
+  `Tip_doc_usu` int(2) DEFAULT NULL,
+  `doc_usu` int(20) DEFAULT NULL,
+  `Sol_emp` text DEFAULT NULL,
+  `Email_sol` varchar(40) DEFAULT NULL,
+  `Nombre` varchar(45) NOT NULL,
+  `Pass_sol` varchar(100) DEFAULT NULL,
+  `Fecha_nac` datetime NOT NULL,
+  `Fecha_sol` datetime DEFAULT NULL,
+  `IMG` varchar(10) NOT NULL
+)  */
   Public function Consultar_Empleado($Id_emp){
     $this->Conexion=Conectarse();   
-    $sql="select ID_empl, Est_usu,name_est_usu, Sol_empl, Nam_empl, Email_empl, Pass_emp, Img_emp, Obser_empl, Edad_empl, pacNombres from empleados,est_usu,solic_emp where ID_empl='$Id_emp' and (empleados.Est_usu=est_usu.Id_est_usu) and (empleados.Sol_empl=solic_emp.Id_sol_emp) ";
+    $sql="SELECT * from empleados,est_usu,solic_emp where ID_empl='$Id_emp' and (empleados.Est_usu=est_usu.Id_est_usu) and (empleados.Sol_empl=solic_emp.Id_sol_emp) ";
     $resultado=$this->Conexion->query($sql);
    
     $this->Conexion->close();
     return $resultado;	
   }
+  /* Public function Consultar_Empleado($Id_emp){
+    $this->Conexion=Conectarse();   
+    $sql="SELECT * from solic_emp SE INNER JOIN empleados EM ON E.DepartamentoId = D.Id where doc_usu='$Id_emp' ;";
+    $resultado=$this->Conexion->query($sql);
+   
+    $this->Conexion->close();
+    return $resultado;	
+  } */
   Public function Consultar_El_Empleado($Id_emp){
     $this->Conexion=Conectarse();   
     $sql="SELECT * from solic_emp SE INNER JOIN empleados EM where doc_usu='$Id_emp' ;";

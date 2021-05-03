@@ -253,7 +253,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="group">
-                <input type="number" name="valor" id="valor" required>
+                <input type="number" name="valor" id="valor" title="Ingrese valor del producto antes de impuestos"required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Valor Unitario $</label>

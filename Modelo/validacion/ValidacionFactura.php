@@ -24,7 +24,22 @@ if (isset($_REQUEST["Continuar"])) {
   extract ($_REQUEST);
   $Conexion=Conectarse();  
 
-  $
+  
+print '<pre>';
+print_r($_REQUEST['field_name']);
+print '</pre>';
+//output
+Array
+(
+    [0] => value1
+    [1] => value2
+    [2] => value3
+    [3] => value4
+)
+$field_values_array = $_REQUEST['field_name'];
+foreach($field_values_array as $value){
+    //your database query goes here
+}
 
 }
 
