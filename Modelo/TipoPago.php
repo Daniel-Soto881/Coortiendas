@@ -24,7 +24,8 @@ class TipoPago{
 /*------------------- Metodos de consulta-------------------- */
   public function Consultar_tip_pag(){
     $this->Conexion=Conectarse();   
-    $sql="SELECT * from tip_pag order by `tip_pag`.`Id_tip_pag` ASC;";
+    $sql="SELECT * from tip_pag
+     order by `tip_pag`.`Id_tip_pag` ASC;";
     $resultado=$this->Conexion->query($sql);
    
     $this->Conexion->close();

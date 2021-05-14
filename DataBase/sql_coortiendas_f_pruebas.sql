@@ -364,7 +364,7 @@ CREATE TABLE `producto` (
   `Nam_prod` varchar(30) NOT NULL,
   `Carac_prod` varchar(250) NOT NULL,
   `Puntua_prod` float NOT NULL,
-  `Val_prod` decimal(10,2) NOT NULL COMMENT 'Valor del producto antes de impuesto.',
+  `Val_prod` decimal(10,2) NOT NULL COMM ENT 'Valor del producto antes de impuesto.',
   `Iva_prod` int(3) NOT NULL COMMENT 'Porcentaje(%) del impuesto establecido por el producto en venta.',
   `Dscuen_prod` int(3) NOT NULL COMMENT 'Descuento establecido para cada prod.',
   `UniMedi_prod` int(2) NOT NULL COMMENT 'La manera en la que se mide el tamaño de de dicho producto(g, l, ml, etc).',
