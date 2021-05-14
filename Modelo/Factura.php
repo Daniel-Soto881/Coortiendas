@@ -8,14 +8,15 @@ class Factura{
   public $Cliente_Id_Clie;
   public $Empleados_id_emp;
   public $Fecha_Fac;
+  public $Fecha_Entrega;
   public $Caja_fac;
-  public $Neto_val;
   public $Total_val;
-  public $IVA;
+  public $Retenido_Fac;
+  
 
   //Metodos
 
-  public function Factura($NumFactura){
+  public function Set_NumFactura($NumFactura){
     $this->NumFactura=$NumFactura; 
   }
   public function Set_EstadoFac_Id_est_fac($EstadoFac_Id_est_fac){
@@ -33,63 +34,79 @@ class Factura{
   public function Set_Fecha_Fac($Fecha_Fac){
     $this->Fecha_Fac=$Fecha_Fac;
   }
+  public function Set_Fecha_Entrega($Fecha_Entrega){
+    $this->Fecha_Entrega=$Fecha_Entrega;
+  }
   public function Set_Caja_fac($Caja_fac){
     $this->Caja_fac=$Caja_fac;
   }
-  public function Set_Neto_val($Neto_val){
-    $this->Neto_val=$Neto_val;
+  public function Set_Retenido_Fac($Retenido_Fac){
+    $this->Retenido_Fac=$Retenido_Fac;
   }
   public function Set_Total_val($Total_val){
     $this->Total_val=$Total_val;
   }
-  public function Set_IVA($IVA){
-    $this->IVA=$IVA;
-  }
 
 
-  public function Get_NumFactura(){
-    return $this->NumFactura;
+  public function Set_Factura(){
+    return $this->NumFactura;  
   }
   public function Get_EstadoFac_Id_est_fac(){
-    return $this->EstadoFac_Id_est_fac;
+    return $this->EstadoFac_Id_est_fac; 
   }
   public function Get_TipoPago_Id_tip_pag(){
-    return $this->TipoPago_Id_tip_pag;
+    return $this->TipoPago_Id_tip_pag; 
   }
   public function Get_Cliente_Id_Clie(){
-    return $this->Cliente_Id_Clie;
+    return $this->Cliente_Id_Clie; 
   }
   public function Get_Empleados_id_emp(){
-    return $this->Empleados_id_emp;
+    return $this->Empleados_id_emp; 
   }
   public function Get_Fecha_Fac(){
-    return $this->Fecha_Fac;
+    return $this->Fecha_Fac; 
   }
-  public function Get_Neto_val(){
-    return $this->Neto_val;
+  public function Get_Fecha_Entrega(){
+    return $this->Fecha_Entrega; 
+  }
+  public function Get_Caja_fac(){
+    return $this->Caja_fac; 
+  }
+  public function Get_Retenido_Fac(){
+    return $this->Retenido_Fac; 
   }
   public function Get_Total_val(){
-    return $this->Total_val;
-  }
-  public function Get_IVA(){
-    return $this->IVA;
+    return $this->Total_val; 
   }
   /*------------------- Metodos de consulta-------------------- */
-  public function Crear_Empre_Prov(,$Id_emp  ,$EstadoUsu_Id_est_usu  ,$Solicitud_empleado_idSolicitud  ,$Name_emp  ,$Email_emp  ,$Pass_emp  ,$Img_emp  ,$Id_supvisor  ,$Obser_emp  ,$Edad_emp  ){
-    $this->Id_emp=$Id_emp;
-  $this->EstadoUsu_Id_est_usu=$EstadoUsu_Id_est_usu;
-  $this->Solicitud_empleado_idSolicitud=$Solicitud_empleado_idSolicitud;
-  $this->Name_emp=$Name_emp;
-  $this->Email_emp=$Email_emp;
-  $this->Pass_emp=$Pass_emp;
-  $this->Img_emp=$Img_emp;
-  $this->Id_supvisor=$Id_supvisor;
-  $this->Obser_emp=$Obser_emp;
-  $this->Edad_emp=$Edad_emp;
+  public function Crear_Factura_base($EstadoFac_Id_est_fac,$TipoPago_Id_tip_pag,$Cliente_Id_Clie,$Empleados_id_emp,$Fecha_Entrega,$Caja_fac){
+    
+  $this->EstadoFac_Id_est_fac=$EstadoFac_Id_est_fac;
+  $this->TipoPago_Id_tip_pag= $TipoPago_Id_tip_pag;
+  $this->Cliente_Id_Clie=     $Cliente_Id_Clie;
+  $this->Empleados_id_emp=    $Empleados_id_emp;
+  $this->Fecha_Entrega=       $Fecha_Entrega;
+  $this->Caja_fac=            $Caja_fac;
+  }
+  public function Agregar_Factura_base(){
+    $this->Conexion=Conectarse();  
+    $sql="INSERT into factura (Est_fact,Tip_pag,Id_cliente,eple_fact,Fech_entrega,Caja_fact) 
+  values ('$this->EstadoFac_Id_est_fac','$this->TipoPago_Id_tip_pag','$this->Cliente_Id_Clie','$this->Empleados_id_emp','$this->Fecha_Entrega','$this->Caja_fac');";
+    $resultado=$this->Conexion->query($sql);
+    $this->Conexion->close();
+    return $resultado; 
+  }
+  public function Consultar_Factura_base(){
+    $this->Conexion=Conectarse();  
+    $sql="SELECT top 1 Num_fact from  factura  
+  where Est_fact='$this->EstadoFac_Id_est_fac' and eple_fact='$this->Empleados_id_emp' and Caja_fact=' $this->Caja_fac' order by Num_fact desc;";/* elegir la ultima facturarealizada  */
+    $resultado=$this->Conexion->query($sql);
+    $this->Conexion->close();
+    return $resultado;
   }
   public function Agregar_Empre_Prov(){
    $this->Conexion=Conectarse();  
-  $sql="select * from tip_prod  where Id_tip_prod='$Id_tip_prod' ";
+  $sql="SELECT * from tip_prod  where Id_tip_prod='$Id_tip_prod' ";
   $resultado=$this->Conexion->query($sql);
   $this->Conexion->close();
   return $resultado;

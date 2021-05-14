@@ -20,7 +20,7 @@
     $conexion=Conectarse();
     $res_sol=$conexion->query($sql);
     
-  }
+  } 
 
   ?>
 
@@ -162,7 +162,7 @@
      
 <section  class="mosh-call-to-action-area bg-img  section_padding_100" style="background-image: url(../Imagenes/Foto.jpg);">
         <div class="container">
-            <div class="row">
+            <div class="row"> 
                 <div class="col-12">
                         <div class="section-heading">
                             <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Nuevo Producto</h1>
@@ -175,7 +175,7 @@
      <br><br><br><br><br><br><br><br><br><br>
     
     
- <div class="ftco-section contact-section" style="background: #E1EAEA;;">
+ <div class="ftco-section contact-section" style="background: #E1EAEA;;"> 
     <div class="container"><!--style.css:8330,460,453,10266,34-->
       <div class="">
         <div class="">
@@ -195,7 +195,7 @@
                 <label>Id Producto</label>
             </div>
         </div>
-        <div class="col-12 col-md-6">
+        <di  v class="col-12 col-md-6">
             <div class="group">
             <select name="tipo_prod" id="tipo_prod" required>
             <option value="">Tipo de Producto</option>
@@ -253,7 +253,7 @@
           </div>
           <div class="col-12 col-md-6">
             <div class="group">
-                <input type="number" name="valor" id="valor" required>
+                <input type="number" name="valor" id="valor" title="Ingrese valor del producto antes de impuestos"required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Valor Unitario $</label>

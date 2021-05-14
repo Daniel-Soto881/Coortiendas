@@ -130,15 +130,15 @@ header('index.php');
       <td>Realizada el:</td>
       <td>Aceptar</td>
       <td>Denegar</td>
-  
+  </a>
   </tr> 
   <?php
   $obj_solic= new Solicitud_empleado();
   $res=$obj_solic->Consultar_Soles_emp('3');
   while ($solic =$res->fetch_object()) {
-    echo ' <tr >
+    echo ' <tr>
  
-  <td>' . $solic->Id_sol_emp . '</td>
+  <td><a href="Perfil.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&estado=3">' . $solic->Id_sol_emp . ' </a></td>
   <td>' . $solic->nam_est_sol . '</td>
   <td>' . $solic->nam_tip_usu . '</td>
   <td>' . $solic->doc_usu . '</td>
@@ -147,9 +147,9 @@ header('index.php');
   <td>' . $solic->Email_sol . '</td>
   <td>' . $solic->Fecha_sol . '</td>
   <td><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=si">Aceptar</a></td>
-  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&accion=no">Denegar</a></td>
+  <td width="19%"><a href="../Modelo/validacion/ValidacionSolic.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . `&accion=no onclick="return confirm('Está seguro de eliminar el registro?')">Denegar</a></td>
 
-</tr> ';}
+  </tr>`;}
   ?>
       </table>     </div>
           </div>

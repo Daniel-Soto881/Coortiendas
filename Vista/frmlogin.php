@@ -9,6 +9,8 @@ $resultado=$objTipUsu->Consultar_TipUsu();
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+ 
+  <link rel="stylesheet" href="../css/Estilo.css">
   <title>Iniciar Sesion</title>
   <link rel="stylesheet" href="../css/stil.css">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">

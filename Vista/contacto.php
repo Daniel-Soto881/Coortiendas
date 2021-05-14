@@ -1,18 +1,5 @@
 <?php
-require "../Modelo/ConexionDataBase.php";
-require "../Modelo/Producto.php";
-require "../Modelo/TipProd.php";
-$objProd= new Producto(); 
-$ret_Tot=$objProd->Consultar_Producto();
-$res_Prod=$objProd->Consultar_Productos();
-
-/* $sql_t="select * from tip_prod"; */
-$objTipProd= new TipProd();
-$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
-/* $conectarse=Conectarse();
-$Tip_prod_res=$conectarse->query($sql_t); */
-session_start();
-
+require "../Modelo/validacion/enviar_correo.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

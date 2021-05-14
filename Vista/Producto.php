@@ -36,6 +36,7 @@ session_start();
     <link rel="stylesheet" href="../css/ionicons.min.css">
     
     <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css"> 
     <link rel="stylesheet" href="../css/stylee.css">
 
 </head>
@@ -52,7 +53,7 @@ session_start();
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a href="contacto.php" class="nav-link">Contáctenos</a></li>
-            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong> </a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link"><strong style="color: green;"> Productos </strong></a></li>
             <li class="nav-item"><a href="Promociones.php" class="nav-link">Promociones</a></li>
           </ul>
         <!-- ALMACENISTA-3 -->  
@@ -107,7 +108,7 @@ session_start();
 
           }
  */
-          if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
+         /*  if (isset($_SESSION['Cliente']) || isset($_SESSION['Empleado'])) {
             
             echo '
               <div class="login-register-btn">
@@ -147,7 +148,7 @@ session_start();
                                    <a href="frmregistro.php"><font style="vertical-align: inherit; font-size: 12px;"><font style="vertical-align: inherit;">Registrarse</font></font></a>
                                </div>
                                 ';
-                              }
+                              } */
                       ?>                                             
         </div>
       </div>
@@ -174,6 +175,15 @@ session_start();
             <p class="product-price"><span class="old-price">$</span> $</p>
             <p class="product-desc"></p>
                 <!-- Cart & Favourite Box -->
+                <div class="cart-fav-box d-flex align-items-center">
+                    <!-- Cart -->
+                    <button type="submit" name="addtocart" value="5" class="mosh-btn">Añadir a la lista</button>
+                    <!-- Favourite -->
+
+                    <!-- Cart -->
+                    <button type="submit" name="addtocart" value="5" class="mosh-btn">Agregar</button>
+                    <div class="product-favourite ml-4">
+                        <a href="#" class="favme fa fa-heart"></a>
                     </div>
                 </div>
             </form>

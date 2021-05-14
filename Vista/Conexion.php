@@ -2,7 +2,7 @@
 	$host = 'localhost';
 	$user = 'root';
 	$password = '';
-	$db = 'coortiendas_a';
+	$db = 'coortiendas_f';
 
 	$conection = @mysqli_connect($host,$user,$password,$db);
 

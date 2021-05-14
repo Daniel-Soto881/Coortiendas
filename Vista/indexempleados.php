@@ -1,10 +1,15 @@
-<?php
+ <?php
 require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
 require "../Modelo/TipProd.php";
+require "../Modelo/Solicitud_empleado.php";
+require "../Modelo/Empleados.php";
 $objProd= new Producto(); 
 $ret_Tot=$objProd->Consultar_Producto();
 $res_Prod=$objProd->Consultar_Productos();
+
+$objSolEmp= new Solicitud_empleado(); 
+
 
 /* $sql_t="select * from tip_prod"; */
 $objTipProd= new TipProd();
@@ -12,6 +17,7 @@ $Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
 /* $conectarse=Conectarse();
 $Tip_prod_res=$conectarse->query($sql_t); */
 session_start();
+
 
 ?>
 <!DOCTYPE html>
@@ -135,6 +141,7 @@ session_start();
             </ul>
           </li>
                                </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                header('location: index.php');
                                 echo '
                                 <div class="login-register-btn" >
                                    <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>

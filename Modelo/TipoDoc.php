@@ -42,7 +42,7 @@ Public function Actualizar_TipoDoc($Id_tip_doc){
 } 
 Public function Consultar_TipoDoc(){
   $this->Conexion=Conectarse();   
-  $sql="select * from tip_doc ";
+  $sql="select * from tip_doc";
   $resultado=$this->Conexion->query($sql);
  
   $this->Conexion->close();

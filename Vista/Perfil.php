@@ -2,17 +2,27 @@
 require "../Modelo/ConexionDataBase.php";
 require "../Modelo/Producto.php";
 require "../Modelo/TipProd.php";
-$objProd= new Producto(); 
-$ret_Tot=$objProd->Consultar_Producto();
-$res_Prod=$objProd->Consultar_Productos();
+require "../Modelo/Empleados.php";
+require "../Modelo/Solicitud_empleado.php";
+extract($_REQUEST);
+if (isset($_REQUEST['idSol']) && isset($_REQUEST['cc']) && isset($_REQUEST['estado'])) {
+  
+$idSol=$_REQUEST['idSol'];
+$cc=$_REQUEST['cc'];
+$estado=$_REQUEST['estado'];
+
+}else {
+  header('location: index.php');
+}
+/* <a href="Perfil.php?idSol=' . $solic->Id_sol_emp . '&cc=' . $solic->doc_usu . '&estado=3">' . $solic->Id_sol_emp . ' </a> */
 
 /* $sql_t="select * from tip_prod"; */
-$objTipProd= new TipProd();
-$Tip_prod_res=$objTipProd->Consultar_Prod_TipProd();
+
 /* $conectarse=Conectarse();
 $Tip_prod_res=$conectarse->query($sql_t); */
-session_start();
 
+session_start();
+$_SESSION['Empleado']="369369";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -133,6 +143,7 @@ session_start();
             </ul>
           </li>
                                </div>';}else if (!isset($_SESSION['Cliente'])|| !isset($_SESSION['Empleado'])) {
+                                header('index.php');
                                 echo '
                                 <div class="login-register-btn" >
                                    <a href="frmlogin.php"><font style="vertical-align: inherit; font-size: 15px;"><font style="vertical-align: inherit;">Iniciar Sesion</font></font></a><br>
@@ -149,7 +160,15 @@ session_start();
             <div class="tabla">
                 <div class="col-12">
                         <div class="section-heading">
-                            <h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Mi Perfil</h1>
+                        <?php
+                        $ruta_img="../Imagenes/img_empl/" . $cc . "." ;
+                        if ($_SESSION['Cargo']=='4') {
+                          echo `<h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white; color=white">Solicitud N°_` . $idSol . `</h1>`;
+                        }else {
+                          echo `<h1 class="ftco-heading mb-3" data-aos="fade-up" data-aos-delay="500" style="color: white;">Mi Perfil</h1>`;
+                        }
+                        ?>
+                            
                         </div>
                     </div>
                 </div>
@@ -165,17 +184,33 @@ session_start();
         <div class=" ">
           
           <!--formulario-->
-               <img class="user" src="../Imagenes/user.png" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "><br><br>
-               <div class="block-2 d-md-flex" data-aos="fade-left">
+          <?php
+          $solicitud= new Solicitud_empleado();
+$sol= $solicitud->Consultar_Sol_emp_indi($idSol);
+while ($emp=$sol->fetch_object()) {
 
-                      <div class="text" >
+echo `<img class="user" src="../Imagenes/img_empl/' . $emp->doc_usu . '.' . $emp->IMG . '" alt="Ver info" title="User" style="width: 20%; margin-top: 1%; margin-right: 1% "><br><br>
+<div class="block-2 d-md-flex" data-aos="fade-left">
 
-                        <h5 class="subheading">Nombre: </h5>
-                        <h5 class="subheading">Correo: </h5>
-                        <h5 class="subheading">Cargo: </h5>
+       <div class="text" >
 
-                      </div>
+         <h5 class="subheading">Solicitud N°: </h5>
+         <h5 class="subheading">Cargo: </h5>
+         <h5 class="subheading">Tipo de documento: </h5>
+         <h5 class="subheading">N° Documento: </h5>
+         <h5 class="subheading">Descripción: </h5>
+         <h5 class="subheading">Email: </h5>
+         <h5 class="subheading">Nombre: </h5>
+         <h5 class="subheading">Fecha de Nacimiento: </h5>
+         <h5 class="subheading">Fecha de Solicitud: </h5>
+        
 
+       </div>`;
+          
+
+}
+          ?>
+               
             </div>
         </div>
     </div>

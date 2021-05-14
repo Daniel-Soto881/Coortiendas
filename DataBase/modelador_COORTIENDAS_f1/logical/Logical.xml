@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="F8DF87C6-BD02-0FA0-38DB-F28EEFF4A5C4" mainViewID="6EEBAF2A-C99A-A053-5B58-9DA177A6FA69">
+<createdBy>lleri</createdBy>
+<createdTime>2021-04-13 19:38:56 UTC</createdTime>
+<ownerDesignName>modelador_COORTIENDAS_f1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

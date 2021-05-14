@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Sistema de información para el manejo de inventario y promoción de productos comercializados por la empresa COORTIENDAS de Casabianca." company="Changing world" webLink="http://" view-date="2020-06-01" view-index="1" gantt-divider-location="388" resource-divider-location="300" version="2.8.6" locale="es">
+    <description/>
+    <view zooming-state="default:9" id="gantt-chart">
+        <field id="tpd3" name="Nombre" width="155" order="0"/>
+        <field id="tpd4" name="Fecha de inicio" width="115" order="1"/>
+        <field id="tpd5" name="Fecha de fin" width="114" order="2"/>
+        <timeline><![CDATA[29,108,250,96,262,4,7,245,9,25,115,33,152,253,56,3,34,6,105,13]]></timeline>
+        <option id="color.recent"><![CDATA[#ccccff #99ccff]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nombre" width="209" order="0"/>
+        <field id="1" name="Función" width="87" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="Colombia">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="2020" month="5" date="1" type="HOLIDAY"/>
+        <date year="2020" month="5" date="2" type="HOLIDAY"/>
+        <date year="2020" month="5" date="3" type="HOLIDAY"/>
+        <date year="2020" month="5" date="9" type="HOLIDAY"/>
+        <date year="2020" month="5" date="10" type="HOLIDAY"/>
+        <date year="2020" month="5" date="16" type="HOLIDAY"/>
+        <date year="2020" month="5" date="17" type="HOLIDAY"/>
+        <date year="2020" month="5" date="23" type="HOLIDAY"/>
+        <date year="2020" month="5" date="24" type="HOLIDAY"/>
+        <date year="2020" month="5" date="30" type="HOLIDAY"/>
+        <date year="2020" month="5" date="31" type="HOLIDAY"/>
+        <date year="2020" month="5" date="25" type="HOLIDAY"/>
+        <date year="2020" month="6" date="15" type="HOLIDAY"/>
+        <date year="2020" month="6" date="22" type="HOLIDAY"/>
+        <date year="2020" month="6" date="29" type="HOLIDAY"/>
+        <date year="2020" month="6" date="6" type="HOLIDAY"/>
+        <date year="2020" month="6" date="7" type="HOLIDAY"/>
+        <date year="2020" month="6" date="13" type="HOLIDAY"/>
+        <date year="2020" month="6" date="14" type="HOLIDAY"/>
+        <date year="2020" month="6" date="20" type="HOLIDAY"/>
+        <date year="2020" month="6" date="21" type="HOLIDAY"/>
+        <date year="2020" month="6" date="27" type="HOLIDAY"/>
+        <date year="2020" month="6" date="28" type="HOLIDAY"/>
+        <date year="2020" month="7" date="20" type="HOLIDAY"/>
+        <date year="2020" month="7" date="4" type="HOLIDAY"/>
+        <date year="2020" month="7" date="5" type="HOLIDAY"/>
+        <date year="2020" month="7" date="11" type="HOLIDAY"/>
+        <date year="2020" month="7" date="12" type="HOLIDAY"/>
+        <date year="2020" month="7" date="18" type="HOLIDAY"/>
+        <date year="2020" month="7" date="19" type="HOLIDAY"/>
+        <date year="2020" month="7" date="25" type="HOLIDAY"/>
+        <date year="2020" month="7" date="26" type="HOLIDAY"/>
+        <date year="2020" month="8" date="1" type="HOLIDAY"/>
+        <date year="2020" month="8" date="2" type="HOLIDAY"/>
+        <date year="2020" month="8" date="7" type="HOLIDAY"/>
+        <date year="2020" month="8" date="8" type="HOLIDAY"/>
+        <date year="2020" month="8" date="9" type="HOLIDAY"/>
+        <date year="2020" month="8" date="15" type="HOLIDAY"/>
+        <date year="2020" month="8" date="16" type="HOLIDAY"/>
+        <date year="2020" month="8" date="17" type="HOLIDAY"/>
+        <date year="2020" month="8" date="22" type="HOLIDAY"/>
+        <date year="2020" month="8" date="23" type="HOLIDAY"/>
+        <date year="2020" month="8" date="29" type="HOLIDAY"/>
+        <date year="2020" month="8" date="30" type="HOLIDAY"/>
+        <date year="2020" month="9" date="5" type="HOLIDAY"/>
+        <date year="2020" month="9" date="6" type="HOLIDAY"/>
+        <date year="2020" month="9" date="12" type="HOLIDAY"/>
+        <date year="2020" month="9" date="13" type="HOLIDAY"/>
+        <date year="2020" month="9" date="19" type="HOLIDAY"/>
+        <date year="2020" month="9" date="20" type="HOLIDAY"/>
+        <date year="2020" month="9" date="26" type="HOLIDAY"/>
+        <date year="2020" month="9" date="27" type="HOLIDAY"/>
+        <date year="2020" month="10" date="3" type="HOLIDAY"/>
+        <date year="2020" month="10" date="4" type="HOLIDAY"/>
+        <date year="2020" month="10" date="10" type="HOLIDAY"/>
+        <date year="2020" month="10" date="11" type="HOLIDAY"/>
+        <date year="2020" month="10" date="12" type="HOLIDAY"/>
+        <date year="2020" month="10" date="17" type="HOLIDAY"/>
+        <date year="2020" month="10" date="18" type="HOLIDAY"/>
+        <date year="2020" month="10" date="24" type="HOLIDAY"/>
+        <date year="2020" month="10" date="25" type="HOLIDAY"/>
+        <date year="2020" month="10" date="31" type="HOLIDAY"/>
+        <date year="2020" month="11" date="1" type="HOLIDAY"/>
+        <date year="2020" month="11" date="2" type="HOLIDAY"/>
+        <date year="2020" month="11" date="7" type="HOLIDAY"/>
+        <date year="2009" month="8" date="7" type="HOLIDAY"/>
+        <date year="2020" month="11" date="8" type="HOLIDAY"/>
+        <date year="2020" month="11" date="14" type="HOLIDAY"/>
+        <date year="2020" month="11" date="15" type="HOLIDAY"/>
+        <date year="2020" month="11" date="16" type="HOLIDAY"/>
+        <date year="2020" month="11" date="21" type="HOLIDAY"/>
+        <date year="2020" month="11" date="22" type="HOLIDAY"/>
+        <date year="2020" month="11" date="28" type="HOLIDAY"/>
+        <date year="2020" month="11" date="29" type="HOLIDAY"/>
+        <date year="2020" month="12" date="5" type="HOLIDAY"/>
+        <date year="2020" month="12" date="6" type="HOLIDAY"/>
+        <date year="2020" month="12" date="8" type="HOLIDAY"/>
+        <date year="2020" month="12" date="12" type="HOLIDAY"/>
+        <date year="2020" month="12" date="13" type="HOLIDAY"/>
+        <date year="2020" month="12" date="19" type="HOLIDAY"/>
+        <date year="2020" month="12" date="20" type="HOLIDAY"/>
+        <date year="2020" month="12" date="25" type="HOLIDAY"/>
+        <date year="2020" month="12" date="26" type="HOLIDAY"/>
+        <date year="2020" month="12" date="27" type="HOLIDAY"/>
+        <date year="2021" month="1" date="2" type="HOLIDAY"/>
+        <date year="2021" month="1" date="3" type="HOLIDAY"/>
+        <date year="2010" month="11" date="1" type="HOLIDAY"/>
+        <date year="2010" month="11" date="15" type="HOLIDAY"/>
+        <date year="2010" month="12" date="8" type="HOLIDAY"/>
+        <date year="2010" month="12" date="25" type="HOLIDAY"/>
+        <date year="2011" month="1" date="1" type="HOLIDAY"/>
+        <date year="2011" month="1" date="10" type="HOLIDAY"/>
+        <date year="2011" month="3" date="21" type="HOLIDAY"/>
+        <date year="2011" month="4" date="21" type="HOLIDAY"/>
+        <date year="2011" month="4" date="22" type="HOLIDAY"/>
+        <date year="2011" month="6" date="6" type="HOLIDAY"/>
+        <date year="2011" month="6" date="27" type="HOLIDAY"/>
+        <date year="2011" month="7" date="4" type="HOLIDAY"/>
+        <date year="2011" month="7" date="20" type="HOLIDAY"/>
+        <date year="2011" month="8" date="15" type="HOLIDAY"/>
+        <date year="2011" month="10" date="17" type="HOLIDAY"/>
+        <date year="2011" month="11" date="7" type="HOLIDAY"/>
+        <date year="2011" month="11" date="14" type="HOLIDAY"/>
+        <date year="2011" month="12" date="8" type="HOLIDAY"/>
+        <date year="2011" month="12" date="25" type="HOLIDAY"/>
+        <date year="2012" month="1" date="1" type="HOLIDAY"/>
+        <date year="2012" month="1" date="9" type="HOLIDAY"/>
+        <date year="2012" month="3" date="19" type="HOLIDAY"/>
+        <date year="2012" month="4" date="5" type="HOLIDAY"/>
+        <date year="2012" month="4" date="6" type="HOLIDAY"/>
+        <date year="2012" month="5" date="1" type="HOLIDAY"/>
+        <date year="2012" month="5" date="21" type="HOLIDAY"/>
+        <date year="2012" month="6" date="11" type="HOLIDAY"/>
+        <date year="2012" month="6" date="18" type="HOLIDAY"/>
+        <date year="2012" month="7" date="2" type="HOLIDAY"/>
+        <date year="2012" month="7" date="20" type="HOLIDAY"/>
+        <date year="2012" month="8" date="7" type="HOLIDAY"/>
+        <date year="2012" month="8" date="20" type="HOLIDAY"/>
+        <date year="2012" month="10" date="15" type="HOLIDAY"/>
+        <date year="2012" month="11" date="5" type="HOLIDAY"/>
+        <date year="2012" month="11" date="12" type="HOLIDAY"/>
+        <date year="2012" month="12" date="8" type="HOLIDAY"/>
+        <date year="2012" month="12" date="25" type="HOLIDAY"/>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="PLANIFICACIÓN" color="#ccccff" meeting="false" start="2020-04-27" duration="42" complete="100" thirdDate="2020-04-27" thirdDate-constraint="0" priority="2" expand="true">
+            <task id="7" name="Conformación de grupos de trabajo" color="#99ccff" meeting="false" start="2020-04-27" duration="4" complete="100" thirdDate="2020-04-27" thirdDate-constraint="0" expand="true" cost-manual-value="0.0" cost-calculated="false">
+                <notes><![CDATA[Se estableció la conformación de los integrantes  relacionados al proyecto, además de sus participaciones o roles en el mismo.]]></notes>
+                <depend id="13" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="13" name="Identificación de necesidades" color="#99ccff" meeting="false" start="2020-05-04" duration="3" complete="100" thirdDate="2020-05-04" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se identificaron las necesidades para el sistema de información.]]></notes>
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="9" name="Identificación de técnicas de recolección de información" color="#99ccff" meeting="false" start="2020-05-07" duration="2" complete="100" thirdDate="2020-05-07" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se establecieron las técnicas de recolección más óptimas para la mayor obtención de datos necesarios para el desarrollo del sistema de información ]]></notes>
+                <depend id="25" type="2" difference="0" hardness="Strong"/>
+                <depend id="29" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="25" name="Identificación de instrumentos de recolección de información" color="#99ccff" meeting="false" start="2020-05-11" duration="1" complete="100" thirdDate="2020-05-11" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se concretaron los instrumentos de recolección de información aptos para obtener la información necesaria para solucionar las necesidades establecidas.]]></notes>
+                <depend id="29" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="29" name="Aplicación de recolección de información" color="#99ccff" meeting="false" start="2020-05-12" duration="3" complete="100" thirdDate="2020-05-12" thirdDate-constraint="0" priority="2" expand="true">
+                <notes><![CDATA[Se recolectaron por medio de las técnicas e instrumentos establecidos los datos necesarios para el desarrollo del sistema de información.]]></notes>
+                <depend id="33" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="232" name="Diagrama de Gantt" color="#99ccff" meeting="false" start="2020-06-25" duration="2" complete="100" thirdDate="2020-06-25" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se desarrolla el diagrama de Gantt para el progreso en el desarrollo del proyecto. ]]></notes>
+            </task>
+            <task id="207" name="Presupuesto para el sistema" color="#99ccff" meeting="false" start="2020-06-26" duration="2" complete="100" thirdDate="2020-06-30" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se establece el presupuesto necesario para el desarrollo del sistema, desde costos de maquinaria hasta mano de obra
+
+]]></notes>
+            </task>
+        </task>
+        <task id="1" name="ANÁLISIS" color="#ccccff" meeting="false" start="2020-05-15" duration="44" complete="100" thirdDate="2020-05-15" thirdDate-constraint="0" expand="true">
+            <task id="33" name="Informe de resultados" color="#99ccff" meeting="false" start="2020-05-15" duration="2" complete="100" thirdDate="2020-05-15" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se estableció el análisis y contextualización de la información recolectada en la etapa de planificación de la forma más detallada para poder desarrollar el sistema de la mejor manera.]]></notes>
+                <depend id="34" type="2" difference="0" hardness="Strong"/>
+                <depend id="56" type="2" difference="0" hardness="Strong"/>
+                <depend id="96" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="34" name="Mapa de procesos" color="#99ccff" meeting="false" start="2020-05-19" duration="3" complete="100" thirdDate="2020-05-19" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se Realizó el mapa de procesos de la empresa COORTIENDAS de Casabianca.]]></notes>
+            </task>
+            <task id="56" name="Diagrama de flujo" color="#99ccff" meeting="false" start="2020-05-19" duration="3" complete="100" thirdDate="2020-05-19" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se graficó el diagrama de flujo de todas las actividades que realiza la empresa COORTIENDAS de Casabianca en relación a los productos que comercializa. ]]></notes>
+                <depend id="96" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="96" name="Formulación del proyecto" color="#99ccff" meeting="false" start="2020-05-22" duration="2" complete="100" thirdDate="2020-05-26" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se establecieron los datos principales del proyecto, como el título, caracterización, justificación, objetivo general, objetivos específicos, alcance, beneficiarios, Impacto  social, ambiental, económico y tecnológico. También se especificaron los riesgos, restricciones y resultado del mismo.]]></notes>
+                <depend id="105" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="105" name="Formato de requisitos IEEE-830" color="#99ccff" meeting="false" start="2020-05-27" duration="3" complete="100" thirdDate="2020-05-28" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se especificaron los requisitos del software para el sistema, todo para poder informar al cliente y mantenerlo informado de todo lo necesario para el funcionamiento del mismo.]]></notes>
+                <depend id="108" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="108" name="Diagrama UML" color="#99ccff" meeting="false" start="2020-06-01" duration="3" complete="100" thirdDate="2020-06-02" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se realizó el diagrama de casos de uso del sistema y sus actores.]]></notes>
+                <depend id="115" type="2" difference="0" hardness="Strong"/>
+                <depend id="241" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="243" name="Diagrama de clases" color="#99ccff" meeting="false" start="2020-07-14" duration="6" complete="100" thirdDate="2020-07-15" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se presenta el diagrama de clases del sistema, en el cual se puede apreciar la estructura del sistema mediante clases con atributos y sus relaciones.]]></notes>
+            </task>
+        </task>
+        <task id="2" name="DISEÑO" color="#ccccff" meeting="false" start="2020-06-04" duration="84" complete="100" thirdDate="2020-06-09" thirdDate-constraint="0" priority="2" expand="true">
+            <task id="115" name="Diseño de interfaz" color="#99ccff" meeting="false" start="2020-06-11" duration="5" complete="100" thirdDate="2020-06-09" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se realiza el prototipo de interfaz con la que el usuario podrá interactuar con el sistema.]]></notes>
+            </task>
+            <task id="152" name="Diagrama de despliegue" color="#99ccff" meeting="false" start="2020-07-07" duration="5" complete="100" thirdDate="2020-07-08" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se desarrolla el diagrama de despligue, el cual pertenece a la arquitectura del sistema y nos muestra las interconecciones entre el hardware y software requerido para el funcionamiento para el sistema.
+]]></notes>
+            </task>
+            <task id="238" name="Base de datos Modelo entidad relación" color="#99ccff" meeting="false" start="2020-07-06" duration="6" complete="100" thirdDate="2020-06-17" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se desarrolla la correcta base de datos para el manejo de la información necesaria para el correcto funcionamiento del sistema, esta es modificada de tal manera que se pueda almacenar y/o manejar la mayor cantidad de información en el menos espacio.]]></notes>
+            </task>
+            <task id="241" name="Casos de uso extendido" color="#99ccff" meeting="false" start="2020-06-04" duration="5" complete="100" thirdDate="2020-06-05" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Se especificaron las características y especificaciones de los casos de uso del sistema.]]></notes>
+                <depend id="115" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="245" name="Prototipos" color="#ccccff" meeting="false" start="2020-06-10" duration="8" complete="100" thirdDate="2020-10-13" thirdDate-constraint="0" expand="true"/>
+            <task id="250" name="Construcción de  Base de Datos" color="#ccccff" meeting="false" start="2020-08-06" duration="11" complete="100" thirdDate="2020-08-06" thirdDate-constraint="0" expand="true"/>
+            <task id="262" name="Construcción de interfaz de usuario" color="#ccccff" meeting="false" start="2020-08-26" duration="9" complete="100" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true"/>
+            <task id="253" name="Codificación" color="#ccccff" meeting="false" start="2020-09-08" duration="22" complete="100" thirdDate="2020-08-31" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="3" name="IMPLEMENTACIÓN" color="#ccccff" meeting="false" start="2020-10-05" duration="30" complete="0" thirdDate="2020-08-06" thirdDate-constraint="0" priority="2" expand="true">
+            <notes><![CDATA[Se realiza la codificación del sistema de información de tal manera que cumpla con todo lo establecido en la etapa de diseño.]]></notes>
+        </task>
+        <task id="4" name="PRUEBAS" color="#ccccff" meeting="false" start="2020-11-27" duration="25" complete="0" thirdDate="2021-01-06" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[Se realizan las pruebas en el sistema de información con el propósito principal de asegurar la calidad del sistema.]]></notes>
+        </task>
+        <task id="268" name="INSTALACIÓN" color="#8cb6ce" meeting="false" start="2021-01-13" duration="15" complete="0" thirdDate="2020-06-01" thirdDate-constraint="0" expand="true"/>
+        <task id="6" name="USO Y MANTENIMIENTO" color="#ccccff" meeting="false" start="2021-05-12" duration="100" complete="0" thirdDate="2021-05-12" thirdDate-constraint="0" priority="2" expand="true">
+            <notes><![CDATA[Se realiza el mantenimiento  del sistema, en el cual se contempla el mantenimiento correctivo, adaptativo y el perfectivo.]]></notes>
+        </task>
+    </tasks>
+    <resources>
+        <resource id="1" name="HERRERA SANABRIA ESTEFANIA" function="2" contacts="eherrerasanabria69@gmail.com" phone="3195943545">
+            <rate name="standard" value="4000000"/>
+        </resource>
+        <resource id="2" name="GONZALEZ VARGAS LLERILIN ESTEISY" function="1" contacts="Legonzalez336@misena.edu.co" phone="3153714750">
+            <rate name="standard" value="4000000"/>
+        </resource>
+        <resource id="3" name="SOTO GIRALDO JHOSTEN DANIEL" function="3" contacts="jdsoto881@misena.edu.co" phone="00">
+            <rate name="standard" value="3000000"/>
+        </resource>
+        <resource id="4" name="ARTEAGA RAMIREZ MACKENZIE SEBASTIAN&#9;&#9;" function="3" contacts="msarteaga3@misena.edu.co" phone="3223673484">
+            <rate name="standard" value="3000000"/>
+        </resource>
+        <resource id="5" name="BELTRAN MONTAÑA JHON SEBASTIAN&#9;&#9;" function="1" contacts="jsbeltran01@misena.edu.co" phone="3224422854">
+            <rate name="standard" value="3000000"/>
+        </resource>
+    </resources>
+    <allocations>
+        <allocation task-id="7" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="13" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="25" resource-id="1" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="29" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="33" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="56" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="96" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="105" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="108" resource-id="1" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="115" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="1" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="6" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="152" resource-id="1" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="207" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="241" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="243" resource-id="1" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="96" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="105" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="3" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="4" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="152" resource-id="2" function="1" responsible="false" load="100.0"/>
+        <allocation task-id="207" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="241" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="243" resource-id="2" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="7" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="9" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="29" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="33" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="34" resource-id="3" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="96" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="105" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="108" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="115" resource-id="3" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="3" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="4" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="6" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="152" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="207" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="241" resource-id="3" function="3" responsible="false" load="100.0"/>
+        <allocation task-id="243" resource-id="3" function="3" responsible="false" load="100.0"/>
+    </allocations>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name="PROGRAMADOR"/>
+        <role id="2" name="ANALISTA"/>
+        <role id="3" name="DISEÑADOR"/>
+    </roles>
+</project>

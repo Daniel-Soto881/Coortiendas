@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="0495CC93-77A3-16EC-D80E-7D8ADDA26389">
+<createdBy>lleri</createdBy>
+<createdTime>2021-04-13 19:38:57 UTC</createdTime>
+<ownerDesignName>modelador_COORTIENDAS_f1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>
