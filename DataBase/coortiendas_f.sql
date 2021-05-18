@@ -68,7 +68,7 @@ CREATE TABLE `detal_fact` (
   `Num_fact` int(20) NOT NULL,
   `id_prod` int(20) NOT NULL,
   `Cant_prod` int(3) NOT NULL,
-  `Desc %` decimal(5,0) NOT NULL
+  `Desc%` decimal(5,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -284,31 +284,7 @@ CREATE TABLE `factura` (
 INSERT INTO `factura` (`Num_fact`, `Est_fact`, `Tip_pag`, `Id_cliente`, `eple_fact`, `Fecha_fact`, `Fech_entrega`, `Caja_fact`, `Toral_val`, `Retenido_Fac`) VALUES
 (1001, 1, 3, 1002, 1, '2020-08-11 00:45:32', NULL, 1, '16000.00', NULL);
 
--- --------------------------------------------------------
 
---
--- Estructura de tabla para la tabla `inventario`
---
-
-CREATE TABLE `inventario` (
-  `Entra_2` int(20) NOT NULL COMMENT 'Identificador que muestra el numero que representa el pod en el inventario',
-  `Id_prod` int(20) DEFAULT NULL,
-  `Limite_max` int(4) DEFAULT NULL COMMENT 'Tope max al cual las unidades pueden llegar',
-  `Cost_ini` int(3) DEFAULT NULL COMMENT 'Costo inicial del prod antes de impuesto.',
-  `Saldo_inv` int(3) DEFAULT NULL COMMENT 'Cantidad actial del prod',
-  `Limite_min` int(4) NOT NULL COMMENT 'Tope min al cual las unidades pueden llegar'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `inventario`
---
-
-INSERT INTO `inventario` (`Entra_2`, `Id_prod`, `Limite_max`, `Cost_ini`, `Saldo_inv`, `Limite_min`) VALUES
-(1, 100, 100, 25, 75, 0),
-(2, 104, 30, 15, 15, 0),
-(3, 101, 25, 7, 18, 0),
-(4, 102, 7, 5, 2, 0),
-(5, 103, 20, 5, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -396,7 +372,31 @@ INSERT INTO `producto` (`Id_prod`, `Est_prod`, `Tip_prod`, `Prov`, `Nam_prod`, `
 (444, 1, 3, 1002, 'xxx', 'xxx', 0, '111.00', 1100, 0, 1, '', 0, '', 0),
 (9999, 1, 2, 1000, 'carnes deliciosas', 'www', 0, '10.00', 1, 0, 15, '45', 0, '', 0),
 (486957, 1, 4, 1002, 'leche Margarita', 'descripcion x', 0, '2500.00', 19, 0, 1, '1000', 0, '????\0JF', 0);
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `Entra_2` int(20) NOT NULL COMMENT 'Identificador que muestra el numero que representa el pod en el inventario',
+  `Id_prod` int(20) DEFAULT NULL,
+  `Limite_max` int(4) DEFAULT NULL COMMENT 'Tope max al cual las unidades pueden llegar',
+  `Cost_ini` int(3) DEFAULT NULL COMMENT 'Costo inicial del prod antes de impuesto.',
+  `Saldo_inv` int(3) DEFAULT NULL COMMENT 'Cantidad actial del prod',
+  `Limite_min` int(4) NOT NULL COMMENT 'Tope min al cual las unidades pueden llegar'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`Entra_2`, `Id_prod`, `Limite_max`, `Cost_ini`, `Saldo_inv`, `Limite_min`) VALUES
+(1, 100, 100, 25, 75, 0),
+(2, 104, 30, 15, 15, 0),
+(3, 101, 25, 7, 18, 0),
+(4, 102, 7, 5, 2, 0),
+(5, 103, 20, 5, 15, 0);
 -- --------------------------------------------------------
 
 --

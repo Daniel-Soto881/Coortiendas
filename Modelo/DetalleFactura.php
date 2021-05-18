@@ -2,16 +2,16 @@
 class DetalleFactura{
 
   //Atributos
-  public $Id_Comp;
-  public $Factura_NumFactura;
-  public $Cant_prod;
-  
+  public $Id_comp;
+  public $Num_fact;
   public $id_prod;
+  public $Desc;
+  public $Cant_prod;
 
   //Metodos
 
-  public function DetalleFactura($Id_Comp){
-    $this->Id_Comp=$Id_Comp; 
+  public function DetalleFactura(){
+    
   }
   public function Set_Factura_NumFactura($Factura_NumFactura){
     $this->Factura_NumFactura=$Factura_NumFactura;
@@ -43,6 +43,13 @@ class DetalleFactura{
   
   $this->id_prod=$id_prod;
   
+  }
+  Public function Consultar_id_venta($Factura_NumFactura){
+    $this->Conexion=Conectarse();
+   $sql="SELECT Id_comp,Num_fact, id_prod, Cant_prod, `Desc%` from detal_fact, where Num_fact='$Factura_NumFactura' and (detal_fact.id_prod=producto.Id_prod) and ";
+   $resultado=$this->Conexion->query($sql);
+   $this->Conexion->close();
+   return $resultado;	
   }
   public function Agregar_DetalleFactura(){
     $this->Conexion=Conectarse();

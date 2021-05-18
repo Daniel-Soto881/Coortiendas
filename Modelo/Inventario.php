@@ -64,21 +64,24 @@ class Inventario{
   $this->Limite_min=$Limite_min;
   
   }
-  public function Agregar_Empre_Prov(){
+
+  public function Consultar_prod_habiles(){
    $this->Conexion=Conectarse();  
-  $sql="select * from tip_prod  where Id_tip_prod='$Limite_min' ";
+   $sql="SELECT Pro. `Id_prod`,`Nam_prod`,`Val_prod`,`Iva_prod`,`Dscuen_prod` , `Entra_2`,`Limite_max`,`Saldo_inv`,`Limite_min` from `producto` as Pro INNER JOIN `inventario` as Inv ON Pro. Id_prod=Inv. Id_prod and (Pro.Est_prod=1 or Pro.Est_prod=4) and Saldo_inv>0 order by Pro.Id_prod,Nam_prod;";
+  
   $resultado=$this->Conexion->query($sql);
   $this->Conexion->close();
   return $resultado;
   }
-  Public function Actualizar_Empre_Prov($Id_emp){
+
+  Public function Actualizar_Empre_Prov($Entradas_2){
    $this->Conexion=Conectarse();  
   $sql="SELECT * from inventario WHERE Saldo_inv > Limite_min and ;";
   $resultado=$this->Conexion->query($sql);
   $this->Conexion->close();
   return $resultado;
   } 
-  Public function Consultar_Empre_Prov($Id_emp){
+  Public function Consultar_Empre_Prov($Entradas_2){
   $this->Conexion=Conectarse();   
   $sql="select * from producto,estad_prod,tip_prod where ((producto.Est_prod=estad_prod.Id_estad_prod) and (producto.Tip_prod=tip_prod.Id_tip_prod)) and (Est_prod='1' or Est_prod='4') GROUP BY Tip_prod;";
   $resultado=$this->Conexion->query($sql);

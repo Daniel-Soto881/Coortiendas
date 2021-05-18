@@ -32,7 +32,11 @@ $objTipProd= new TipProd();
 $Tip_prod_res=$objTipProd->Consultar_Prod_TipProd(); 
 
  $objFactura= new Factura;
+
+ $objVent=new DetalleFactura();
  
+ $objInv=new Inventario();
+
  $obj_tip_pag=new TipoPago;
 /* $conectarse=Conectarse();
 $Tip_prod_res=$conectarse->query($sql_t); */
@@ -40,6 +44,7 @@ session_start();
 $_SESSION['Empleado']="369369";
 $NIT="4158745847215";
 $Empleado=new Empleados();
+$_SESSION['Con_V']=1;
 
 ?>
 <!DOCTYPE html>
@@ -301,39 +306,46 @@ $Empleado=new Empleados();
 
       /* START implementacion de funcion para el incremetno de campos para la facturacion */
       
+   
 $(document).ready(function(){
-    var maxField = 11; //Input número máximo de campos que puedes añadir
+    var maxField = 5; //Input número máximo de campos que puedes añadir
     var addButton = $('.boton_masDato'); //controla el nombre de la clase del botón para añadir campos
     var wrapper = $('.Cont_campo_Det'); //controla la clase del div padre de los campos inputs que añadas
-    var fieldHTML = `<div class="Clase_eliminada">
+   
+    <?php 
+  
+    /* $los=$los+1; echo $los; */ ?>
+
+    let fieldHTML = `<div class="Clase_eliminada">
     
             <tr>
                 <td> <!-- N° venta -->
-                      <?php
-
-                      $emp=$Empleado->Consultar_Empleado($_SESSION['Empleado']);
-                      while ($em=$emp->fetch_object()) {
-                      $SSE=$em->Nombre;
-                      }
-                      echo '<input type="number" name="N_venta" id="N_venta" title"" disabled required value="' . $_SESSION["Empleado"] . ' - ' . $SSE . ' " >' ;?>
+                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value=" ` + los + `" >
                 </td>
-                <td><!-- Cod. Producto -->
+
+                
+
+                <td> <!-- Codigo de barras Producto -->
+                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="<?php echo $los; ?>" >
+                </td>
+                <td><!-- Id. Producto --> 
 
                         <div class="block-2 d-md-flex" data-aos="fade-left">
                                   
-                                  <div class="infoVenta" >
+                                  <div class="infoVenta" > 
                                   <div class="col-12 col-md-6">
                         <div class="group">
-                        <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
-                        <option value="">Cliente</option>
+                        <select class='js-example-placeholder-single' name="Cod_v" id="Cod_v" required>
+                        <option value="">Cod</option>
+                        
                         <?php
-                      
-                      
-                          
-                              while ($Clie=$Clientes->fetch_object()) {
-                                echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
-                              } 
-                          ?>
+                       
+                       $Inventario=$objInv->Consultar_prod_habiles();
+              
+                  while ($Inv_Cod=$Inventario->fetch_object()) {
+                    echo '<option value="' . $Inv_Cod->Id_prod . '">' . $Inv_Cod->Id_prod .  '</option>';
+                  } 
+              ?>
                         </select>
 
                             <span class="highlight"></span>
@@ -348,8 +360,8 @@ $(document).ready(function(){
                                   <div class="infoVenta" >
                                   <div class="col-12 col-md-6">
                         <div class="group">
-                        <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
-                        <option value="">Cliente</option>
+                        <select class='js-example-placeholder-single' name="Prod_v" id="Prod_v" required>
+                        <option value="">Producto</option>
                         <?php
                       
                       
@@ -365,6 +377,7 @@ $(document).ready(function(){
                             
                         </div> </div></div></div>
                 </td>
+                <!-- Cantidad -->
                 <td>
                     <input type="number" name="" id="" min="10" max="100" required >
                 </td>
@@ -384,10 +397,26 @@ $(document).ready(function(){
     var deleHTML='';
     
     var x = 1; //Initial venta contador is 1
+    
+    console.log("------despues_2-----");
+    console.log(x);
+    
+    var val=1;
+ // Num de la venta
+ <?php
+     /* $los=1;  */
+    ?>
+   /*  var los=1; */
     $(addButton).click(function(){ //Once add button is clicked
         if(x < maxField){ //Check maximum number of input fields
             x++; //Increment field counter
+           /*  los=los+1; */
+            <?php
+     /* $los=$los+1;  */
+    ?>
+            
             $(wrapper).append(fieldHTML); // Add field html
+
         }
 
     });
@@ -395,6 +424,10 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).parent('.Clase_eliminada').remove(); //Remove field html
         x--; //Decrement field counter
+        /* los=los-1; */
+        <?php
+    /*  $los=$los-1; */ 
+    ?>
     });
 });
 
