@@ -71,7 +71,7 @@ $_SESSION['Con_V']=1;
 
   </head>
   
-<body onload=" luz();">
+<body onload="luz();">
  
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
@@ -312,21 +312,19 @@ $(document).ready(function(){
     var addButton = $('.boton_masDato'); //controla el nombre de la clase del botón para añadir campos
     var wrapper = $('.Cont_campo_Det'); //controla la clase del div padre de los campos inputs que añadas
    
-    <?php 
-  
-    /* $los=$los+1; echo $los; */ ?>
+    
 
     let fieldHTML = `<div class="Clase_eliminada">
     
             <tr>
-                <td> <!-- N° venta -->
-                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value=" ` + los + `" >
+            <td> <!-- Numero de venta -->
+                      <input type="number" name=" " id="N_venta" title"" disabled required value="" >
                 </td>
 
                 
 
                 <td> <!-- Codigo de barras Producto -->
-                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="<?php echo $los; ?>" >
+                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="" >
                 </td>
                 <td><!-- Id. Producto --> 
 
@@ -398,22 +396,19 @@ $(document).ready(function(){
     
     var x = 1; //Initial venta contador is 1
     
-    console.log("------despues_2-----");
-    console.log(x);
+   
     
-    var val=1;
+   
  // Num de la venta
  <?php
      /* $los=1;  */
     ?>
-   /*  var los=1; */
+ 
     $(addButton).click(function(){ //Once add button is clicked
         if(x < maxField){ //Check maximum number of input fields
             x++; //Increment field counter
-           /*  los=los+1; */
-            <?php
-     /* $los=$los+1;  */
-    ?>
+           
+            
             
             $(wrapper).append(fieldHTML); // Add field html
 
@@ -424,10 +419,7 @@ $(document).ready(function(){
         e.preventDefault();
         $(this).parent('.Clase_eliminada').remove(); //Remove field html
         x--; //Decrement field counter
-        /* los=los-1; */
-        <?php
-    /*  $los=$los-1; */ 
-    ?>
+       
     });
 });
 
@@ -474,32 +466,31 @@ facturacion:
             <div class="Clase_eliminada">
     
             <tr>
-                <td> <!-- N° venta -->
-                      <?php
+               
 
-                      $emp=$Empleado->Consultar_Empleado($_SESSION['Empleado']);
-                      while ($em=$emp->fetch_object()) {
-                      $SSE=$em->Nombre;
-                      }
-                      echo '<input type="number" name="N_venta" id="N_venta" title"" disabled required value="' . $_SESSION["Empleado"] . ' - ' . $SSE . ' " >' ;?>
+                
+
+                <td> <!-- Codigo de barras Producto -->
+                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="" >
                 </td>
-                <td><!-- Cod. Producto -->
+                <td><!-- Id. Producto --> 
 
                         <div class="block-2 d-md-flex" data-aos="fade-left">
                                   
-                                  <div class="infoVenta" >
+                                  <div class="infoVenta" > 
                                   <div class="col-12 col-md-6">
                         <div class="group">
-                        <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
-                        <option value="">Cliente</option>
+                        <select class='js-example-placeholder-single' name="Cod_v" id="Cod_v" required>
+                        <option value="">Cod</option>
+                        
                         <?php
-                      
-                      
-                          
-                              while ($Clie=$Clientes->fetch_object()) {
-                                echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
-                              } 
-                          ?>
+                       
+                       $Inventario=$objInv->Consultar_prod_habiles();
+              
+                  while ($Inv_Cod=$Inventario->fetch_object()) {
+                    echo '<option value="' . $Inv_Cod->Id_prod . '">' . $Inv_Cod->Id_prod .  '</option>';
+                  } 
+              ?>
                         </select>
 
                             <span class="highlight"></span>
@@ -514,8 +505,8 @@ facturacion:
                                   <div class="infoVenta" >
                                   <div class="col-12 col-md-6">
                         <div class="group">
-                        <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
-                        <option value="">Cliente</option>
+                        <select class='js-example-placeholder-single' name="Prod_v" id="Prod_v" required>
+                        <option value="">Producto</option>
                         <?php
                       
                       
@@ -531,6 +522,7 @@ facturacion:
                             
                         </div> </div></div></div>
                 </td>
+                <!-- Cantidad -->
                 <td>
                     <input type="number" name="" id="" min="10" max="100" required >
                 </td>

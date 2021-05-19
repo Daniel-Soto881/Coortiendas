@@ -3,12 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-04-2021 a las 21:28:50
+-- Tiempo de generación: 18-05-2021 a las 23:22:53
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
-
-CREATE DATABASE coortiendas_f;
-USE coortiendas_f;
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -75,8 +72,9 @@ CREATE TABLE `detal_fact` (
 -- Volcado de datos para la tabla `detal_fact`
 --
 
-INSERT INTO `detal_fact` (`Id_comp`, `Num_fact`, `id_prod`, `Cant_prod`, `Desc %`) VALUES
-(1000, 1001, 100, 5, '0');
+INSERT INTO `detal_fact` (`Id_comp`, `Num_fact`, `id_prod`, `Cant_prod`, `Desc%`) VALUES
+(1000, 1001, 100, 5, '0'),
+(1000, 1042, 100, 5, '3');
 
 -- --------------------------------------------------------
 
@@ -197,7 +195,7 @@ CREATE TABLE `est_fact` (
 INSERT INTO `est_fact` (`Id_est_fact`, `Nam_est_fact`) VALUES
 (1, 'REALIZADA'),
 (2, 'EN PROCESO'),
-(3, 'CANCELADO')
+(3, 'CANCELADO'),
 (4, 'EFECTUANDO');
 
 -- --------------------------------------------------------
@@ -267,13 +265,13 @@ INSERT INTO `est_usu` (`Id_est_usu`, `name_est_usu`) VALUES
 CREATE TABLE `factura` (
   `Num_fact` int(20) NOT NULL,
   `Est_fact` int(2) NOT NULL,
-  `Tip_pag` int(2) NOT NULL COMMENT 'Manera de pago(tarjeta, contado...)',
+  `Tip_pag` int(2) DEFAULT NULL COMMENT 'Manera de pago(tarjeta, contado...)',
   `Id_cliente` int(8) DEFAULT NULL,
   `eple_fact` int(3) NOT NULL,
-  `Fecha_fact` datetime NOT NULL,
+  `Fecha_fact` datetime DEFAULT NULL,
   `Fech_entrega` date DEFAULT NULL,
   `Caja_fact` int(3) NOT NULL,
-  `Toral_val` decimal(10,2) NOT NULL COMMENT 'Totalidad monetaria de la suma, después del impuesto.',
+  `Toral_val` decimal(10,2) DEFAULT NULL COMMENT 'Totalidad monetaria de la suma, después del impuesto.',
   `Retenido_Fac` decimal(10,2) DEFAULT NULL COMMENT 'Impuesto total de la factura.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -282,9 +280,34 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`Num_fact`, `Est_fact`, `Tip_pag`, `Id_cliente`, `eple_fact`, `Fecha_fact`, `Fech_entrega`, `Caja_fact`, `Toral_val`, `Retenido_Fac`) VALUES
-(1001, 1, 3, 1002, 1, '2020-08-11 00:45:32', NULL, 1, '16000.00', NULL);
+(1001, 1, 3, 1002, 1, '2020-08-11 00:45:32', NULL, 1, '16000.00', NULL),
+(1042, 1, 3, 1003, 159159, '2021-04-26 04:21:04', '2021-04-26', 1, NULL, NULL),
+(1043, 1, 3, 1003, 159159, '2021-04-26 04:21:04', '2021-04-26', 1, NULL, NULL);
 
+-- --------------------------------------------------------
 
+--
+-- Estructura de tabla para la tabla `inventario`
+--
+
+CREATE TABLE `inventario` (
+  `Entra_2` int(20) NOT NULL COMMENT 'Identificador que muestra el numero que representa el pod en el inventario',
+  `Id_prod` int(20) DEFAULT NULL,
+  `Limite_max` int(4) DEFAULT NULL COMMENT 'Tope max al cual las unidades pueden llegar',
+  `Saldo_inv` int(3) DEFAULT NULL COMMENT 'Cantidad actial del prod',
+  `Limite_min` int(4) NOT NULL COMMENT 'Tope min al cual las unidades pueden llegar'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `inventario`
+--
+
+INSERT INTO `inventario` (`Entra_2`, `Id_prod`, `Limite_max`, `Saldo_inv`, `Limite_min`) VALUES
+(1, 100, 100, 75, 0),
+(2, 104, 30, 15, 0),
+(3, 101, 25, 18, 0),
+(4, 102, 7, 2, 0),
+(5, 103, 20, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -337,6 +360,7 @@ INSERT INTO `movi_inv` (`Id_movi_inv`, `Tip_mov_inv`, `Est_mov_inv`, `Entra_2_in
 
 CREATE TABLE `producto` (
   `Id_prod` int(20) NOT NULL COMMENT 'Código designado por el usuario para reconocer el producto con ayuda del identificador de código de barras',
+  `CodBarras_prod` varchar(250) NOT NULL COMMENT 'Código de barras que se recibe de el lector de cod de barras.',
   `Est_prod` int(2) NOT NULL COMMENT 'Activo, Inactivo...',
   `Tip_prod` int(2) NOT NULL COMMENT 'representa al conjunto al que pertenece el producto. Ej. Lácteos, carnes...',
   `Prov` int(8) NOT NULL,
@@ -357,46 +381,22 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`Id_prod`, `Est_prod`, `Tip_prod`, `Prov`, `Nam_prod`, `Carac_prod`, `Puntua_prod`, `Val_prod`, `Iva_prod`, `Dscuen_prod`, `UniMedi_prod`, `Tam_prod`, `Uni_x_venta`, `img_prod`, `UniMedida_prod`) VALUES
-(56, 1, 3, 1004, 'sss', 'lindo', 0, '400.00', 15, 0, 1, '25', 0, '?PNG\r\n\Z\n', 0),
-(100, 1, 1, 1002, 'huevitos rico pollo', 'xxx', 0, '3000.00', 19, 0, 1, '1100ml', 0, '????\0JF', 0),
-(101, 1, 9, 1000, 'aseo 1', 'www', 0, '100.00', 10, 0, 1, '115g', 0, '????\0JF', 0),
-(102, 1, 4, 1003, 'Mortadela Tradicional Zenú', 'De gran calidad,', 0, '3500.00', 19, 0, 15, '450g', 0, '????\0JF', 0),
-(103, 1, 5, 1002, 'Pan tajado Bimbo', 'Crocante', 0, '2800.00', 19, 0, 35, '600g', 0, '????\0JF', 0),
-(104, 2, 1, 1002, 'Yogurt Alpina', 'cremoso', 0, '2000.00', 19, 0, 1, '200g', 0, '????\0JF', 0),
-(111, 1, 2, 1004, 'chosiitos', 'hola', 0, '1000.00', 19, 0, 12, '10 ', 0, '????\0JF', 0),
-(333, 1, 2, 1002, 'wqeqwe', 'qwe qwe', 0, '1000.00', 12, 0, 1, '150 kg', 0, '', 0),
-(334, 1, 1, 1002, 'Leche alpina entera', 'gggdgf', 0, '3000.00', 19, 0, 2, '1100', 0, '', 0),
-(335, 1, 1, 1002, 'Leche alpina entera', 'gggdgf', 0, '3000.00', 19, 0, 2, '1100', 0, '', 0),
-(336, 1, 1, 1002, 'Leche alqueria entera', 'de gran calidad', 0, '3000.00', 19, 0, 1, '1100ml', 0, '', 0),
-(444, 1, 3, 1002, 'xxx', 'xxx', 0, '111.00', 1100, 0, 1, '', 0, '', 0),
-(9999, 1, 2, 1000, 'carnes deliciosas', 'www', 0, '10.00', 1, 0, 15, '45', 0, '', 0),
-(486957, 1, 4, 1002, 'leche Margarita', 'descripcion x', 0, '2500.00', 19, 0, 1, '1000', 0, '????\0JF', 0);
--- --------------------------------------------------------
+INSERT INTO `producto` (`Id_prod`, `CodBarras_prod`, `Est_prod`, `Tip_prod`, `Prov`, `Nam_prod`, `Carac_prod`, `Puntua_prod`, `Val_prod`, `Iva_prod`, `Dscuen_prod`, `UniMedi_prod`, `Tam_prod`, `Uni_x_venta`, `img_prod`, `UniMedida_prod`) VALUES
+(56, '', 1, 3, 1004, 'sss', 'lindo', 0, '400.00', 15, 0, 1, '25', 0, '?PNG\r\n\Z\n', 0),
+(100, '', 1, 1, 1002, 'huevitos rico pollo', 'xxx', 0, '3000.00', 19, 0, 1, '1100ml', 0, '????\0JF', 0),
+(101, '', 1, 9, 1000, 'aseo 1', 'www', 0, '100.00', 10, 0, 1, '115g', 0, '????\0JF', 0),
+(102, '', 1, 4, 1003, 'Mortadela Tradicional Zenú', 'De gran calidad,', 0, '3500.00', 19, 0, 15, '450g', 0, '????\0JF', 0),
+(103, '', 1, 5, 1002, 'Pan tajado Bimbo', 'Crocante', 0, '2800.00', 19, 0, 35, '600g', 0, '????\0JF', 0),
+(104, '', 2, 1, 1002, 'Yogurt Alpina', 'cremoso', 0, '2000.00', 19, 0, 1, '200g', 0, '????\0JF', 0),
+(111, '', 1, 2, 1004, 'chosiitos', 'hola', 0, '1000.00', 19, 0, 12, '10 ', 0, '????\0JF', 0),
+(333, '', 1, 2, 1002, 'wqeqwe', 'qwe qwe', 0, '1000.00', 12, 0, 1, '150 kg', 0, '', 0),
+(334, '', 1, 1, 1002, 'Leche alpina entera', 'gggdgf', 0, '3000.00', 19, 0, 2, '1100', 0, '', 0),
+(335, '', 1, 1, 1002, 'Leche alpina entera', 'gggdgf', 0, '3000.00', 19, 0, 2, '1100', 0, '', 0),
+(336, '', 1, 1, 1002, 'Leche alqueria entera', 'de gran calidad', 0, '3000.00', 19, 0, 1, '1100ml', 0, '', 0),
+(444, '', 1, 3, 1002, 'xxx', 'xxx', 0, '111.00', 1100, 0, 1, '', 0, '', 0),
+(9999, '', 1, 2, 1000, 'carnes deliciosas', 'www', 0, '10.00', 1, 0, 15, '45', 0, '', 0),
+(486957, '', 1, 4, 1002, 'leche Margarita', 'descripcion x', 0, '2500.00', 19, 0, 1, '1000', 0, '????\0JF', 0);
 
---
--- Estructura de tabla para la tabla `inventario`
---
-
-CREATE TABLE `inventario` (
-  `Entra_2` int(20) NOT NULL COMMENT 'Identificador que muestra el numero que representa el pod en el inventario',
-  `Id_prod` int(20) DEFAULT NULL,
-  `Limite_max` int(4) DEFAULT NULL COMMENT 'Tope max al cual las unidades pueden llegar',
-  `Cost_ini` int(3) DEFAULT NULL COMMENT 'Costo inicial del prod antes de impuesto.',
-  `Saldo_inv` int(3) DEFAULT NULL COMMENT 'Cantidad actial del prod',
-  `Limite_min` int(4) NOT NULL COMMENT 'Tope min al cual las unidades pueden llegar'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `inventario`
---
-
-INSERT INTO `inventario` (`Entra_2`, `Id_prod`, `Limite_max`, `Cost_ini`, `Saldo_inv`, `Limite_min`) VALUES
-(1, 100, 100, 25, 75, 0),
-(2, 104, 30, 15, 15, 0),
-(3, 101, 25, 7, 18, 0),
-(4, 102, 7, 5, 2, 0),
-(5, 103, 20, 5, 15, 0);
 -- --------------------------------------------------------
 
 --
@@ -532,7 +532,7 @@ INSERT INTO `tip_pag` (`Id_tip_pag`, `Nam_tip_pag`) VALUES
 (1, 'TARJETA DEBITO'),
 (2, 'TARJETA CREDITO'),
 (3, 'EFECTIVO');
- b 
+
 -- --------------------------------------------------------
 
 --
@@ -800,7 +800,7 @@ ALTER TABLE `estad_prod`
 -- AUTO_INCREMENT de la tabla `est_fact`
 --
 ALTER TABLE `est_fact`
-  MODIFY `Id_est_fact` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id_est_fact` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `est_prov`
@@ -824,7 +824,7 @@ ALTER TABLE `est_usu`
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `Num_fact` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+  MODIFY `Num_fact` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1044;
 
 --
 -- AUTO_INCREMENT de la tabla `movi_inv`
