@@ -1,0 +1,44 @@
+.autocompletar{
+  position: relative;
+  display: inline-block;
+}
+strong{
+  color: #37413e;
+}
+#CB_v{
+  background-color: rgb(32, 129, 32);
+  border: none;
+  outline: none;
+
+}
+.list_aut_CB_v{
+  color:rgb(18, 172, 18);
+  position: absolute;
+  border: 1px solid rgb(13, 238, 99);
+  border-bottom: none;
+  z-index: 99;
+
+  top: 100%;
+  left: auto;
+  right: 0%;
+  width: 95%;
+
+}
+.list_aut_CB_v div{
+  padding: 10px;
+  cursor: pointer;
+  background-color: darkgreen;
+  border-bottom:1px solid darkgrey;
+
+}
+
+.list_aut_CB_v div:hover{
+  background-color: darkseagreen;
+}
+.autocompletar-active{
+  background-color: darkturquoise;
+  color: aliceblue;
+}
+.autocompletar-active strong{
+  color: rgb(39, 114, 180);
+}

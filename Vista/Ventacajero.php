@@ -59,7 +59,7 @@ $_SESSION['Con_V']=1;
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
     <link rel="stylesheet" href="../css/animate.css">
     
-    <link rel="stylesheet" href="../css/flaticon.css">
+    <!-- <link rel="stylesheet" href="../css/flaticon.css"> -->
     <link rel="stylesheet" href="../css/icomoon.css">
     <!--START  Librerias de SELECT2 para el buscador en el select -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
@@ -67,11 +67,14 @@ $_SESSION['Con_V']=1;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <!-- libreriA para el incremento de campos en el form facturacion -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+<!-- Libreria para el buscador y autocompletado de detalle factura START -->
+<link rel="stylesheet" href="../css/css/autocomplet_1.css">
+<script src="../js/jquery/autocomplet_1.js"></script>
+<!-- Libreria para el buscador y autocompletado de detalle factura END -->
 
   </head>
   
-<body onload="luz();">
+<body onload="luz(); ">
  
   <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ftco-navbar-light" id="ftco-navbar"  data-aos-delay="500">
       <div class="container" >
@@ -193,235 +196,230 @@ $_SESSION['Con_V']=1;
         </div><br><br><br><br><br><br><br><br><br><br><br>
        
         <script>
-        function luz() {
+       function luz() {
          
-            document.getElementById("btn_New_factura").innerHTML=`
-            
-            <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                      <div class="infoVenta" >
-                      <div class="col-12 col-md-6">
-            <div class="group">
-             <strong id="Empl">Empleado</strong>
-            
-            <?php
-            
-            $emp=$Empleado->Consultar_Empleado($_SESSION['Empleado']);
-            while ($em=$emp->fetch_object()) {
-             $SSE=$em->Nombre;
-            }
-            echo '<input type="text" name="Empl" id="Empl"  placeholder="" disabled required value="' . $_SESSION["Empleado"] . ' - ' . $SSE . ' " >' ;?>
-
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                
-            </div> 
-        </div> 
-        
-        <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                      <div class="infoVenta" >
-                      <div class="col-12 col-md-6">
-            <div class="group">
-            <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
-            <option value="">Cliente</option>
-            <?php
-           
-           
-              
-                  while ($Clie=$Clientes->fetch_object()) {
-                    echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
-                  } 
-              ?>
-            </select>
-
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                
-            </div> 
-        </div> 
-        <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                      <div class="infoVenta" >
-                      <div class="col-12 col-md-6">
-            <div class="group"><!-- NO QUITE LAS CLASES 'js-example-placeholder-single' O 'factura'  -->
-            <select class='js-example-placeholder-single' name="Tip_pag" id="Tip_pag" required>
-            <option value="">Tipo Pago</option>
-            <?php
-                $TipoPago=$obj_tip_pag->Consultar_tip_pag();
-                  while ($tip_pag=$TipoPago->fetch_object()) {
-                    echo '<option value="' . $tip_pag->Id_tip_pag . '">' . $tip_pag->Nam_tip_pag .  '</option>';
-                  } 
-                  
-              ?>
-            </select>
-
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                
-            </div> 
-        </div> 
-        <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                      <div class="infoVenta" >
-                      <div class="col-12 col-md-6">
-            <div class="group">
-             <strong id="Caja_fact">Caja</strong>
-            <input type="number" name="Caja_fact" id="Caja_fact" placeholder="" required>
-            <output for="Caja_fact" id="Caja_fact"></output>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                
-            </div> 
-        </div> 
-        <div class="block-2 d-md-flex" data-aos="fade-left">
-                      
-                      <div class="infoVenta" >
-                      <div class="col-12 col-md-6">
-            <div class="group">
-             <strong id="Fech_entrega">Fecha de entrega</strong>
-            <input type="datetime-local" name="Fech_entrega" id="Fech_entrega" placeholder="" required>
-
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                 <b></b>
-            </div> 
-        </div>  
-          
-
-        ` + `
-        
-
-        `;
-
-        document.getElementById("Continuaraa").innerHTML=``;
-
-                
- 
-      }; 
-
-      
-      
-     
-
-      /* START implementacion de funcion para el incremetno de campos para la facturacion */
-      
-   
-$(document).ready(function(){
-    var maxField = 5; //Input número máximo de campos que puedes añadir
-    var addButton = $('.boton_masDato'); //controla el nombre de la clase del botón para añadir campos
-    var wrapper = $('.Cont_campo_Det'); //controla la clase del div padre de los campos inputs que añadas
-   
-    
-
-    let fieldHTML = `<div class="Clase_eliminada">
-    
-            <tr>
-            <td> <!-- Numero de venta -->
-                      <input type="number" name=" " id="N_venta" title"" disabled required value="" >
-                </td>
-
-                
-
-                <td> <!-- Codigo de barras Producto -->
-                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="" >
-                </td>
-                <td><!-- Id. Producto --> 
-
-                        <div class="block-2 d-md-flex" data-aos="fade-left">
-                                  
-                                  <div class="infoVenta" > 
-                                  <div class="col-12 col-md-6">
-                        <div class="group">
-                        <select class='js-example-placeholder-single' name="Cod_v" id="Cod_v" required>
-                        <option value="">Cod</option>
-                        
-                        <?php
-                       
-                       $Inventario=$objInv->Consultar_prod_habiles();
-              
-                  while ($Inv_Cod=$Inventario->fetch_object()) {
-                    echo '<option value="' . $Inv_Cod->Id_prod . '">' . $Inv_Cod->Id_prod .  '</option>';
-                  } 
-              ?>
-                        </select>
-
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            
-                        </div> </div></div></div>
-               </td>
-                <td><!-- Nombre -->
-
-                        <div class="block-2 d-md-flex" data-aos="fade-left">
-                                  
-                                  <div class="infoVenta" >
-                                  <div class="col-12 col-md-6">
-                        <div class="group">
-                        <select class='js-example-placeholder-single' name="Prod_v" id="Prod_v" required>
-                        <option value="">Producto</option>
-                        <?php
-                      
-                      
-                          
-                              while ($Clie=$Clientes->fetch_object()) {
-                                echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
-                              } 
-                          ?>
-                        </select>
-
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            
-                        </div> </div></div></div>
-                </td>
-                <!-- Cantidad -->
-                <td>
-                    <input type="number" name="" id="" min="10" max="100" required >
-                </td>
-                <td><!-- Valor unitario -->
-                    <input type="number" name="" id="" min="10" max="100" required >
-                </td>
-                <td><!-- Impuesto -->
-                    <input type="number" name="" id="" min="10" max="100" required >
-                </td>
-                <td>
-                    <a href="javascript:void(0);" class="remove_button" title="Remove field"><i class="fas fa-trash-alt"></i></a>
-                </td>
-                    
-            </tr>
-            </div>
-    `; //código HTML de cada campo input que añada
-    var deleHTML='';
-    
-    var x = 1; //Initial venta contador is 1
-    
-   
-    
-   
- // Num de la venta
- <?php
-     /* $los=1;  */
-    ?>
- 
-    $(addButton).click(function(){ //Once add button is clicked
-        if(x < maxField){ //Check maximum number of input fields
-            x++; //Increment field counter
-           
-            
-            
-            $(wrapper).append(fieldHTML); // Add field html
-
-        }
-
-    });
-    $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
-        e.preventDefault();
-        $(this).parent('.Clase_eliminada').remove(); //Remove field html
-        x--; //Decrement field counter
+         document.getElementById("btn_New_factura").innerHTML=`
+         
+         <div class="block-2 d-md-flex" data-aos="fade-left">
+                   
+                   <div class="infoVenta" >
+                   <div class="col-12 col-md-6">
+         <div class="group">
+          <strong id="Empl">Empleado</strong>
+         
+         <?php
+         
+         $emp=$Empleado->Consultar_Empleado($_SESSION['Empleado']);
+         while ($em=$emp->fetch_object()) {
+          $SSE=$em->Nombre;
+         }
+         echo '<input type="text" name="Empl" id="Empl"  placeholder="" disabled required value="' . $_SESSION["Empleado"] . ' - ' . $SSE . ' " >' ;?>
        
-    });
-});
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             
+         </div> 
+       </div> 
+       
+       <div class="block-2 d-md-flex" data-aos="fade-left">
+                   
+                   <div class="infoVenta" >
+                   <div class="col-12 col-md-6">
+         <div class="group">
+         <select class='js-example-placeholder-single' name="Cliente" id="Cliente" required>
+         <option value="">Cliente</option>
+         <?php
+        
+        
+           
+               while ($Clie=$Clientes->fetch_object()) {
+                 echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
+               } 
+           ?>
+         </select>
+       
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             
+         </div> 
+       </div> 
+       <div class="block-2 d-md-flex" data-aos="fade-left">
+                   
+                   <div class="infoVenta" >
+                   <div class="col-12 col-md-6">
+         <div class="group"><!-- NO QUITE LAS CLASES 'js-example-placeholder-single' O 'factura'  -->
+         <select class='js-example-placeholder-single' name="Tip_pag" id="Tip_pag" required>
+         <option value="">Tipo Pago</option>
+         <?php
+             $TipoPago=$obj_tip_pag->Consultar_tip_pag();
+               while ($tip_pag=$TipoPago->fetch_object()) {
+                 echo '<option value="' . $tip_pag->Id_tip_pag . '">' . $tip_pag->Nam_tip_pag .  '</option>';
+               } 
+               
+           ?>
+         </select>
+       
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             
+         </div> 
+       </div> 
+       <div class="block-2 d-md-flex" data-aos="fade-left">
+                   
+                   <div class="infoVenta" >
+                   <div class="col-12 col-md-6">
+         <div class="group">
+          <strong id="Caja_fact">Caja</strong>
+         <input type="number" name="Caja_fact" id="Caja_fact" placeholder="" required>
+         <output for="Caja_fact" id="Caja_fact"></output>
+             <span class="highlight"></span>
+             <span class="bar"></span>
+             
+         </div> 
+       </div> 
+       <div class="block-2 d-md-flex" data-aos="fade-left">
+                   
+                   <div class="infoVenta" >
+                   <div class="col-12 col-md-6">
+         <div class="group">
+          <strong id="Fech_entrega">Fecha de entrega</strong>
+         <input type="datetime-local" name="Fech_entrega" id="Fech_entrega" placeholder="" required>
+       
+             <span class="highlight"></span>
+             <span class="bar"></span>
+              <b></b>
+         </div> 
+       </div>  
+       
+       
+       ` + `
+       
+       
+       `;
+       
+       
+             
+       
+       }; 
+       
+       
+       
+       
+       
+       /* START implementacion de funcion para el incremetno de campos para la facturacion */
+       
+       var sals=0;
+       $(document).ready(function(){
+       var maxField = 5; //Input número máximo de campos que puedes añadir
+       var addButton = $('.boton_masDato'); //controla el nombre de la clase del botón para añadir campos
+       var wrapper = $('.Cont_campo_Det'); //controla la clase del div padre de los campos inputs que añadas
+       var lessButton=$('.Clase_eliminada');//controla el nombre de la clase del botón para eliminar campos
+       /* console.log($('.Clase_eliminada').length(0)); */
+       
+       
+       let fieldHTML =  `
+       
+         <tr class="Clase_eliminada">
+         <td> <!-- Numero de venta -->
+                   <input type="number" name=" " id="N_venta" title"" disabled required value="" >
+             </td>
+       
+             
+       
+             <td> <!-- Codigo de barras Producto -->
+                   <input type="number" name="N_venta" id="N_venta" title"" disabled required value="" >
+             </td>
+             <td><!-- Id. Producto --> 
+       
+                     <div class="block-2 d-md-flex" data-aos="fade-left">
+                               
+                               <div class="infoVenta" > 
+                               <div class="col-12 col-md-6">
+                     <div class="group">
+                     <select class='js-example-placeholder-single' name="Cod_v" id="Cod_v" required>
+                     <option value="">Cod</option>
+                     
+                     <?php
+                    
+                    $Inventario=$objInv->Consultar_prod_habiles();
+           
+               while ($Inv_Cod=$Inventario->fetch_object()) {
+                 echo '<option value="' . $Inv_Cod->Id_prod . '">' . $Inv_Cod->Id_prod .  '</option>';
+               } 
+           ?>
+                     </select>
+       
+                         <span class="highlight"></span>
+                         <span class="bar"></span>
+                         
+                     </div> </div></div></div>
+            </td>
+             <td><!-- Nombre -->
+       
+                     <div class="block-2 d-md-flex" data-aos="fade-left">
+                               
+                               <div class="infoVenta" >
+                               <div class="col-12 col-md-6">
+                     <div class="group">
+                     <select class='js-example-placeholder-single' name="Prod_v" id="Prod_v" required>
+                     <option value="">Producto</option>
+                     <?php
+                   
+                   
+                       
+                           while ($Clie=$Clientes->fetch_object()) {
+                             echo '<option value="' . $Clie->Id_clie . '">' . $Clie->Nam_clie .  '</option>';
+                           } 
+                       ?>
+                     </select>
+       
+                         <span class="highlight"></span>
+                         <span class="bar"></span>
+                         
+                     </div> </div></div></div>
+             </td>
+             <!-- Cantidad -->
+             <td>
+                 <input type="number" name="" id="" min="10" max="100" required >
+             </td>
+             <td><!-- Valor unitario -->
+                 <input type="number" name="" id="" min="10" max="100" required >
+             </td>
+             <td><!-- Impuesto -->
+                 <input type="number" name="" id="" min="10" max="100" required >
+             </td>
+             <td>
+                 <a href="javascript:void(0);" class="remove_button" title="Remove field"><i class="fas fa-trash-alt"></i></a>
+             </td>
+                 
+         </tr>
+         
+       `; //código HTML de cada campo input que añada
+       var deleHTML='';
+       
+       var x = 1; //Initial venta contador is 1
+       
+       
+       
+       
+       $(addButton).click(function(){ //Once add button is clicked
+       if(x < maxField){ //Check maximum number of input fields
+         x++; //Increment field counter
+         
+         
+         
+         $(wrapper).append(fieldHTML); // Add field html
+       
+       }
+       
+       });
+       $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
+       e.preventDefault();
+       $(this).parent().parent(lessButton).remove(); //Remove field html
+       x--; //Decrement field counter
+       
+       });
+       });
 
       /* END implementacion de funcion para el incremetno de campos para la facturacion */
         </script>
@@ -455,23 +453,26 @@ facturacion:
         <table class="Cont_campo_Det">
             <tr>
                 <td>N° venta</td>
-                <td title="Código de producto">Cod. Producto</td>
+                <td title="Código de producto"><th>Cod. Producto</th> </td>th
                 <td title="Nombre del producto">Nombre</td>
                 <td title="Cantidad de producto">Cantidad</td>
                 <td title="Valor uitario del producto fuera de impuestos">Valor unitario</td>
-                <td title="Porcentaje de impuesto establecido individualmente">Impuesto</td>
+                <td title="Porcentaje de impuesto establecido  individualmente">Impuesto</td>
                 <td>Eliminar</td>
                 
             </tr>
-            <div class="Clase_eliminada">
-    
-            <tr>
-               
-
+            <tr class="Clase_eliminada">
+            <td> <!-- Numero de venta -->
+                      <input type="number" name=" " id="N_venta" title="" disabled required value="" >
+                </td>
+<!-- --------- -->
                 
 
-                <td> <!-- Codigo de barras Producto -->
-                      <input type="number" name="N_venta" id="N_venta" title"" disabled required value="" >
+                <td > <!-- Codigo de barras Producto -->
+                    <div class="autocompletar">
+                    <input type="text" name="CB_v" id="CB_v" value="sarondinica"title="Seleccione o ingrese el código de barras del producto"  required >
+                    </div>      
+                
                 </td>
                 <td><!-- Id. Producto --> 
 
@@ -537,7 +538,6 @@ facturacion:
                 </td>
                     
             </tr>
-            </div>
             
 
             
@@ -564,7 +564,7 @@ facturacion:
 
 
 
-                  <div class="col-12">
+                  <div clas s="col-12">
                                     <input  type="submit" class="mosh-btn original-btn" value="Continuar" id="Continuar" name="Continuar">
                                 </div>
                   </form>
@@ -612,7 +612,7 @@ facturacion:
     <script src="../js/jquery.min.js"></script>
     <script src="../js/jquery-migrate-3.0.1.min.js"></script>
     <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap2.min.js"></script>
+    <!-- <script src="../js/bootstrap2.min.js"></script> -->
     <script src="../js/jquery.waypoints.min.js"></script>
     <script src="../js/jquery.stellar.min.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
