@@ -19,7 +19,7 @@ require "../Modelo/TipoPago.php";
 require "../Modelo/TipUsu.php";
 require "../Modelo/TipProd.php";
 $objCliente= new Cliente(); 
-$Clientes=$objCliente->ConsultarClientes();
+$Clientes=$objCliente->ConsultarClientes(); 
 
 
 
@@ -70,6 +70,11 @@ $_SESSION['Con_V']=1;
 <!-- Libreria para el buscador y autocompletado de detalle factura START -->
 <link rel="stylesheet" href="../css/css/autocomplet_1.css">
 <script src="../js/jquery/autocomplet_1.js"></script>
+
+<!-- ----------2.0------------ -->
+<link href="css/estilo.css" rel="stylesheet" type="text/css" /> 
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
 <!-- Libreria para el buscador y autocompletado de detalle factura END -->
 
   </head>
@@ -469,11 +474,19 @@ facturacion:
                 
 
                 <td > <!-- Codigo de barras Producto -->
-                    <div class="autocompletar">
-                    <input type="text" name="CB_v" id="CB_v" value="sarondinica"title="Seleccione o ingrese el código de barras del producto"  required >
+                    <div class="autocompletar" style="">
+                      <input type="text" name="CB_v" id="CB_v" onKeyUp="lookup(this.value);" value="sarondinica"title="Seleccione o ingrese el código de barras del producto"  required>
+                    
+                      <div class="suggestionsBox" id="suggestions" style="display:none;"> <!-- div para imprimir resultados -->
+				           	<div class="suggestionList" id="autoSuggestionsList"></div>
+			             	</div>
+                    
                     </div>      
                 
                 </td>
+           <seccion id="div_resp">
+
+                
                 <td><!-- Id. Producto --> 
 
                         <div class="block-2 d-md-flex" data-aos="fade-left">
@@ -533,7 +546,8 @@ facturacion:
                 <td><!-- Impuesto -->
                     <input type="number" name="" id="" min="10" max="100" required >
                 </td>
-                <td>
+           </seccion>
+                <td> 
                     <a href="javascript:void(0);" class="remove_button" title="Remove field"><i class="fas fa-trash-alt"></i></a>
                 </td>
                     

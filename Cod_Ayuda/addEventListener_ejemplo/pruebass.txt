@@ -1,0 +1,28 @@
+
+/* END implementacion de funcion para el incremetno de campos para la facturacion */
+function autocompletar_1(array) {
+  alert("conectado_2");
+
+ const input_CB_v= document.querySelector("#CB_v");//revisa o selecciona el id de ese input
+ 
+ let indexFoc_CB_v=-1;
+ 
+input_CB_v.addEventListener('input',zona_autocompletar_1());
+function zona_autoc ompletar_1(){
+  alert("conectado_3");
+  const value_CB_v= this.value;/* el valor de input_CB_v */ 
+  console.log(value_CB_v);
+  if( !value_CB_v) return false;/* si no hay nada en la constante retorna false */
+  /*  lista de sugerencias para CB_v */
+  const divCB_v=document.createElement("div");
+  divCB_v.setAttribute("id", this.id + "-aut_CB_v");
+  divCB_v.setAttribute("class", "list_aut_CB_v"); 
+  this.parentNode.appendChild(divCB_v);
+}
+input_CB_v.addEventListener('keydown', function () {
+  console.log("holiis");
+});
+
+}
+
+autocompletar_1(["a1dfgdfg","a2dfgdfg","a3dfgdg","a4dfgdfg","a5fgdfgg","a575588"]);

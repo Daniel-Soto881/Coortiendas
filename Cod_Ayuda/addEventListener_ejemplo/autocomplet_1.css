@@ -1,0 +1,53 @@
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}
+form{
+  margin: 50px auto;
+  width: 500px;
+}
+.autocompletar{
+  position: relative;
+  display: inline-block;
+}
+strong{
+  color: #000000;
+}
+#tipo-mascota{
+  background-color: rgb(155, 155, 155);
+  border: none;
+  outline: none;
+  font-size: 1.7em;
+  padding: 10px 25px;
+width: 500px;
+}
+.lista-autocompletar-items{
+  color:rgb(151, 165, 151);
+  position: absolute;
+  border: 1px solid rgb(13, 238, 99);
+  border-bottom: none;
+  z-index: 99;
+
+  top: 100%;
+  left: 20px;
+  right: 0%;
+  width: 95%;
+
+}
+.lista-autocompletar-items div{
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgb(134, 139, 134);
+  border-bottom:1px solid darkgrey;
+
+}
+
+.lista-autocompletar-items div:hover{
+  background-color: darkseagreen;
+}
+.autocompletar-active{
+  background-color: darkseagreen;
+  color: aliceblue;
+}
+.autocompletar-active strong{
+  color: rgb(39, 114, 180);
+}
